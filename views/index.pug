@@ -2,7 +2,28 @@ doctype html
 html(lang = 'en')
     head
        title=title
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width,initial-scale=1.0")
+
+        // css for all pages.
+        link(rel='stylesheet' href='http://localhost:3000/css/general.css')
+
+        // Font links
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(
+             href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+            rel="stylesheet"
+        )
+        link(
+             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        )
     body
+        // logo
+        p#logo.lobster-text
+            span#comp-name Stay Clean
+            span#truck
         h3 Waste disposal for all time freshness.
         form(action="/welcome" method="POST")
             fieldset
