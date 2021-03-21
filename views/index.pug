@@ -1,0 +1,20 @@
+doctype html
+html(lang = 'en')
+    head
+       title=title
+    body
+        h3 Waste disposal for all time freshness.
+        form(action="/welcome" method="POST")
+            fieldset
+                legend Welcome to Stay Clean
+                input#user-name(
+                    type='text'
+                    name='user-name'
+                    placeholder = 'User Name'
+                    )
+                input#password(
+                    type='password'
+                    name='user-password'
+                    placeholder='Password'
+                )
+                button#login-btn(type="submit") Sign In

@@ -1,0 +1,77 @@
+doctype html
+html
+    head
+        title=title
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width,initial-scale=1.0")
+
+        // css for all pages.
+        link(rel='stylesheet' href='http://localhost:3000/css/general.css')
+
+        // Font links
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(
+             href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+            rel="stylesheet"
+        )
+        link(
+             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        )
+
+        //- Will contain additional head assets.
+        block head
+
+    // Body starts here    
+    body
+        header.grid-general
+            // logo
+            p#logo.lobster-text
+                span#comp-name Stay Clean
+                span#truck
+            // Navbar General
+            nav.grid-general
+                ul#menu-ul.menu-ul
+                    li
+                        a#new-request( href='../new-request') New request
+                    li
+                        a#requests( href='../requests') Requests
+                    li
+                        a#pricing( href='../pricing') Pricing
+                    li
+                        a#register( href='../registerEmployee') Add Employee
+                    li
+                        a#employe-details( href='../details') Employee Details
+                    li
+                        a#trucks( href='../trucks') Trucks
+                    li
+                        a#sales( href='../sales') Sales
+                    li
+                        a#salaies( href='../Salaries') Salaries/Wages
+                    li
+                        a#expenses( href='../expenses') Expenses
+        section
+            p#signout firstName 
+                a(href='/') Sign-Out
+        main.grid-general-centre
+            //- Will be replaced by specific content of a certain page.
+            block main
+
+        footer.grid-general
+            section#main-footer.grid-general
+                // Address has to be detailed later.
+                h3#add We are located
+                p#add-p In Gulu city opposite the Main market.
+                h3#con Contact Us On
+                h3#con-mob Mobile
+                ul#con-num
+                    li#number1 0784847265
+                    li#number2 0755166405
+                h3#email-a email
+                ul#email-a-s
+                    li#email1 info@stayclean.com
+                    li#email2 gwochan24@gmail.com
+            p#copyright This is the property of pawan &copy2021
+
+        block js

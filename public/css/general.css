@@ -1,0 +1,318 @@
+/* This class adds Lobster font to an element. */
+.lobster-text {
+  font-family: 'Lobster', cursive;
+}
+
+/* This class adds Roboto font to an element. */
+.roboto-text {
+  font-family: 'Roboto', sans-serif;
+}
+/* This calss centres text elements */
+.centre-text {
+  text-align: center;
+}
+/* This class sets a 12 track grid to an element. */
+.grid-general {
+  display: grid;
+  grid-template-columns: repeat(12, auto);
+  grid-template-rows: repeat(12, auto);
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+/* Use this for simple on dimentional positionings with flex-direction column */
+.flex-general-column {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-direction: column;
+}
+
+/* Use this for simple on dimentional positionings with flex-direction row. */
+.flex-general-row {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+/* The general setting for buttons. */
+button,
+#cancel-reg {
+  background-color: rgba(0, 128, 0, 0.884);
+  width: 100px;
+  height: 33px;
+  color: white;
+  font-size: 1em;
+}
+
+button:hover,
+button:focus,
+#cancel-reg:hover,
+#cancel-reg:focus {
+  background-color: purple;
+}
+
+/* This chanage text color to white. */
+.white-text {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(20, 20, 20);
+}
+
+/* SHADOWS START */
+/* Grey box-shadow */
+.shadow-grey {
+  box-shadow: 1px 1px 5px black, -1px 0 5px grey;
+}
+
+/* All around white box-shadow */
+.shadow-white-round {
+  box-shadow: 1px 1px 5px white, -1px -1px 5px white;
+}
+/* SHADOWS END */
+
+/* GENEARL PAGE FORMATING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  background-color: skyblue;
+  padding: 0 5%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px repeat(11, 1fr);
+  grid-template-rows: repeat(12, auto);
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+/* All formating involving HEADER START here*/
+header {
+  grid-area: 1/1/-1/2;
+  background-color: rgba(0, 128, 0, 0.884);
+  padding: 10px 5%;
+  position: relative;
+  width: 150px;
+  height: 100%;
+}
+
+/* Logo styling START */
+#logo {
+  grid-area: 1/1/2/-1;
+  justify-self: center;
+  position: relative;
+  border: 3px solid white;
+  border-top: 3px solid transparent;
+  border-radius: 5px 20px 2px 2px;
+  z-index: 5;
+  width: 100px;
+  height: 30px;
+  padding-bottom: 5px;
+  color: black;
+}
+
+/* Truck Tires. */
+#logo::before,
+#logo::after {
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  top: 15px;
+  text-align: center;
+  padding: 1%;
+  margin-top: 5px;
+  border: 4px solid black;
+}
+#logo::before {
+  left: 5px;
+}
+#logo::after {
+  right: 5px;
+}
+
+#truck {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 25px;
+  height: 20px;
+  border: 1px solid white;
+  border-top: 3px solid white;
+  border-right: 3px solid transparent;
+  border-radius: 2px 21px 2px 2px;
+  z-index: -1;
+}
+
+#truck::before {
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 73px;
+  height: 20px;
+  left: -76px;
+  top: -7px;
+  text-align: center;
+  padding: 1%;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  color: black;
+}
+#truck::after {
+  content: '';
+  position: absolute;
+  border: 1px solid white;
+  width: 97px;
+  left: -75px;
+  top: 17px;
+}
+/* Logo styling END */
+
+/* Mobile menu Styling START */
+
+nav {
+  grid-area: 2/1/9/-1;
+  width: 100%;
+  font-size: 0.9em;
+  margin-top: 40px;
+}
+
+nav ul {
+  width: 100%;
+  grid-area: 1/1/-1/-1;
+}
+
+nav ul li {
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li a {
+  display: block;
+  height: 40px;
+  width: auto;
+  padding: 7px;
+  border-bottom: 1px solid rgb(194, 173, 173);
+  color: white;
+  font-weight: 700;
+}
+nav li:first-child {
+  border-top: 1px solid rgb(194, 173, 173);
+}
+header ul li a:focus,
+header ul li a:hover {
+  background-color: purple;
+}
+
+/* Mobile menu Styling END */
+
+/* All formating involving HEADER END here*/
+
+/* Login Status START HERE*/
+body > section {
+  grid-area: 1/2/2/-1;
+  background-color: rgba(0, 128, 0, 0.884);
+  padding: 20px 5%;
+}
+
+#signout {
+  text-align: right;
+  font-size: 1em;
+}
+
+#signout a {
+  text-shadow: 1px 1px 0 blue;
+  height: 40px;
+  width: 100px;
+  padding: 5px 10px;
+  background-color: white;
+}
+/* Login Status END HERE*/
+
+/* All formating involving MAIN START here*/
+main {
+  grid-area: 2/2/10/-1;
+  height: 100%;
+  width: 100%;
+}
+
+/* All formating involving MAIN END here*/
+
+/* All formating involving FOOTER START here*/
+footer {
+  grid-area: 10/2/-1/-1;
+  background-color: rgba(0, 128, 0, 0.863);
+  color: rgb(20, 20, 20);
+  width: auto;
+  font-size: 0.8em;
+  height: auto;
+}
+
+#main-footer {
+  grid-area: 1/1/12/12;
+  padding: 10px 5% 10px 10%;
+  color: rgba(255, 255, 255, 0.753);
+}
+
+/* h3 for address. */
+#add {
+  grid-area: 1/3/2/6;
+}
+
+/* Real address paragraph. */
+#add-p {
+  grid-area: 2/3/-1/4;
+}
+
+/* h3 Contact us  */
+#con {
+  grid-area: 1/6/2/-1;
+  text-align: start;
+}
+
+/* h3 mobile */
+#con-mob {
+  grid-area: 2/6/3/9;
+}
+
+/* phone numbers */
+#con-num {
+  grid-area: 3/6/-1/9;
+}
+
+/* Email label */
+#email-a {
+  grid-area: 2/9/3/-1;
+}
+
+/* Email addresses */
+#email-a-s {
+  grid-area: 3/9/-1/-1;
+}
+
+#main-footer li {
+  list-style: none;
+}
+
+#copyright {
+  grid-area: 12/1/-1/-1;
+  background-color: #304b30;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  color: white;
+}
+
+/* All formating involving FOOTER END here*/
