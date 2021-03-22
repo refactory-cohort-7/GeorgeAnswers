@@ -47,20 +47,6 @@ form h2 {
   margin-top: 20px;
 }
 
-/* Shows legend on focus.  */
-
-input:focus::placeholder {
-  color: transparent;
-}
-textarea:focus::placeholder {
-  color: transparent;
-}
-
-::placeholder {
-  color: black;
-  opacity: 1;
-}
-
 input,
 select,
 textarea {
@@ -107,26 +93,4 @@ textarea {
 fieldset input[type='radio'] {
   width: 10px;
   height: auto;
-}
-fieldset {
-  background-color: rgb(231, 237, 240);
-  position: relative;
-  margin-top: 20px;
-  border: 2px solid rgb(194, 171, 171);
-}
-fieldset:focus-within {
-  border: 2px solid blue;
-}
-legend {
-  margin: 0 10px;
-  position: absolute;
-  top: 2px;
-  visibility: hidden;
-}
-
-fieldset:focus-within legend {
-  transform: translateY(-13px);
-  visibility: visible;
-  background-image: linear-gradient(rgb(255, 255, 255) 50%, rgb(231, 237, 240));
-  color: blue;
 }

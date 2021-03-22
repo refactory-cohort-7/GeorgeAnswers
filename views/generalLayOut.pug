@@ -7,7 +7,7 @@ html
         meta(name="viewport", content="width=device-width,initial-scale=1.0")
 
         // css for all pages.
-        link(rel='stylesheet' href='http://localhost:3000/css/general.css')
+        link(rel='stylesheet' href='/css/general.css')
 
         // Font links
         link(rel="preconnect" href="https://fonts.gstatic.com")
@@ -34,26 +34,26 @@ html
             nav.grid-general
                 ul#menu-ul.menu-ul
                     li
-                        a#new-request( href='../new-request') New request
-                    li
-                        a#requests( href='../requests') Requests
-                    li
-                        a#pricing( href='../pricing') Pricing
-                    li
-                        a#register( href='../registerEmployee') Add Employee
-                    li
-                        a#employe-details( href='../details') Employee Details
-                    li
-                        a#trucks( href='../trucks') Trucks
+                        a#request( href='../requests') Requests
                     li
                         a#sales( href='../sales') Sales
                     li
-                        a#salaies( href='../Salaries') Salaries/Wages
+                        a#inventory( href='#') Inventory
+                        ul
+                            li
+                                a#truckReg( href='../truckRegistration') Register Truck 
+                            li
+                                a#trucks( href='../sewageTrucks') Truck List 
                     li
-                        a#expenses( href='../expenses') Expenses
-        section
-            p#signout firstName 
-                a(href='/') Sign-Out
+                        a#staff( href='#') Staff
+                        ul
+                            li
+                                a#staffReg( href='../staffRegistration') Register Employee 
+                            li
+                                a#staffInfo( href='../allStaff') Staff Information 
+
+                a#sign-out(href='../') Sign Out
+
         main.grid-general-centre
             //- Will be replaced by specific content of a certain page.
             block main

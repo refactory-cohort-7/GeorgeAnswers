@@ -74,17 +74,59 @@ a {
 }
 /* SHADOWS END */
 
+/* INPUT Fieldset START */
+/* COLOR for input placeholder text. */
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+/* Shows legend on focus.  */
+
+input:focus::placeholder {
+  color: transparent;
+}
+textarea:focus::placeholder {
+  color: transparent;
+}
+
+fieldset {
+  background-color: rgb(231, 237, 240);
+  position: relative;
+  margin-top: 20px;
+  border: 2px solid rgb(194, 171, 171);
+}
+
+fieldset:focus-within {
+  border: 2px solid blue;
+}
+legend {
+  margin: 0 10px;
+  position: absolute;
+  top: 2px;
+  visibility: hidden;
+}
+
+fieldset:focus-within legend {
+  transform: translateY(-13px);
+  visibility: visible;
+  background-image: linear-gradient(rgb(255, 255, 255) 50%, rgb(231, 237, 240));
+  color: blue;
+}
+
+/* INPUT Fieldset END */
+
 /* GENEARL PAGE FORMATING */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border-radius: 2px;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   color: white;
-  background-color: skyblue;
   padding: 0 5%;
   position: relative;
   display: grid;
@@ -101,13 +143,14 @@ header {
   padding: 10px 5%;
   position: relative;
   width: 150px;
-  height: 100%;
+  height: 100vh;
 }
 
 /* Logo styling START */
 #logo {
   grid-area: 1/1/2/-1;
   justify-self: center;
+  align-self: flex-start;
   position: relative;
   border: 3px solid white;
   border-top: 3px solid transparent;
@@ -244,7 +287,7 @@ body > section {
 /* All formating involving MAIN START here*/
 main {
   grid-area: 2/2/10/-1;
-  height: 100%;
+  height: 75vh;
   width: 100%;
 }
 
