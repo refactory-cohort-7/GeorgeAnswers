@@ -1,0 +1,103 @@
+main {
+  padding: 5% 8%;
+  height: auto;
+}
+#custReg {
+  height: auto;
+  align-self: start;
+  row-gap: 50px;
+}
+
+#custReg > section > fieldset {
+  color: #2bae66;
+  margin: 5%;
+  margin-bottom: 5%;
+  border: none;
+}
+
+#custReg > section > h3 {
+  background-color: #2bae66;
+  color: rgb(252, 246, 245);
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 5px;
+}
+
+#custInfo {
+  grid-area: 1/1/12/7;
+  height: 100%;
+}
+#reqInfo {
+  grid-area: 1/8/12/-1;
+}
+/* Request infomation h3 */
+.reqInfoH {
+  grid-area: 1/1/2/-1;
+}
+
+/* Request information fieldset */
+.reqInfoF {
+  grid-area: 2/1/-1/-1;
+  align-content: space-between;
+}
+
+/* Grid positioning for items within request information */
+.service {
+  grid-area: 1/1/3/4;
+}
+#service {
+  grid-area: 1/4/3/-1;
+}
+.subPeriod {
+  grid-area: 3/1/5/4;
+}
+#subPeriod {
+  grid-area: 3/4/5/-1;
+}
+
+.serviceTime {
+  grid-area: 5/1/7/4;
+}
+#serviceTime {
+  grid-area: 5/4/7/-1;
+}
+#reqInfoF > fieldset {
+  grid-area: 7/1/9/-1;
+}
+.sewageTrucks {
+  grid-area: 1/1/-1/3;
+}
+#sewageTrucks {
+  grid-area: 1/3/-1/7;
+}
+
+.garbageTrucks {
+  grid-area: 1/7/-1/9;
+}
+#garbageTrucks {
+  grid-area: 1/9/-1/-1;
+}
+
+.serviceCost {
+  grid-area: 9/1/11/4;
+}
+#serviceCost {
+  grid-area: 9/4/11/-1;
+}
+
+#register {
+  grid-area: 12/1/-1/-1;
+  margin: 10px auto;
+}
+
+/* Select inputs */
+select {
+  height: 40px;
+}
+
+/* Input of type time */
+#reqInfo input {
+  width: 100%;
+  margin-bottom: 20px;
+}

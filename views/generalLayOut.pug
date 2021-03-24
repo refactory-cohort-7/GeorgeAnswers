@@ -24,7 +24,7 @@ html
         block head
 
     // Body starts here    
-    body
+    body.grid-general
         header.grid-general
             // logo
             p#logo.lobster-text
@@ -32,20 +32,20 @@ html
                 span#truck
             // Navbar General
             nav.grid-general
-                ul#menu-ul.menu-ul
+                ul#menu-ul.flex-general-row
                     li
                         a#request( href='../requests') Requests
                     li
                         a#sales( href='../sales') Sales
-                    li
-                        a#inventory( href='#') Inventory
+                    li#inventory
+                        a( href='#') Inventory
                         ul
                             li
                                 a#truckReg( href='../truckRegistration') Register Truck 
                             li
                                 a#trucks( href='../sewageTrucks') Truck List 
-                    li
-                        a#staff( href='#') Staff
+                    li#staff
+                        a( href='#') Staff
                         ul
                             li
                                 a#staffReg( href='../staffRegistration') Register Employee 
@@ -54,7 +54,7 @@ html
 
                 a#sign-out(href='../') Sign Out
 
-        main.grid-general-centre
+        main
             //- Will be replaced by specific content of a certain page.
             block main
 

@@ -1,4 +1,127 @@
 extend generalLayout.pug
 block head
+    link(rel='stylesheet' href='/css/requests.css')
 block main
+    form#custReg.grid-general(action='/requests' method="POST")
+        section.shadow-grey#custInfo
+            h3 Customer Information
+            fieldset
+                fieldset.transform
+                    legend.transform Full Name
+                    input#fName(
+                        type='text'
+                        name='customerName'
+                        placeholder='Full Name'
+                    )
+                fieldset.transform
+                    legend.transform Phone Number
+                    input#phone(
+                        type='tel'
+                        name='phoneNumber'
+                        placeholder='Phone Number'
+                    )
+                fieldset.transform
+                    legend.transform National ID Number
+                    input#nationalIdNumber(
+                        type='text'
+                        name='nationalIdNumber'
+                        placeholder='National ID Number'
+                    ) 
+                fieldset.transform
+                    legend.transform Place of Residence
+                    textarea#residence(
+                        type='text'
+                        name='placeOfResidence'
+                        placeholder='Place of Residence'
+                    )
+        section.shadow-grey#reqInfo.grid-general
+            h3.reqInfoH Request Information       
+            fieldset.reqInfoF.grid-general
+                
+                label.service Service Requested:
+                select#service(name="serviceRequested")
+                    option(value='') Choose Service
+                    option(
+                    value="bothServices"  
+                    ) Both Services
+
+                    option(
+                    value="garbageCollection"   
+                    ) Garbage Collection 
+
+                    option(
+                    value="sewageCollection"  
+                    ) Sewage Collection 
+                label.subPeriod Subscription Period :
+                select#subPeriod(name="subPeriod")
+                    option(value='') Choose Sub Period
+                    option(
+                    value="6-Months"  
+                    ) 6 Months
+                    option(
+                    value="5-Months"  
+                    ) 5 Months
+                    option(
+                    value="4-Months"  
+                    ) 4 Months
+                    option(
+                    value="3-Months"  
+                    ) 3 Months
+                    option(
+                    value="2-Months"  
+                    ) 2 Months
+                    option(
+                    value="1-Month"  
+                    ) 1 Month
+                    option(
+                    value="oneTime"  
+                    ) One Time
+
+            
+                label.serviceTime Service Time:
+                input#serviceTime(type='time' name='serviceTime')
+        
+                fieldset.grid-general
+                    legend Number of Trucks Requested
+                    label.sewageTrucks Sewage Trucks:
+                    select#sewageTrucks(name="numSewageTrucksRequested")
+                        option(
+                        value=1  
+                        ) 1 
+                        option(
+                        value=2  
+                        ) 2 
+                        option(
+                        value=3  
+                        ) 3 
+                        option(
+                        value=4  
+                        ) 4 
+                        option(
+                        value=5  
+                        ) 5
+                    label.garbageTrucks Garbage Trucks:
+                    select#garbageTrucks(name="numGarbageTrucksRequested")
+                        option(
+                        value=1  
+                        ) 1 
+                        option(
+                        value=2  
+                        ) 2 
+                        option(
+                        value=3  
+                        ) 3 
+                        option(
+                        value=4  
+                        ) 4 
+                        option(
+                        value=5  
+                        ) 5
+                            
+                label.serviceCost Service Cost:
+                input#serviceCost(type='text' name='serviceCost')
+
+
+        button#register(type='submit') Register
+
 block js

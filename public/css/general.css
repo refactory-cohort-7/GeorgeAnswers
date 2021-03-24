@@ -41,7 +41,7 @@ button,
   background-color: rgba(0, 128, 0, 0.884);
   width: 100px;
   height: 33px;
-  color: white;
+  color: #fcf6f5;
   font-size: 1em;
 }
 
@@ -50,16 +50,11 @@ button:focus,
 #cancel-reg:hover,
 #cancel-reg:focus {
   background-color: purple;
-}
-
-/* This chanage text color to white. */
-.white-text {
-  color: white;
+  font-weight: 700;
 }
 
 a {
   text-decoration: none;
-  color: rgb(20, 20, 20);
 }
 
 /* SHADOWS START */
@@ -70,7 +65,7 @@ a {
 
 /* All around white box-shadow */
 .shadow-white-round {
-  box-shadow: 1px 1px 5px white, -1px -1px 5px white;
+  box-shadow: 1px 1px 5px #fcf6f5, -1px -1px 5px #fcf6f5;
 }
 /* SHADOWS END */
 
@@ -90,28 +85,56 @@ textarea:focus::placeholder {
   color: transparent;
 }
 
+/* Formats all fieldsets */
 fieldset {
-  background-color: rgb(231, 237, 240);
+  background-color: rgb(252, 246, 245);
   position: relative;
-  margin-top: 20px;
-  border: 2px solid rgb(194, 171, 171);
+  border: 2px solid #2bae66;
 }
 
-fieldset:focus-within {
+/* Over-rides some of the above properties. */
+fieldset.transform {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* Removes bottom margin on last children of a fieldset */
+fieldset:last-child {
+  margin-bottom: 0;
+}
+
+fieldset.transform:focus-within {
   border: 2px solid blue;
 }
-legend {
+legend.transform {
   margin: 0 10px;
   position: absolute;
   top: 2px;
   visibility: hidden;
 }
 
-fieldset:focus-within legend {
+fieldset.transform:focus-within legend {
   transform: translateY(-13px);
   visibility: visible;
   background-image: linear-gradient(rgb(255, 255, 255) 50%, rgb(231, 237, 240));
   color: blue;
+}
+
+input,
+textarea {
+  width: 100%;
+  height: 40px;
+  padding: 0 20px;
+}
+
+textarea {
+  height: 100px;
+}
+
+fieldset.transform input,
+fieldset.transform textarea {
+  border: transparent;
+  outline: none;
 }
 
 /* INPUT Fieldset END */
@@ -126,39 +149,33 @@ fieldset:focus-within legend {
 
 body {
   font-family: 'Roboto', sans-serif;
-  color: white;
-  padding: 0 5%;
-  position: relative;
-  display: grid;
-  grid-template-columns: 150px repeat(11, 1fr);
-  grid-template-rows: repeat(12, auto);
-  justify-content: space-between;
-  align-content: space-between;
+  color: #2bae66;
+  background-color: rgb(252, 246, 245);
 }
 
 /* All formating involving HEADER START here*/
 header {
-  grid-area: 1/1/-1/2;
-  background-color: rgba(0, 128, 0, 0.884);
-  padding: 10px 5%;
+  grid-area: 1/1/2/-1;
   position: relative;
-  width: 150px;
-  height: 100vh;
+  padding: 0 5%;
+  background-color: #2bae66;
+  color: #fcf6f5;
+  height: auto;
+  padding-top: 3px;
 }
 
 /* Logo styling START */
 #logo {
-  grid-area: 1/1/2/-1;
+  grid-area: 1/1/2/3;
   justify-self: center;
   align-self: flex-start;
   position: relative;
-  border: 3px solid white;
+  border: 3px solid #fcf6f5;
   border-top: 3px solid transparent;
   border-radius: 5px 20px 2px 2px;
   z-index: 5;
   width: 100px;
   height: 30px;
-  padding-bottom: 5px;
   color: black;
 }
 
@@ -167,7 +184,7 @@ header {
 #logo::after {
   content: '';
   position: absolute;
-  background-color: white;
+  background-color: #fcf6f5;
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -190,8 +207,8 @@ header {
   right: -2px;
   width: 25px;
   height: 20px;
-  border: 1px solid white;
-  border-top: 3px solid white;
+  border: 1px solid #fcf6f5;
+  border-top: 3px solid #fcf6f5;
   border-right: 3px solid transparent;
   border-radius: 2px 21px 2px 2px;
   z-index: -1;
@@ -200,7 +217,7 @@ header {
 #truck::before {
   content: '';
   position: absolute;
-  background-color: white;
+  background-color: #fcf6f5;
   width: 73px;
   height: 20px;
   left: -76px;
@@ -215,7 +232,7 @@ header {
 #truck::after {
   content: '';
   position: absolute;
-  border: 1px solid white;
+  border: 1px solid #fcf6f5;
   width: 97px;
   left: -75px;
   top: 17px;
@@ -225,15 +242,17 @@ header {
 /* Mobile menu Styling START */
 
 nav {
-  grid-area: 2/1/9/-1;
+  grid-area: 1/3/2/-1;
   width: 100%;
   font-size: 0.9em;
-  margin-top: 40px;
+  padding: 0 5%;
 }
 
-nav ul {
-  width: 100%;
-  grid-area: 1/1/-1/-1;
+#menu-ul {
+  grid-area: 1/1/-1/12;
+  width: 70%;
+  justify-self: center;
+  align-content: center;
 }
 
 nav ul li {
@@ -245,18 +264,24 @@ nav ul li {
 nav ul li a {
   display: block;
   height: 40px;
-  width: auto;
-  padding: 7px;
-  border-bottom: 1px solid rgb(194, 173, 173);
-  color: white;
+  width: 80px;
+  color: rgb(252, 246, 245);
+  padding: 12px 10px 5px 10px;
+  text-align: center;
+  font-size: 1em;
+}
+
+header ul li a:focus,
+header ul li a:hover,
+#sign-out:hover {
+  background-color: rgb(252, 246, 245);
+  color: #2bae66;
   font-weight: 700;
 }
-nav li:first-child {
-  border-top: 1px solid rgb(194, 173, 173);
-}
-header ul li a:focus,
-header ul li a:hover {
-  background-color: purple;
+
+#staff ul,
+#inventory ul {
+  display: none;
 }
 
 /* Mobile menu Styling END */
@@ -264,30 +289,24 @@ header ul li a:hover {
 /* All formating involving HEADER END here*/
 
 /* Login Status START HERE*/
-body > section {
-  grid-area: 1/2/2/-1;
-  background-color: rgba(0, 128, 0, 0.884);
-  padding: 20px 5%;
-}
-
-#signout {
+#sign-out {
+  grid-area: 1/12/-1/-1;
   text-align: right;
   font-size: 1em;
+  height: 40px;
+  padding: 12px 10px 5px 10px;
+  color: rgba(252, 246, 245, 0.8);
+  display: block;
+  width: 80px;
+  text-align: center;
 }
 
-#signout a {
-  text-shadow: 1px 1px 0 blue;
-  height: 40px;
-  width: 100px;
-  padding: 5px 10px;
-  background-color: white;
-}
 /* Login Status END HERE*/
 
 /* All formating involving MAIN START here*/
 main {
-  grid-area: 2/2/10/-1;
-  height: 75vh;
+  grid-area: 2/1/10/-1;
+  height: 80.5vh;
   width: 100%;
 }
 
@@ -295,9 +314,9 @@ main {
 
 /* All formating involving FOOTER START here*/
 footer {
-  grid-area: 10/2/-1/-1;
-  background-color: rgba(0, 128, 0, 0.863);
-  color: rgb(20, 20, 20);
+  grid-area: 10/1/-1/-1;
+  background-color: #2bae66;
+  color: rgb(252, 246, 245);
   width: auto;
   font-size: 0.8em;
   height: auto;
@@ -306,7 +325,6 @@ footer {
 #main-footer {
   grid-area: 1/1/12/12;
   padding: 10px 5% 10px 10%;
-  color: rgba(255, 255, 255, 0.753);
 }
 
 /* h3 for address. */
@@ -355,7 +373,6 @@ footer {
   width: 100%;
   text-align: center;
   bottom: 0;
-  color: white;
 }
 
 /* All formating involving FOOTER END here*/
