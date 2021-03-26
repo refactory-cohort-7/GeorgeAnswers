@@ -72,7 +72,7 @@ a {
 /* INPUT Fieldset START */
 /* COLOR for input placeholder text. */
 ::placeholder {
-  color: black;
+  color: #2bae66;
   opacity: 1;
 }
 
@@ -250,8 +250,10 @@ nav {
 
 #menu-ul {
   grid-area: 1/1/-1/12;
-  width: 70%;
-  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  justify-content: center;
   align-content: center;
 }
 
@@ -264,9 +266,9 @@ nav ul li {
 nav ul li a {
   display: block;
   height: 40px;
-  width: 80px;
+  width: auto;
   color: rgb(252, 246, 245);
-  padding: 12px 10px 5px 10px;
+  padding: 10px;
   text-align: center;
   font-size: 1em;
 }

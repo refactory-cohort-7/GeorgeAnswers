@@ -1,5 +1,23 @@
 extend generalLayout.pug
 block head
+    link(
+        rel="stylesheet"
+        href="/css/staffLayout.css"
+    )
 block main
+    section#staffNavBar
+        ul
+            li
+                a(href="/allStaff") All Staff
+            li
+                a(href="/drivers") Truck Drivers
+            li
+                a(href="/conductors") Conductors
+            li
+                a(href="/deskOfficers") Desk Officers
+            li
+                a#last(href="/administrators") Administrators
+
     block content
+        
 block js

@@ -1,0 +1,40 @@
+#staffNavBar {
+  padding: 5px 10%;
+  margin-top: 20px;
+}
+#staffNavBar ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  justify-content: center;
+  align-content: center;
+}
+
+#staffNavBar ul li {
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  box-shadow: 0 3px 5px #2bae66;
+}
+
+#staffNavBar a {
+  display: block;
+  width: auto;
+  color: #2bae66;
+  background-color: rgb(252, 246, 245);
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 0.9em;
+  border-left: 2px solid #2bae66;
+}
+
+/* Puts a border to the right of administrators */
+#staffNavBar #last {
+  border-right: 2px solid #2bae66;
+}
+
+#staffNavBar a:focus,
+#staffNavBar a:hover {
+  background-color: #2bae66;
+  color: rgb(252, 246, 245);
+}
