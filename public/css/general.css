@@ -50,7 +50,6 @@ button:focus,
 #cancel-reg:hover,
 #cancel-reg:focus {
   background-color: purple;
-  font-weight: 700;
 }
 
 a {
@@ -72,7 +71,7 @@ a {
 /* INPUT Fieldset START */
 /* COLOR for input placeholder text. */
 ::placeholder {
-  color: #2bae66;
+  color: #294435;
   opacity: 1;
 }
 
@@ -87,13 +86,13 @@ textarea:focus::placeholder {
 
 /* Formats all fieldsets */
 fieldset {
-  background-color: rgb(252, 246, 245);
+  background-color: #2bae6615;
   position: relative;
   border: 2px solid #2bae66;
 }
 
 /* Over-rides some of the above properties. */
-fieldset.transform {
+fieldset .transform {
   padding: 0;
   margin-bottom: 20px;
 }
@@ -116,19 +115,30 @@ legend.transform {
 fieldset.transform:focus-within legend {
   transform: translateY(-13px);
   visibility: visible;
-  background-image: linear-gradient(rgb(255, 255, 255) 50%, rgb(231, 237, 240));
+  background-image: linear-gradient(#fcf6f5 60%, #2bae6615);
   color: blue;
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
-  height: 40px;
+
   padding: 0 20px;
+  background-color: transparent;
+}
+input {
+  height: 35px;
 }
 
 textarea {
   height: 100px;
+}
+label {
+  color: #102018;
+}
+legend {
+  color: #102018;
 }
 
 fieldset.transform input,
@@ -161,13 +171,13 @@ header {
   background-color: #2bae66;
   color: #fcf6f5;
   height: auto;
-  padding-top: 3px;
+  padding-top: 5px;
 }
 
 /* Logo styling START */
+
 #logo {
   grid-area: 1/1/2/3;
-  justify-self: center;
   align-self: flex-start;
   position: relative;
   border: 3px solid #fcf6f5;
@@ -201,6 +211,7 @@ header {
   right: 5px;
 }
 
+/* Truck top Frame. */
 #truck {
   position: absolute;
   top: -2px;
@@ -214,6 +225,7 @@ header {
   z-index: -1;
 }
 
+/* Truck Tank */
 #truck::before {
   content: '';
   position: absolute;
@@ -221,7 +233,7 @@ header {
   width: 73px;
   height: 20px;
   left: -76px;
-  top: -7px;
+  top: -9px;
   text-align: center;
   padding: 1%;
   margin-top: 5px;
@@ -229,13 +241,15 @@ header {
   font-size: 0.8em;
   color: black;
 }
+
+/* Divider line */
 #truck::after {
   content: '';
   position: absolute;
   border: 1px solid #fcf6f5;
   width: 97px;
   left: -75px;
-  top: 17px;
+  top: 16px;
 }
 /* Logo styling END */
 
@@ -243,9 +257,9 @@ header {
 
 nav {
   grid-area: 1/3/2/-1;
-  width: 100%;
+  width: auto;
   font-size: 0.9em;
-  padding: 0 5%;
+  margin-left: 10%;
 }
 
 #menu-ul {
@@ -261,6 +275,7 @@ nav ul li {
   align-items: center;
   list-style: none;
   padding: 0;
+  position: relative;
 }
 
 nav ul li a {
@@ -271,21 +286,40 @@ nav ul li a {
   padding: 10px;
   text-align: center;
   font-size: 1em;
+  border-top: 3px solid transparent;
 }
 
 header ul li a:focus,
 header ul li a:hover,
-#sign-out:hover {
+#sign-out:hover,
+#sign-out:focus {
   background-color: rgb(252, 246, 245);
   color: #2bae66;
-  font-weight: 700;
+  border-top: 3px solid rgb(250, 98, 250);
 }
 
 #staff ul,
 #inventory ul {
   display: none;
+  position: absolute;
+  background-color: #2bae66;
+  width: 150px;
+  height: auto;
+  top: 40px;
+  color: rgb(252, 246, 245);
+  box-shadow: 2px 2px 5px black, -2px 2px 5px black;
 }
-
+.sub-menu a {
+  border-bottom: 2px solid rgb(252, 246, 245);
+}
+.sub-menu li > a:hover,
+.sub-menu li > a:focus {
+  border-top: transparent;
+}
+#staff:hover .sub-menu,
+#inventory:hover .sub-menu {
+  display: block;
+}
 /* Mobile menu Styling END */
 
 /* All formating involving HEADER END here*/
@@ -299,8 +333,9 @@ header ul li a:hover,
   padding: 12px 10px 5px 10px;
   color: rgba(252, 246, 245, 0.8);
   display: block;
-  width: 80px;
+  width: 100%;
   text-align: center;
+  justify-self: end;
 }
 
 /* Login Status END HERE*/

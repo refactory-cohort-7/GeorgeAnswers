@@ -4,6 +4,14 @@ const path = require('path');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
+// // Import Routes
+const logIn = require('./routes/login');
+const requests = require('./routes/requests');
+const sales = require('./routes/sales');
+const allStaff = require('./routes/allStaff');
+const trucks = require('./routes/trucks');
+const { config } = require('dotenv');
+
 // Instantiations
 const app = express();
 
@@ -29,34 +37,12 @@ app.set('views', './views');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Import Routes
-const logIn = require('./routes/loginRoute');
-const requests = require('./routes/requestsRoute');
-const administrators = require('./routes/administratorsRoute');
-const allStaff = require('./routes/allStaffRoute');
-const drivers = require('./routes/driversRoute');
-const conductors = require('./routes/conductorsRoute');
-const deskOfficers = require('./routes/deskOfficersRoute');
-const garbageTrucks = require('./routes/garbageTrucksRoute');
-const sales = require('./routes/salesRoute');
-const sewageTrucks = require('./routes/sewageTrucksRoute');
-const staffRegistration = require('./routes/staffRegistrationRoute');
-const truckRegistration = require('./routes/truckRegistrationRoute');
-const { config } = require('dotenv');
-
 //Routes Middlewares
 app.use('/', logIn);
 app.use('/', requests);
-app.use('/', allStaff);
-app.use('/', administrators);
-app.use('/', drivers);
-app.use('/', conductors);
-app.use('/', deskOfficers);
-app.use('/', garbageTrucks);
 app.use('/', sales);
-app.use('/', sewageTrucks);
-app.use('/', staffRegistration);
-app.use('/', truckRegistration);
+app.use('/', allStaff);
+app.use('/', trucks);
 
 // cater for undefined routes
 app.get('*', (req, res) => {

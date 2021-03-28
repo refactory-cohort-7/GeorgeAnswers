@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const allStaffSchema = new mongoose.Schema({
-  job: {
+  firstName: {
     type: String,
     trim: true,
   },
-  name: {
+  lastName: {
     type: String,
     trim: true,
   },
@@ -17,26 +17,44 @@ const allStaffSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  nin: {
-    type: String,
-    trim: true,
-  },
-  lisenceNum: {
-    type: String,
-    trim: true,
-  },
-  residence: {
-    type: String,
-    trim: true,
-  },
-  phoneNum: {
+  phoneNumber: {
     type: Number,
     trim: true,
   },
-  pastIncidence: {
+  jobTitle: {
+    type: String,
+    trim: true,
+  },
+
+  salary: {
+    type: String,
+    trim: true,
+  },
+
+  allowanceAmount: {
+    type: String,
+    trim: true,
+  },
+  pastIncident: {
+    type: String,
+    trim: true,
+  },
+  typeOfAllowance: {
+    type: String,
+    trim: true,
+  },
+  nationalIdNumber: {
+    type: String,
+    trim: true,
+  },
+  driversLisenceNumber: {
+    type: String,
+    trim: true,
+  },
+  placeOfResidence: {
     type: String,
     trim: true,
   },
 });
 
-module.exports = mongoose.model('allStaff', allStaffSchema);
+module.exports = mongoose.model('AllStaff', allStaffSchema);

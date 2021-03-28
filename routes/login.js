@@ -5,9 +5,9 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Official Log-in.' });
 });
 
-router.post('/requests', (req, res) => {
+router.post('/', (req, res) => {
   console.log(req.body);
-  res.render('requests', { title: 'Requests' });
+  res.redirect('/requests');
 });
 
 module.exports = router;
