@@ -6,25 +6,33 @@ block head
 block main
     
     section#newTruckSection
-        h2 Truck Registration
-         if trucks.length
-            each truck in trucks
-        form#truckInfo(action='/truck/:Id' method='POST')
-           
-
+   
+        h2 Truck Details
+    if trucks.length
+    each truck in trucks
+        form#truckInfo(action='/truck/:Id' method='PUT')
             label.typeOfTruck(for='typeOfTruck') Type of Truck:
-            input#typeOfTruck(name='typeOfTruck' value='#{truck.typeOfTruck}')
+            select#typeOfTruck(name='typeOfTruck')
+                option(value=`${truck.typeOfTruck}`) #{`${truck.typeOfTruck}`}
+                option(value='sewageTruck') Sewage Truck
+                option(value='garbageTruck') Garbage Truck
 
             label.truckNumber(for='truckNumber') Truck Registration Number:
-            input#truckNumber(name='truckNumber' value='#{truck.truckNumber}')
+            input#truckNumber(name='truckNumber' value=`${truck.truckNumber}`)
 
             label.truckCode(for='truckCode') Truck Code:
-            input#truckCode(name='truckCode' value="#{truck.truckCode}")
+            input#truckCode(name='truckCode' value=`${truck.truckCode}`)
 
-            label.driverAssigned(for='driver') Assign Driver:
-            input#driverAssigned(name='driver' value="${truck.driver}")
+            a#generate(href='#') Generate
 
-        a#cancel-reg(href='./allTrucks') Delete
-        button#register(type='submit') Update
+            label.driver(for='driver') Assign Driver:
+            select#driver(name='nameOfDriver') #{`${truck.typeOfTruck}`}
+                option(value=`${truck.nameOfDriver}`) #{`${truck.nameOfDriver}`}
+                option(value='nameOfDriver1') Name of Driver1 
+                option(value='nameOfDriver2') Name of Driver2 
+                option(value='nameOfDriver3') Name of Driver3
+
+            a#cancel-reg(href='./allTrucks') Delete
+            button#register(type='submit') Update
 
 block js
