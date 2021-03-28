@@ -37,17 +37,23 @@ exports.postNewStaff = async (req, res, next) => {
 // @description  Get single staff Information.
 // @route        GET /:Id
 // @access       Private
-exports.getStaff = (req, res, next) => {};
+exports.getStaff = (req, res, next) => {
+  res.send('Single Staff');
+};
 
 // @description  Update single staff Information.
 // @route        PUT /:Id
 // @access       Private
-exports.updateStaff = (req, res, next) => {};
+exports.updateStaff = (req, res, next) => {
+  res.send('Update page for a single staff.');
+};
 
 // @description  Delete single staff Information.
 // @route        DELETE /:Id
 // @access       Private
-exports.deleteStaff = (req, res, next) => {};
+exports.deleteStaff = (req, res, next) => {
+  res.send('Staff information deleted.');
+};
 
 // @description  Get all drivers Information
 // @route        GET /drivers
@@ -56,7 +62,7 @@ exports.getDrivers = async (req, res, next) => {
   try {
     // find all the data in the Employee collection
     const DriversDetails = await AllStaff.find();
-    res.render('administrators', {
+    res.render('drivers', {
       employees: DriversDetails,
       title: 'Drivers',
     });

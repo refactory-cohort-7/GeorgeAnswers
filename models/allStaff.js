@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const allStaffSchema = new mongoose.Schema({
+const AllStaffSchema = new mongoose.Schema({
   firstName: {
     type: String,
     trim: true,
@@ -57,4 +57,4 @@ const allStaffSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('AllStaff', allStaffSchema);
+module.exports = mongoose.model('AllStaff', AllStaffSchema);

@@ -9,7 +9,7 @@ const logIn = require('./routes/login');
 const requests = require('./routes/requests');
 const sales = require('./routes/sales');
 const allStaff = require('./routes/allStaff');
-const trucks = require('./routes/trucks');
+const allTrucks = require('./routes/allTrucks');
 const { config } = require('dotenv');
 
 // Instantiations
@@ -42,7 +42,7 @@ app.use('/', logIn);
 app.use('/', requests);
 app.use('/', sales);
 app.use('/', allStaff);
-app.use('/', trucks);
+app.use('/', allTrucks);
 
 // cater for undefined routes
 app.get('*', (req, res) => {
