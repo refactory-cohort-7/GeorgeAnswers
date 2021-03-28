@@ -1,4 +1,4 @@
-const Truck = require('../models/AllTrucks');
+const AllTrucks = require('../models/AllTrucks');
 
 // @description  Get all truck information
 // @route        GET /alltrucks
@@ -7,7 +7,7 @@ exports.getAllTrucks = async (req, res, next) => {
   try {
     // Find all the data in the  AllTrucks collection
     const truckDetails = await AllTrucks.find();
-    res.render('alltrucks', {
+    res.render('allTrucks', {
       trucks: truckDetails,
       title: "All Trucks' Details",
     });
@@ -27,10 +27,11 @@ exports.getNewTruck = (req, res, next) => {
 // @route        POST /newTruck
 // @access       Private
 exports.postNewTruck = async (req, res, next) => {
+  console.log(req.body);
   try {
-    const newTruck = new AllTruck(req.body);
+    const newTruck = new AllTrucks(req.body);
     await newTruck.save();
-    res.redirect('/allTruck');
+    res.redirect('allTrucks');
   } catch (err) {
     console.log(err);
     res.send('Sorry! Something went wrong.');
@@ -40,8 +41,17 @@ exports.postNewTruck = async (req, res, next) => {
 // @description  Get single truck details.
 // @route        GET /truck/:Id
 // @access       Private
-exports.getTruck = (req, res, next) => {
-  res.send('Single Truck.');
+exports.getTruck = async (req, res, next) => {
+  try {
+    // Find all the data in the  AllTrucks collection
+    const truckDetails = await AllTrucks.find();
+    res.render('truck', {
+      trucks: truckDetails,
+      title: 'Truck Details',
+    });
+  } catch (err) {
+    res.send('Failed to retrive truck details');
+  }
 };
 
 // @description  Update Single Truck Details.

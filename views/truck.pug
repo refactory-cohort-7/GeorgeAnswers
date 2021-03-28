@@ -1,0 +1,30 @@
+extend generalLayOut.pug
+block head
+    link(
+        rel='stylesheet' href='/css/newTruck.css'
+    )
+block main
+    
+    section#newTruckSection
+        h2 Truck Registration
+         if trucks.length
+            each truck in trucks
+        form#truckInfo(action='/truck/:Id' method='POST')
+           
+
+            label.typeOfTruck(for='typeOfTruck') Type of Truck:
+            input#typeOfTruck(name='typeOfTruck' value='#{truck.typeOfTruck}')
+
+            label.truckNumber(for='truckNumber') Truck Registration Number:
+            input#truckNumber(name='truckNumber' value='#{truck.truckNumber}')
+
+            label.truckCode(for='truckCode') Truck Code:
+            input#truckCode(name='truckCode' value="#{truck.truckCode}")
+
+            label.driverAssigned(for='driver') Assign Driver:
+            input#driverAssigned(name='driver' value="${truck.driver}")
+
+        a#cancel-reg(href='./allTrucks') Delete
+        button#register(type='submit') Update
+
+block js

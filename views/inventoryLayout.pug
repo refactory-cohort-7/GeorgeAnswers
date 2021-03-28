@@ -1,5 +1,35 @@
 extend generalLayOut.pug
 block head
+    link(
+        rel="stylesheet"
+        href="/css/layout.css"
+    )
 block main
+    section#staffNavBar
+        table
+            thead
+                tr
+                    th Type of Truck
+                    th Truck Number
+                    th Truck Driver
+                    th Truck Code
+                    th Truck Performance
+            tbody
+                block content
+                if trucks.length
+                each truck in trucks
+                    tr
+                        td #{truck.typeOfTruck} 
+                        td #{truck.truckNumber}
+                        td #{truck.truckDriver}
+                        td #{truck.truckCode}
+                        td #{truck.amountMadeByTruck}
+                        td 
+                            a(href='./truck') Update
+                        td 
+                            a(href='./allTrucks') Delete
     block content
+        
+                    
+        
 block js

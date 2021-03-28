@@ -8,12 +8,13 @@ const {
   updateTruck,
   deleteTruck,
 } = require('../controllers/allTrucks');
+
 const router = express.Router();
 
-router.route('allTrucks').get(getAllTrucks);
+router.get('/allTrucks', getAllTrucks);
 
 router.route('/newTruck').get(getNewTruck).post(postNewTruck);
 
-router.route('/trucks').get(getTruck).put(updateTruck).delete(deleteTruck);
+router.route('/truck/:id').get(getTruck).put(updateTruck).delete(deleteTruck);
 
 module.exports = router;

@@ -37,18 +37,26 @@
 
 /* The general setting for buttons. */
 button,
-#cancel-reg {
-  background-color: rgba(0, 128, 0, 0.884);
+#cancel-reg,
+#generate,
+.button {
+  background-color: #2bae66;
   width: 100px;
   height: 33px;
   color: #fcf6f5;
   font-size: 1em;
+  border: 2px solid #2bae66;
+  box-shadow: 0 2px 3px #2bae66;
 }
 
 button:hover,
 button:focus,
 #cancel-reg:hover,
-#cancel-reg:focus {
+#cancel-reg:focus,
+#generate:hover,
+#generate:focus,
+.button:hover,
+.button:focus {
   background-color: purple;
 }
 

@@ -1,0 +1,15 @@
+#staffNavBar {
+  padding: 0 5% 5% 5%;
+
+  margin-top: 0;
+}
+#staffNavBar a {
+  padding: 5px 10px;
+  color: white;
+  background-color: #2bae66;
+}
+#staffNavBar a:hover,
+#staffNavBar a:focus {
+  color: #2bae66;
+  background-color: white;
+}

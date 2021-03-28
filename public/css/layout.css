@@ -1,4 +1,5 @@
 main {
+  margin: 0;
   height: auto;
 }
 #staffNavBar {
@@ -11,6 +12,7 @@ main {
   grid-template-rows: auto;
   justify-content: center;
   align-content: center;
+  border: 1px solid #2bae66;
 }
 
 #staffNavBar ul li {
@@ -49,7 +51,11 @@ table {
   width: 100%;
   text-align: center;
 }
-th,
+th {
+  border: 2px solid #65e29d7e;
+  padding: 5px;
+}
+
 td {
   border: 2px solid #2bae66;
   padding: 5px;

@@ -1,0 +1,41 @@
+extend generalLayOut.pug
+block head
+    link(
+        rel="stylesheet"
+        href="/css/layout.css"
+    )
+    link(
+        rel='stylesheet'
+        href="css/allTrucks.css"
+    )
+block main
+    section#staffNavBar
+        table
+            thead
+                tr
+                    th Type of Truck
+                    th Truck Number
+                    th Truck Driver
+                    th Truck Code
+                    th Truck Performance
+                    th Action 1
+                    th Action 2
+            tbody
+                block content
+                if trucks.length
+                each truck in trucks
+                    tr
+                        td #{truck.typeOfTruck} 
+                        td #{truck.truckNumber}
+                        td #{truck.nameOfDriver}
+                        td #{truck.truckCode}
+                        td #{truck.amountMadeByTruck}
+                        td 
+                            a.button(href='./truck') Update
+                        td 
+                            a.button(href='./allTrucks') Delete
+    block content
+        
+                    
+        
+block js

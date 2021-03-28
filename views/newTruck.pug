@@ -1,4 +1,33 @@
 extend generalLayOut.pug
 block head
+    link(
+        rel='stylesheet' href='/css/newTruck.css'
+    )
 block main
+    
+    section#newTruckSection
+        h2 Truck Registration
+        form#truckInfo(action='/newTruck' method='POST')
+            label.typeOfTruck(for='typeOfTruck') Type of Truck:
+            select#typeOfTruck(name='typeOfTruck')
+                option(value='sewageTruck') Sewage Truck
+                option(value='garbageTruck') Garbage Truck
+
+            label.truckNumber(for='truckNumber') Truck Registration Number:
+            input#truckNumber(name='truckNumber' placeholder='Number Plate')
+
+            label.truckCode(for='truckCode') Truck Code:
+            input#truckCode(name='truckCode')
+
+            a#generate(href='#') Generate
+
+            label.driver(for='driver') Assign Driver:
+            select#driver(name='nameOfDriver')
+                option(value='nameOfDriver1') Name of Driver1 
+                option(value='nameOfDriver2') Name of Driver2 
+                option(value='nameOfDriver3') Name of Driver3
+
+            a#cancel-reg(href='./requests') Cancel
+            button#register(type='submit') Register
+
 block js
