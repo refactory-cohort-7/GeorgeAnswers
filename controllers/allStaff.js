@@ -7,7 +7,7 @@ exports.getAllStaff = async (req, res, next) => {
   try {
     // find all the data in the Employee collection
     const staffDetails = await AllStaff.find();
-    res.render('allStaff', { employees: staffDetails });
+    res.render('allStaff', { staffs: staffDetails });
   } catch (err) {
     res.send('Failed to retrive staff details');
   }
@@ -25,96 +25,70 @@ exports.getNewStaff = (req, res, next) => {
 // @access       Private
 exports.postNewStaff = async (req, res, next) => {
   try {
-    const newStaff = new AllStaff(req.body);
-    await newStaff.save();
+    const newStaff = await AllStaff.create(req.body);
     res.redirect('/allStaff');
   } catch (err) {
     console.log(err);
-    res.send('Sorry! Something went wrong.');
+    res.status(400).send('Sorry! Something went wrong.');
   }
 };
 
 // @description  Get single staff Information.
 // @route        GET /:Id
 // @access       Private
-exports.getStaff = (req, res, next) => {
-  res.send('Single Staff');
+exports.getStaff = async (req, res, next) => {
+  try {
+    // Find all the data in the  AllTrucks collection
+    const staff = await AllStaff.findById(req.params.id);
+    // Catches requests with same id format that does not exit.
+    if (!staff) {
+      return res.status(400).send('Staff not found.');
+    }
+    res.render('staff', {
+      staff: staff,
+      title: 'Staff Details',
+    });
+  } catch (err) {
+    res.status(400).send('Failed to retrive staff details');
+  }
 };
 
 // @description  Update single staff Information.
-// @route        PUT /:Id
+// @route        POST /:Id
 // @access       Private
-exports.updateStaff = (req, res, next) => {
-  res.send('Update page for a single staff.');
+exports.updateStaff = async (req, res, next) => {
+  try {
+    const staff = await AllStaff.findByIdAndUpdate(req.params.id, req.body, {
+      useFindAndModify: false,
+      new: true,
+      runValidators: true,
+    });
+    console.log(staff);
+    if (!staff) {
+      return res.status(400).send('Staff not found.');
+    }
+    res.redirect('/allStaff');
+  } catch {
+    res.status(400).send('Staff Information NOT update!');
+  }
 };
 
 // @description  Delete single staff Information.
 // @route        DELETE /:Id
 // @access       Private
-exports.deleteStaff = (req, res, next) => {
-  res.send('Staff information deleted.');
-};
-
-// @description  Get all drivers Information
-// @route        GET /drivers
-// @access       Private
-exports.getDrivers = async (req, res, next) => {
+exports.deleteStaff = async (req, res, next) => {
   try {
-    // find all the data in the Employee collection
-    const DriversDetails = await AllStaff.find();
-    res.render('drivers', {
-      employees: DriversDetails,
-      title: 'Drivers',
+    const staffToDel = await AllStaff.findByIdAndRemove(req.params.id, {
+      useFindAndModify: false,
+      new: true,
+      runValidators: true,
     });
-  } catch (err) {
-    res.send('Failed to retrive Driver List!');
-  }
-};
+    if (!staffToDel) {
+      return res.status(400).send('Staff not found.');
+    }
 
-// @description  Get all conductors Information
-// @route        GET /conductors
-// @access       Private
-exports.getConductors = async (req, res, next) => {
-  try {
-    // find all the data in the Employee collection
-    const conductorsDetails = await AllStaff.find();
-    res.render('conductors', {
-      employees: conductorsDetails,
-      title: 'Conductors',
-    });
+    res.redirect('/allStaff');
   } catch (err) {
-    res.send('Failed to retrive conductor List!');
-  }
-};
-
-// @description  Get all deskOfficers Information
-// @route        GET /deskOfficers
-// @access       Private
-exports.getDeskOfficers = async (req, res, next) => {
-  try {
-    // find all the data in the Employee collection
-    const deskOfficersDetails = await AllStaff.find();
-    res.render('deskOfficers', {
-      employees: deskOfficersDetails,
-      title: 'Desk Officers',
-    });
-  } catch (err) {
-    res.send("Failed to retrive deskOfficers' List!");
-  }
-};
-
-// @description  Get all administrators Information
-// @route        GET /administrators
-// @access       Private
-exports.getAdministrators = async (req, res, next) => {
-  try {
-    // find all the data in the Employee collection
-    const administratorsDetails = await AllStaff.find();
-    res.render('administrators', {
-      employees: administratorsDetails,
-      title: 'Administrative Staff',
-    });
-  } catch (err) {
-    res.send('Failed to retrive Administrator List!');
+    res.status(400).send('Staff Information NOT deleted!');
   }
 };

@@ -11,10 +11,12 @@ const {
 
 const router = express.Router();
 
-router.get('/allTrucks', getAllTrucks);
+router.route('/allTrucks').get(getAllTrucks);
 
 router.route('/newTruck').get(getNewTruck).post(postNewTruck);
 
-router.route('/truck/:id').get(getTruck).put(updateTruck).delete(deleteTruck);
+router.route('/truck/:id').get(getTruck).post(updateTruck);
+
+router.route('/delTruck/:id').delete(deleteTruck).get(deleteTruck);
 
 module.exports = router;

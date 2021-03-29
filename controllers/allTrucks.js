@@ -6,13 +6,13 @@ const AllTrucks = require('../models/AllTrucks');
 exports.getAllTrucks = async (req, res, next) => {
   try {
     // Find all the data in the  AllTrucks collection
-    const truckDetails = await AllTrucks.find();
+    const trucks = await AllTrucks.find();
     res.render('allTrucks', {
-      trucks: truckDetails,
+      trucks: trucks,
       title: "All Trucks' Details",
     });
   } catch (err) {
-    res.send('Failed to retrive all truck details');
+    res.status(400).send('Failed to retrive all truck details');
   }
 };
 
@@ -27,10 +27,8 @@ exports.getNewTruck = (req, res, next) => {
 // @route        POST /newTruck
 // @access       Private
 exports.postNewTruck = async (req, res, next) => {
-  console.log(req.body);
   try {
-    const newTruck = new AllTrucks(req.body);
-    await newTruck.save();
+    const newTruck = await AllTrucks.create(req.body);
     res.redirect('allTrucks');
   } catch (err) {
     console.log(err);
@@ -44,26 +42,57 @@ exports.postNewTruck = async (req, res, next) => {
 exports.getTruck = async (req, res, next) => {
   try {
     // Find all the data in the  AllTrucks collection
-    const truckDetails = await AllTrucks.find();
+    const truck = await AllTrucks.findById(req.params.id);
+
+    // Catches requests with same id format that does not exit.
+    if (!truck) {
+      return res.status(400).send('Truck not found.');
+    }
     res.render('truck', {
-      trucks: truckDetails,
+      truck: truck,
       title: 'Truck Details',
     });
   } catch (err) {
-    res.send('Failed to retrive truck details');
+    res.status(400).send('Failed to retrive truck details');
   }
 };
 
 // @description  Update Single Truck Details.
-// @route        PUT /truck/:Id
+// @route        POST /truck/:Id
 // @access       Private
-exports.updateTruck = (req, res, next) => {
-  res.send('Update single truck.');
+exports.updateTruck = async (req, res, next) => {
+  try {
+    const truck = await AllTrucks.findByIdAndUpdate(req.params.id, req.body, {
+      useFindAndModify: false,
+      new: true,
+      runValidators: true,
+    });
+
+    if (!truck) {
+      return res.status(400).send('Truck not found.');
+    }
+    res.redirect('/allTrucks');
+  } catch (err) {
+    res.status(400).send('Truck Information NOT update!');
+  }
 };
 
 // @description  Delete Single Truck Details.
 // @route        DELETE /truck/:Id
 // @access       Private
-exports.deleteTruck = (req, res, next) => {
-  res.send('Delete truck.');
+exports.deleteTruck = async (req, res, next) => {
+  try {
+    const truckToDel = await AllTrucks.findByIdAndRemove(req.params.id, {
+      useFindAndModify: false,
+      new: true,
+      runValidators: true,
+    });
+    if (!truckToDel) {
+      return res.status(400).send('Truck not found.');
+    }
+
+    res.redirect('/allTrucks');
+  } catch (err) {
+    res.status(400).send('Truck Information NOT deleted!');
+  }
 };

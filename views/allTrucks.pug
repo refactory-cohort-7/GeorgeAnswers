@@ -9,6 +9,7 @@ block head
         href="css/allTrucks.css"
     )
 block main
+    a.button(href='newTruck') Add New Truck
     section#staffNavBar
         table
             thead
@@ -31,9 +32,10 @@ block main
                         td #{truck.truckCode}
                         td #{truck.amountMadeByTruck}
                         td 
-                            a.button(href='./truck') Update
+                            a.button(href='./truck/' +truck._id) Update
                         td 
-                            a.button(href='./allTrucks') Delete
+                            a.button(href='./delTruck/' +truck._id) Delete
+
     block content
         
                     

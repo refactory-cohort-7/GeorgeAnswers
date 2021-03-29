@@ -1,1 +1,136 @@
-extends generalLayOut.pug
+extend generalLayout.pug
+block head
+    
+    link(rel='stylesheet' href='/css/registration.css')
+block main
+    // EMPLOYEE UPDATE – FORM
+    form( method="POST" action="/staff/"+staff._id)
+        section#personalInfo.grid-general
+            h2 Personal Information
+        
+                // First name
+            fieldset.first-name.transform
+                legend.transform First Name
+                input#first-name(
+                    type="text"
+                    name="firstName"
+                    value= staff.firstName
+                    )
+                // Last Name
+            fieldset.last-name.transform
+                legend.transform Last Name
+                input#last-name(
+                    type="text"
+                    name="lastName"
+                    value= staff.lasttName
+                    )
+
+                // Date of birth
+            fieldset.dob
+                legend Date of Birth
+                input#dob.roboto-text(
+                    type='date'
+                    name='dateOfBirth'
+                    value= staff.dateOfBirth
+                )
+                
+            // Gender
+            fieldset#gender
+                legend Gender
+                input(
+                    type='radio' 
+                    id='gender-male'
+                    name='gender'
+                    checked = staff.gender === "male"
+                )
+                label.gender-male(for='gender-male') Male
+
+                input(
+                    type='radio' 
+                    id='gender-female'
+                    name='gender'
+                    checked = staff.gender === "female"
+                )
+                label.gender-female(for='gender-female') Female
+
+            // National ID Number
+            fieldset.nin.transform
+                legend.transform Natioanl Id Number
+                input#nin(
+                    type='text'
+                    name='nationalIdNumber'
+                    value = staff.nationalIdNumber
+                )
+
+            // phone number
+            fieldset.contact.transform
+                legend.transform Phone Number
+                input#contact(
+                    type='phone'
+                    name='phoneNumber'
+                    value=staff.phoneNumber
+                )
+
+            // Place of residence
+            fieldset.residence.transform
+                legend.transform Place of Residence
+                textarea#residence.roboto-text(placeholder='Place of Residence' name='placeOfResidence' value=staff.placeOfResidence )
+            
+        section#empInfo
+            h2 Employement Information
+            // Job title
+          
+            label.jobTitle(for="jobTitle") Job Title:
+            select#jobTitle(name='jobTitle')
+                option(value='') Choose Job Title
+
+                option(value='front-desk-officer' selected = staff.jobTitle === "front-desk-officer") Front Desk Officer
+
+                option(value='system-admin' selected = staff.jobTitle === "system-admin") System Admin 
+
+                option(value='finance-officer' selected = staff.jobTitle === "finance-officer") Finance Officer
+
+                option(value='truck-driver' selected = staff.jobTitle === "truck-driver") Truck Driver
+
+                option(value='truck-conductor' selected = staff.jobTitle === "truck-conductor") Truck Conductor
+
+            // Driving License
+            fieldset.driv-lis.transform
+                legend.transform Driver's License Number
+                input#driv-lis(
+                    type='text'
+                    name='driversLisenceNumber'
+                    placeholder='Driver\'s License Number'
+                    value=staff.driversLisenceNumber
+                )
+            // Salary Amount
+            label.salary Salary:
+            input#salary(type='text' name='salary' value=staff.salary) 
+
+            // Type of Allowance
+            label.typeOfAllowance(for='typeOfAllowance') Type of Allowance:
+            select#typeOfAllowance( name='typeOfAllowance')
+                option(value='none' selected = staff.typeOfAllowance === "none") None
+                option(value='daily-allowance' selected = staff.typeOfAllowance === "daily-allowance") Daily Allowance
+                option(value='every-two-days' selected = staff.typeOfAllowance === "every-two-days") Every 2 days. 
+
+            // Allowance Amount
+            label.allowanceAmount(for='allowanceAmount') Allowance Amount:
+            input#allowanceAmount(type='text' name='allowanceAmount' value=staff.allowanceAmount)
+        
+            // Past incidence
+            label.pastIncidence(for="pastIncidence") Past Incident
+            select#pastIncidence(name='pastIncident')
+                option(placeholder='') Past incident
+                option(value='none' selected = staff.pastIncident === "none") None
+                option(value='accident' selected = staff.pastIncident === "accident") Accident
+                option(value='fight' selected = staff.pastIncident === "fight") Fight
+                option(value='fuel-theft' selected = staff.pastIncident === "fuel-theft") Fuel theft
+                option(value='others' selected = staff.pastIncident === "others") Others
+
+        button#register(type='submit') Update
+        a#cancel-reg(href="/allStaff") Cancel
+block js
+    script(src='http://localhost:3000/javascript/registration.js')
+
+

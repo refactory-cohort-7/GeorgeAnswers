@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
+const colors = require('colors');
 const mongoose = require('mongoose');
 
 // // Import Routes
@@ -23,7 +24,7 @@ mongoose.connect(process.env.DATABASE, {
 
 mongoose.connection
   .on('open', () => {
-    console.log('Mongoose connection open');
+    console.log('Mongoose connection open'.cyan.bold);
   })
   .on('error', err => {
     console.log(`Connection error: ${err.message}`);
@@ -51,5 +52,5 @@ app.get('*', (req, res) => {
 
 // Create a server at port 3000
 app.listen(3000, (req, res) => {
-  console.log('Started listening at port 3000!');
+  console.log('Started listening at port 3000!'.yellow.bold);
 });
