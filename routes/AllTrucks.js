@@ -1,4 +1,5 @@
 const express = require('express');
+const connectEnsureLogin = require('connect-ensure-login');
 
 const {
   getAllTrucks,

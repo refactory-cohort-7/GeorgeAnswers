@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login');
 
-router.get('/sales', (req, res) => {
+router.get('/sales', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   res.render('sales', { title: 'Sales' });
 });
 

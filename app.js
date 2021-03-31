@@ -10,7 +10,6 @@ const expressSession = require('express-session')({
   resave: false,
   saveUninitialized: false,
 });
-const connectEnsureLogin = require('connect-ensure-login');
 
 // // Import Routes
 const user = require('./routes/user');
@@ -22,6 +21,10 @@ const User = require('./models/User');
 
 // Instantiations
 const app = express();
+
+//Configurations
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 // Load in env
 dotenv.config({ path: './config/config.env' });
@@ -40,9 +43,7 @@ mongoose.connection
     console.log(`Connection error: ${err.message}`);
   });
 
-//Configurations
-app.set('view engine', 'pug');
-app.set('views', './views');
+mongoose.set('useCreateIndex', true);
 
 //Middlewares
 app.use(express.urlencoded({ extended: true }));
