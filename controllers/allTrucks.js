@@ -67,7 +67,7 @@ exports.updateTruck = async (req, res, next) => {
       new: true,
       runValidators: true,
     });
-
+    console.log(truck);
     if (!truck) {
       return res.status(400).send('Truck not found.');
     }

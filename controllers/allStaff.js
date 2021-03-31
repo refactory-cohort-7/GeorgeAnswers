@@ -5,7 +5,7 @@ const AllStaff = require('../models/AllStaff');
 // @access       Private
 exports.getAllStaff = async (req, res, next) => {
   try {
-    // find all the data in the Employee collection
+    // find all staff in the AllStaff collection
     const staffDetails = await AllStaff.find();
     res.render('allStaff', { staffs: staffDetails });
   } catch (err) {
@@ -38,8 +38,9 @@ exports.postNewStaff = async (req, res, next) => {
 // @access       Private
 exports.getStaff = async (req, res, next) => {
   try {
-    // Find all the data in the  AllTrucks collection
-    const staff = await AllStaff.findById(req.params.id);
+    // Find staff in AllStaff collection by ID
+    const staff = await AllStaff.findOne(req.params.id);
+
     // Catches requests with same id format that does not exit.
     if (!staff) {
       return res.status(400).send('Staff not found.');
@@ -58,15 +59,14 @@ exports.getStaff = async (req, res, next) => {
 // @access       Private
 exports.updateStaff = async (req, res, next) => {
   try {
-    const staff = await AllStaff.findByIdAndUpdate(req.params.id, req.body, {
-      useFindAndModify: false,
-      new: true,
-      runValidators: true,
-    });
-    console.log(staff);
+    // Find staff with a given ID in AllStaff collection and Update it.
+    const staff = await AllStaff.findOneAndUpdate(req.params.id);
+
+    // Catches requests with same id format that does not exit.
     if (!staff) {
       return res.status(400).send('Staff not found.');
     }
+
     res.redirect('/allStaff');
   } catch {
     res.status(400).send('Staff Information NOT update!');

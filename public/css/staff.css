@@ -1,0 +1,36 @@
+#empInfo input:focus,
+#empInfo select:focus {
+  border: 2px solid blue;
+}
+
+/* Removes bottom margin on last children of a fieldset */
+fieldset:last-child {
+  margin-bottom: 0;
+}
+
+fieldset:focus-within {
+  border: 2px solid blue;
+}
+
+fieldset:focus-within legend {
+  color: blue;
+}
+
+textarea {
+  height: auto;
+  padding: 0 15px;
+}
+
+input {
+  height: 30px;
+  padding: 5px 15px;
+  padding-bottom: 10px;
+}
+
+#driv-lis {
+  height: 20px;
+}
+
+#empInfo #driv-lis:focus {
+  border: none;
+}

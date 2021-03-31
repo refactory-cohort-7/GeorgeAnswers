@@ -1,22 +1,32 @@
 // Importations
 const express = require('express');
 const path = require('path');
-require('dotenv').config();
 const colors = require('colors');
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const expressSession = require('express-session')({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+});
+const connectEnsureLogin = require('connect-ensure-login');
 
 // // Import Routes
-const logIn = require('./routes/login');
+const user = require('./routes/user');
 const requests = require('./routes/requests');
 const sales = require('./routes/sales');
 const allStaff = require('./routes/allStaff');
 const allTrucks = require('./routes/allTrucks');
-const { config } = require('dotenv');
+const User = require('./models/User');
 
 // Instantiations
 const app = express();
 
+// Load in env
+dotenv.config({ path: './config/config.env' });
 // connect mongoose database
+
 mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -36,14 +46,22 @@ app.set('views', './views');
 
 //Middlewares
 app.use(express.urlencoded({ extended: true }));
+app.use(expressSession);
 app.use(express.static('public'));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Routes Middlewares
-app.use('/', logIn);
+app.use('/', user);
 app.use('/', requests);
 app.use('/', sales);
 app.use('/', allStaff);
 app.use('/', allTrucks);
+
+// Passport configs
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // cater for undefined routes
 app.get('*', (req, res) => {
@@ -51,6 +69,7 @@ app.get('*', (req, res) => {
 });
 
 // Create a server at port 3000
-app.listen(3000, (req, res) => {
-  console.log('Started listening at port 3000!'.yellow.bold);
-});
+const port = process.env.PORT || 3000;
+app.listen(port, () =>
+  console.log(`App listening on port ${port}!`.yellow.bold)
+);

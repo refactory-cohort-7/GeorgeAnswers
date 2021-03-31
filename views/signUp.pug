@@ -30,7 +30,8 @@ html(lang = 'en')
                 span#truck
         main.grid-general.shadow-grey
             h3 Waste disposal for all time freshness.
-            form.flex-general-column(action="/" method="POST")
+
+            form.flex-general-column(action="/signUp" method="POST")
 
                 fieldset.user-name.spaceMargin.transform
                     legend.transform User Name
@@ -46,4 +47,11 @@ html(lang = 'en')
                         name='password'
                         placeholder='Password'
                     )
-                button#login-btn.spaceMargin.shadow-grey(type="submit") Sign In
+                fieldset.confirm-password.spaceMargin.transform
+                    legend.transform Confirm Password
+                    input#confirm-password(
+                        type='password'
+                        name='confirm-password'
+                        placeholder='Confirm Password'
+                    )
+                button#login-btn.spaceMargin.shadow-grey(type="submit") Sign Up

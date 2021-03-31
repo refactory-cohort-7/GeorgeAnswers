@@ -1,7 +1,8 @@
 extend generalLayout.pug
 block head
     
-    link(rel='stylesheet' href='/css/registration.css')
+    link(rel='stylesheet' href='/css/registration.css') 
+    link(rel='stylesheet' href='/css/staff.css')
 block main
     // EMPLOYEE UPDATE – FORM
     form( method="POST" action="/staff/"+staff._id)
@@ -9,20 +10,21 @@ block main
             h2 Personal Information
         
                 // First name
-            fieldset.first-name.transform
-                legend.transform First Name
+            fieldset.first-name
+                legend First Name
                 input#first-name(
                     type="text"
                     name="firstName"
                     value= staff.firstName
+
                     )
                 // Last Name
-            fieldset.last-name.transform
-                legend.transform Last Name
+            fieldset.last-name
+                legend Last Name
                 input#last-name(
                     type="text"
                     name="lastName"
-                    value= staff.lasttName
+                    value= staff.lastName
                     )
 
                 // Date of birth
@@ -54,8 +56,8 @@ block main
                 label.gender-female(for='gender-female') Female
 
             // National ID Number
-            fieldset.nin.transform
-                legend.transform Natioanl Id Number
+            fieldset.nin
+                legend Natioanl Id Number
                 input#nin(
                     type='text'
                     name='nationalIdNumber'
@@ -63,8 +65,8 @@ block main
                 )
 
             // phone number
-            fieldset.contact.transform
-                legend.transform Phone Number
+            fieldset.contact
+                legend Phone Number
                 input#contact(
                     type='phone'
                     name='phoneNumber'
@@ -72,8 +74,8 @@ block main
                 )
 
             // Place of residence
-            fieldset.residence.transform
-                legend.transform Place of Residence
+            fieldset.residence
+                legend Place of Residence
                 textarea#residence.roboto-text(placeholder='Place of Residence' name='placeOfResidence' value=staff.placeOfResidence )
             
         section#empInfo
@@ -95,8 +97,8 @@ block main
                 option(value='truck-conductor' selected = staff.jobTitle === "truck-conductor") Truck Conductor
 
             // Driving License
-            fieldset.driv-lis.transform
-                legend.transform Driver's License Number
+            fieldset.driv-lis
+                legend Driver's License Number
                 input#driv-lis(
                     type='text'
                     name='driversLisenceNumber'
@@ -109,9 +111,12 @@ block main
 
             // Type of Allowance
             label.typeOfAllowance(for='typeOfAllowance') Type of Allowance:
+            
             select#typeOfAllowance( name='typeOfAllowance')
                 option(value='none' selected = staff.typeOfAllowance === "none") None
+
                 option(value='daily-allowance' selected = staff.typeOfAllowance === "daily-allowance") Daily Allowance
+
                 option(value='every-two-days' selected = staff.typeOfAllowance === "every-two-days") Every 2 days. 
 
             // Allowance Amount
@@ -121,11 +126,15 @@ block main
             // Past incidence
             label.pastIncidence(for="pastIncidence") Past Incident
             select#pastIncidence(name='pastIncident')
-                option(placeholder='') Past incident
+               
                 option(value='none' selected = staff.pastIncident === "none") None
+
                 option(value='accident' selected = staff.pastIncident === "accident") Accident
+
                 option(value='fight' selected = staff.pastIncident === "fight") Fight
+
                 option(value='fuel-theft' selected = staff.pastIncident === "fuel-theft") Fuel theft
+
                 option(value='others' selected = staff.pastIncident === "others") Others
 
         button#register(type='submit') Update

@@ -13,7 +13,8 @@ block main
     section#staffNavBar
         table
             thead
-                tr
+                tr  
+                    th S/N
                     th Type of Truck
                     th Truck Number
                     th Truck Driver
@@ -26,6 +27,7 @@ block main
                 if trucks.length
                 each truck in trucks
                     tr
+                        td.serialNum
                         td #{truck.typeOfTruck} 
                         td #{truck.truckNumber}
                         td #{truck.nameOfDriver}
@@ -41,3 +43,4 @@ block main
                     
         
 block js
+    script(src='javascript/allStaff.js')
