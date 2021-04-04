@@ -10,6 +10,7 @@ const expressSession = require('express-session')({
   resave: false,
   saveUninitialized: false,
 });
+const flash = require('connect-flash');
 
 // // Import Routes
 const user = require('./routes/user');
@@ -51,6 +52,12 @@ app.use(expressSession);
 app.use(express.static('public'));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
+// Passport configs
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //Routes Middlewares
 app.use('/', user);
@@ -58,11 +65,6 @@ app.use('/', requests);
 app.use('/', sales);
 app.use('/', allStaff);
 app.use('/', allTrucks);
-
-// Passport configs
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 // cater for undefined routes
 app.get('*', (req, res) => {

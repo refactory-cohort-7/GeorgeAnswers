@@ -4,115 +4,118 @@ const AllStaff = require('../models/AllStaff');
 // @route        GET /allStaff
 // @access       Private
 exports.getAllStaff = async (req, res, next) => {
-  // if (req.session.user) {
-  try {
-    // find all staff in the AllStaff collection
-    const staffDetails = await AllStaff.find();
-    res.render('allStaff', { staffs: staffDetails });
-  } catch (err) {
-    res.send('Failed to retrive staff details');
+  if (req.session.user) {
+    try {
+      // find all staff in the AllStaff collection
+      const staffDetails = await AllStaff.find();
+      res.render('allStaff', {
+        staffs: staffDetails,
+        title: 'Staff',
+      });
+    } catch (err) {
+      res.send('Failed to retrive staff details');
+    }
+  } else {
+    res.redirect('/');
   }
-  // } else {
-  //   res.redirect('/');
-  // }
 };
 
 // @description  Get form to register staff.
 // @route        GET /addNewStaff
 // @access       Private
 exports.getNewStaff = (req, res, next) => {
-  // if (req.session.user) {
-  res.render('newStaff', { title: 'Staff Registration' });
-  // } else {
-  //   res.redirect('/');
-  // }
+  if (req.session.user) {
+    res.render('newStaff', { title: 'Staff Registration' });
+  } else {
+    res.redirect('/');
+  }
 };
 
 // @description  Registers new staff.
 // @route        POST /newStaff
 // @access       Private
 exports.postNewStaff = async (req, res, next) => {
-  // if (req.session.user) {
-  try {
-    const newStaff = await AllStaff.create(req.body);
-    res.redirect('/allStaff');
-  } catch (err) {
-    console.log(err);
-    res.status(400).send('Sorry! Something went wrong.');
+  if (req.session.user) {
+    try {
+      const newStaff = await AllStaff.create(req.body);
+      res.redirect('/allStaff');
+    } catch (err) {
+      console.log(err);
+      res.status(400).send('Sorry! Something went wrong.');
+    }
+  } else {
+    res.redirect('/');
   }
-  // } else {
-  //   res.redirect('/');
-  // }
 };
 
 // @description  Get single staff Information.
 // @route        GET /:Id
 // @access       Private
 exports.getStaff = async (req, res, next) => {
-  // if (req.session.user) {
-  try {
-    // Find staff in AllStaff collection by ID
-    const staff = await AllStaff.findOne(req.params.id);
+  if (req.session.user) {
+    try {
+      // Find staff in AllStaff collection by ID
+      const staff = await AllStaff.findOne(req.params.id);
 
-    // Catches requests with same id format that does not exit.
-    if (!staff) {
-      return res.status(400).send('Staff not found.');
+      // Catches requests with same id format that does not exit.
+      if (!staff) {
+        return res.status(400).send('Staff not found.');
+      }
+      res.render('staff', {
+        staff: staff,
+        title: 'Staff Details',
+      });
+    } catch (err) {
+      res.status(400).send('Failed to retrive staff details');
     }
-    res.render('staff', {
-      staff: staff,
-      title: 'Staff Details',
-    });
-  } catch (err) {
-    res.status(400).send('Failed to retrive staff details');
+  } else {
+    res.redirect('/');
   }
-  // } else {
-  //   res.redirect('/');
-  // }
 };
 
 // @description  Update single staff Information.
 // @route        POST /:Id
 // @access       Private
 exports.updateStaff = async (req, res, next) => {
-  // if (req.session.user) {
-  try {
-    // Find staff with a given ID in AllStaff collection and Update it.
-    const staff = await AllStaff.findOneAndUpdate(req.params.id);
+  if (req.session.user) {
+    try {
+      // Find staff with a given ID in AllStaff collection and Update it.
+      const staff = await AllStaff.findOneAndUpdate(req.params.id);
 
-    // Catches requests with same id format that does not exit.
-    if (!staff) {
-      return res.status(400).send('Staff not found.');
+      // Catches requests with same id format that does not exit.
+      if (!staff) {
+        return res.status(400).send('Staff not found.');
+      }
+
+      res.redirect('/allStaff');
+    } catch {
+      res.status(400).send('Staff Information NOT update!');
     }
-
-    res.redirect('/allStaff');
-  } catch {
-    res.status(400).send('Staff Information NOT update!');
+  } else {
+    res.redirect('/');
   }
-  // } else {
-  //   res.redirect('/');
-  // }
 };
 
 // @description  Delete single staff Information.
 // @route        DELETE /:Id
 // @access       Private
 exports.deleteStaff = async (req, res, next) => {
-  // if (req.session.user) {
-  try {
-    const staffToDel = await AllStaff.findByIdAndRemove(req.params.id, {
-      useFindAndModify: false,
-      new: true,
-      runValidators: true,
-    });
-    if (!staffToDel) {
-      return res.status(400).send('Staff not found.');
-    }
+  if (req.session.user) {
+    try {
+      const staffToDel = await AllStaff.findByIdAndRemove(req.params.id, {
+        useFindAndModify: false,
+        new: true,
+        runValidators: true,
+      });
+      if (!staffToDel) {
+        return res.status(400).send('Staff not found.');
+      }
 
-    res.redirect('/allStaff');
-  } catch (err) {
-    res.status(400).send('Staff Information NOT deleted!');
+      res.redirect('/allStaff');
+    } catch (err) {
+      res.status(400).send('Staff Information NOT deleted!');
+    }
+  } else {
+    res.redirect('/');
   }
-  // } else {
-  //   res.redirect('/');
-  // }
 };

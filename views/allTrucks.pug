@@ -8,39 +8,49 @@ block head
         rel='stylesheet'
         href="css/allTrucks.css"
     )
-block main
-    a.button(href='newTruck') Add New Truck
-    section#staffNavBar
-        table
-            thead
-                tr  
-                    th S/N
-                    th Type of Truck
-                    th Truck Number
-                    th Truck Driver
-                    th Truck Code
-                    th Truck Performance
-                    th Action 1
-                    th Action 2
-            tbody
-                block content
-                if trucks.length
-                each truck in trucks
-                    tr
-                        td.serialNum
-                        td #{truck.typeOfTruck} 
-                        td #{truck.truckNumber}
-                        td #{truck.nameOfDriver}
-                        td #{truck.truckCode}
-                        td #{truck.amountMadeByTruck}
-                        td 
-                            a.button(href='./truck/' +truck._id) Update
-                        td 
-                            a.button(href='./delTruck/' +truck._id) Delete
+block body
+    body.truckBody.grid-general.lightbg
+        include includes/navBar
+        block main
+            main
+                a.button(href='newTruck') Add New Truck
+                a#goBack.button.shadow(href='#') Back
+                section#staffNavBar
+                    table
+                        thead
+                            tr  
+                                th S/N
+                                th Type of Truck
+                                th Truck Number
+                                th Truck Driver
+                                th Truck Code
+                                th Truck Performance
+                                th Action 1
+                                th Action 2
+                        tbody
+                            block content
+                            if trucks.length
+                            each truck in trucks
+                                tr
+                                    td.serialNum
+                                    td #{truck.typeOfTruck} 
+                                    td #{truck.truckNumber}
+                                    td #{truck.nameOfDriver}
+                                    td #{truck.truckCode}
+                                    td #{truck.amountMadeByTruck}
+                                    td 
+                                        a.button(href='./truck/' +truck._id) Update
+                                    td 
+                                        a.button(href='./delTruck/' +truck._id) Delete
 
-    block content
+                block content
+                
+                            
+                
+        block js
+            script(src='javascript/general.js')
+            script(src='javascript/allStaff.js')
+           
+        include includes/footer
         
-                    
-        
-block js
-    script(src='javascript/allStaff.js')
+

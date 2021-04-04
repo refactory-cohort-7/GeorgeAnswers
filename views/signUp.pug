@@ -1,57 +1,38 @@
-doctype html
-html(lang = 'en')
-    head
-        title=title
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width,initial-scale=1.0")
+extend generalLayOut
+block head
+    // CSS for only signUp.pug
+    link(rel='stylesheet' href='/css/signUp.css')
+block body
+    body.staffBody.grid-general.lightbg
+        include includes/navBar
+        block main
+            main
 
-        // css for all pages.
-        link(rel='stylesheet' href='/css/general.css')
+                form#signUp.shadow(action="/signUp" method="POST")
 
-        // CSS for only index.pug
-        link(rel='stylesheet' href='/css/index.css')
-
-        // Font links
-        link(rel="preconnect" href="https://fonts.gstatic.com")
-        link(
-                href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
-            rel="stylesheet"
-        )
-        link(
-                href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-            rel="stylesheet"
-        )
-    body
-        header.grid-general
-            // logo
-            p#logo.lobster-text
-                span#comp-name Stay Clean
-                span#truck
-        main.grid-general.shadow-grey
-            h3 Waste disposal for all time freshness.
-
-            form.flex-general-column(action="/signUp" method="POST")
-
-                fieldset.user-name.spaceMargin.transform
-                    legend.transform User Name
-                    input#user-name(
-                        type='text'
-                        name='username'
-                        placeholder = 'User Name'
+                    fieldset.user-name.spaceMargin.transform
+                        legend.transform User Name
+                        input#user-name(
+                            type='text'
+                            name='username'
+                            placeholder = 'User Name'
+                            )
+                    fieldset.password.spaceMargin.transform
+                        legend.transform Password
+                        input#password(
+                            type='password'
+                            name='password'
+                            placeholder='Password'
                         )
-                fieldset.password.spaceMargin.transform
-                    legend.transform Password
-                    input#password(
-                        type='password'
-                        name='password'
-                        placeholder='Password'
-                    )
-                fieldset.confirm-password.spaceMargin.transform
-                    legend.transform Confirm Password
-                    input#confirm-password(
-                        type='password'
-                        name='confirm-password'
-                        placeholder='Confirm Password'
-                    )
-                button#login-btn.spaceMargin.shadow-grey(type="submit") Sign Up
+                    fieldset.confirm-password.spaceMargin.transform
+                        legend.transform Confirm Password
+                        input#confirm-password(
+                            type='password'
+                            name='confirm-password'
+                            placeholder='Confirm Password'
+                        )
+                    button#login-btn.spaceMargin.shadow(type="submit") Sign Up
+                    a#goBack.button.shadow(href='#') Back
+        block js
+            script(src='javascript/general.js')
+        include includes/footer

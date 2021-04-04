@@ -5,59 +5,77 @@ const { ensureLoggedOut } = require('connect-ensure-login');
 // @description  Get Sign In form.
 // @route        GET /
 // @access       Private
-exports.getSignIn = (req, res, next) => {
+exports.getSignIn = (req, res) => {
   res.render('index', { title: 'Sign In' });
 };
 
 // @description  Authent and Redirect to requests.
 // @route        POST /
 // @access       Private
-exports.postSignIn = async (req, res, next) => {
-  req.session.User = req.User;
+exports.postSignIn = (req, res) => {
+  req.session.user = req.user;
   res.redirect('/requests');
 };
 
 // @description  Get Sign out In form.
-// @route        GET /signOut
+// @route        POST /signOut
 // @access       Private
-exports.getSignOut = (req, res, next) => {
-  // if (req.session.User) {
-  req.logout();
-  res.redirect('/');
-  // } else {
-  //   res.redirect('/');
-  // }
+exports.postSignOut = (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        console.log(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
+};
+
+// @description  Get Sign out In form.
+// @route        get /signOut
+// @access       Private
+exports.getSignOut = (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        console.log(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
 };
 
 // @description  Get Sign Up In form.
 // @route        GET /signUp
 // @access       Private
-exports.getSignUp = (req, res, next) => {
-  // if (req.session.User) {
-  res.render('signUp', { title: 'Sign Up' });
-  // } else {
-  //   res.redirect('/');
-  // }
+exports.getSignUp = (req, res) => {
+  if (req.session.user) {
+    res.render('signUp', { title: 'Sign Up' });
+  } else {
+    res.redirect('/');
+  }
 };
 
 // @description  Register credentials and Redirect to signin.
 // @route        POST /signUp
 // @access       Private
-exports.postSignUp = async (req, res, next) => {
-  // if (req.session.User) {
-  try {
-    const newUser = new User(req.body);
-    await User.register(newUser, req.body.password, err => {
-      if (err) {
-        throw err;
-      }
-      res.redirect('/');
-    });
-  } catch (err) {
-    res.status(400).send('Sorry! Something went wrong.');
-    console.log(err);
+exports.postSignUp = async (req, res) => {
+  if (req.session.user) {
+    try {
+      const newUser = new User(req.body);
+      await User.register(newUser, req.body.password, err => {
+        if (err) {
+          throw err;
+        }
+        res.redirect('/');
+      });
+    } catch (err) {
+      res.status(400).send('Sorry! Something went wrong.');
+      console.log(err);
+    }
+  } else {
+    res.redirect('/');
   }
-  // } else {
-  //   res.redirect('/');
-  // }
 };

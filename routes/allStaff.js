@@ -12,21 +12,12 @@ const {
 
 const router = express.Router();
 
-router.route('/allStaff', connectEnsureLogin.ensureLoggedIn()).get(getAllStaff);
+router.route('/allStaff').get(getAllStaff);
 
-router
-  .route('/newStaff', connectEnsureLogin.ensureLoggedIn())
-  .get(getNewStaff)
-  .post(postNewStaff);
+router.route('/newStaff').get(getNewStaff).post(postNewStaff);
 
-router
-  .route('/staff/:Id', connectEnsureLogin.ensureLoggedIn())
-  .get(getStaff)
-  .post(updateStaff);
+router.route('/staff/:Id').get(getStaff).post(updateStaff);
 
-router
-  .route('/deleteStaff/:id', connectEnsureLogin.ensureLoggedIn())
-  .delete(deleteStaff)
-  .get(deleteStaff);
+router.route('/deleteStaff/:id').delete(deleteStaff).get(deleteStaff);
 
 module.exports = router;

@@ -1,12 +1,28 @@
-/* This class adds Lobster font to an element. */
-.lobster-text {
-  font-family: 'Lobster', cursive;
+@import url(./constants.css);
+
+/* White on Green */
+.darkbg {
+  background-color: var(--clr-primary-500);
+  color: var(--clr-primary-100);
+}
+.lightbg {
+  color: var(--clr-primary-500);
+  background-color: var(--clr-primary-100);
 }
 
-/* This class adds Roboto font to an element. */
-.roboto-text {
-  font-family: 'Roboto', sans-serif;
+.darkbga {
+  background-color: var(--clr-primary-500a);
+  color: var(--clr-primary-100);
 }
+.lightbga {
+  color: var(--clr-primary-500);
+  background-color: var(--clr-primary-100a);
+}
+
+.shadow {
+  box-shadow: 0 1px 5px var(--clr-dark-text);
+}
+
 /* This calss centres text elements */
 .centre-text {
   text-align: center;
@@ -40,13 +56,13 @@ button,
 #cancel-reg,
 #generate,
 .button {
-  background-color: #2bae66;
+  background-color: var(--clr-primary-500);
   width: 100px;
   height: 33px;
   color: #fcf6f5;
   font-size: 1em;
-  border: 2px solid #2bae66;
-  box-shadow: 0 2px 3px #2bae66;
+  border: 2px solid var(--clr-primary-500);
+  box-shadow: 0 2px 3px var(--clr-primary-500);
 }
 
 button:hover,
@@ -57,29 +73,17 @@ button:focus,
 #generate:focus,
 .button:hover,
 .button:focus {
-  background-color: purple;
+  background-color: var(--clr-hover-800);
 }
 
 a {
   text-decoration: none;
 }
 
-/* SHADOWS START */
-/* Grey box-shadow */
-.shadow-grey {
-  box-shadow: 1px 1px 5px black, -1px 0 5px grey;
-}
-
-/* All around white box-shadow */
-.shadow-white-round {
-  box-shadow: 1px 1px 5px #fcf6f5, -1px -1px 5px #fcf6f5;
-}
-/* SHADOWS END */
-
 /* INPUT Fieldset START */
 /* COLOR for input placeholder text. */
 ::placeholder {
-  color: #294435;
+  color: var(--clr-dark-text);
   opacity: 1;
 }
 
@@ -96,7 +100,7 @@ textarea:focus::placeholder {
 fieldset {
   background-color: #2bae6615;
   position: relative;
-  border: 2px solid #2bae66;
+  border: 2px solid var(--clr-primary-500);
 }
 
 /* Over-rides some of the above properties. */
@@ -111,7 +115,7 @@ fieldset:last-child {
 }
 
 fieldset.transform:focus-within {
-  border: 2px solid blue;
+  border: 2px solid var(--clr-secondary-700);
 }
 legend.transform {
   margin: 0 10px;
@@ -124,7 +128,7 @@ fieldset.transform:focus-within legend {
   transform: translateY(-13px);
   visibility: visible;
   background-image: linear-gradient(#fcf6f5 60%, #2bae6615);
-  color: blue;
+  color: var(--clr-secondary-700);
 }
 
 input,
@@ -143,10 +147,10 @@ textarea {
   height: 100px;
 }
 label {
-  color: #102018;
+  color: var(--clr-dark-text);
 }
 legend {
-  color: #102018;
+  color: var(--clr-dark-text);
 }
 
 fieldset.transform input,
@@ -158,6 +162,9 @@ fieldset.transform textarea {
 /* INPUT Fieldset END */
 
 /* GENEARL PAGE FORMATING */
+html {
+  font-size: 16px;
+}
 * {
   margin: 0;
   padding: 0;
@@ -166,9 +173,8 @@ fieldset.transform textarea {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #2bae66;
-  background-color: rgb(252, 246, 245);
+  font-family: var(--ff-roboto);
+  font-size: 1rem;
 }
 
 /* All formating involving HEADER START here*/
@@ -176,10 +182,15 @@ header {
   grid-area: 1/1/2/-1;
   position: relative;
   padding: 0 5%;
-  background-color: #2bae66;
-  color: #fcf6f5;
-  height: auto;
-  padding-top: 5px;
+  padding-top: 0.2rem;
+  z-index: 5;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
 }
 
 /* Logo styling START */
@@ -188,13 +199,14 @@ header {
   grid-area: 1/1/2/3;
   align-self: flex-start;
   position: relative;
-  border: 3px solid #fcf6f5;
+  border: 3px solid var(--clr-primary-100);
   border-top: 3px solid transparent;
   border-radius: 5px 20px 2px 2px;
   z-index: 5;
-  width: 100px;
-  height: 30px;
-  color: black;
+  width: 6.25rem;
+  height: 1.875rem;
+  color: var(--clr-dark-text);
+  font-family: var(--ff-lobster);
 }
 
 /* Truck Tires. */
@@ -202,21 +214,21 @@ header {
 #logo::after {
   content: '';
   position: absolute;
-  background-color: #fcf6f5;
-  width: 7px;
-  height: 7px;
+  background-color: var(--clr-primary-100);
+  width: 0.4375rem;
+  height: 0.4375rem;
   border-radius: 50%;
-  top: 15px;
+  top: 1rem;
   text-align: center;
-  padding: 1%;
-  margin-top: 5px;
-  border: 4px solid black;
+  padding: 0.1rem;
+  margin-top: 0.28rem;
+  border: 4px solid var(--clr-dark-text);
 }
 #logo::before {
-  left: 5px;
+  left: 0.32rem;
 }
 #logo::after {
-  right: 5px;
+  right: 0.32rem;
 }
 
 /* Truck top Frame. */
@@ -224,10 +236,10 @@ header {
   position: absolute;
   top: -2px;
   right: -2px;
-  width: 25px;
-  height: 20px;
-  border: 1px solid #fcf6f5;
-  border-top: 3px solid #fcf6f5;
+  width: 1.5rem;
+  height: 1.25rem;
+  border: 1px solid var(--clr-primary-100);
+  border-top: 3px solid var(--clr-primary-100);
   border-right: 3px solid transparent;
   border-radius: 2px 21px 2px 2px;
   z-index: -1;
@@ -237,27 +249,27 @@ header {
 #truck::before {
   content: '';
   position: absolute;
-  background-color: #fcf6f5;
-  width: 73px;
-  height: 20px;
-  left: -76px;
-  top: -9px;
+  background-color: var(--clr-primary-100);
+  width: 4.5625rem;
+  height: 1.25rem;
+  left: -4.75rem;
+  top: -0.5625rem;
   text-align: center;
   padding: 1%;
   margin-top: 5px;
   border-radius: 5px;
   font-size: 0.8em;
-  color: black;
+  color: var(--clr-dark-text);
 }
 
 /* Divider line */
 #truck::after {
   content: '';
   position: absolute;
-  border: 1px solid #fcf6f5;
-  width: 97px;
-  left: -75px;
-  top: 16px;
+  border: 1px solid var(--clr-primary-100);
+  width: 6.0625rem;
+  left: -4.75rem;
+  top: 1rem;
 }
 /* Logo styling END */
 
@@ -266,7 +278,7 @@ header {
 nav {
   grid-area: 1/3/2/-1;
   width: auto;
-  font-size: 0.9em;
+  font-size: 1.1rem;
   margin-left: 10%;
 }
 
@@ -288,45 +300,61 @@ nav ul li {
 
 nav ul li a {
   display: block;
-  height: 40px;
+  height: 2.5rem;
   width: auto;
-  color: rgb(252, 246, 245);
-  padding: 10px;
+  color: var(--clr-primary-100);
+  padding: 0.625rem;
   text-align: center;
-  font-size: 1em;
   border-top: 3px solid transparent;
 }
 
-header ul li a:focus,
+header ul li a:focus-within,
 header ul li a:hover,
-#sign-out:hover,
-#sign-out:focus {
-  background-color: rgb(252, 246, 245);
-  color: #2bae66;
-  border-top: 3px solid rgb(250, 98, 250);
+.sign-out:hover,
+.sign-out:focus-within {
+  background-color: var(--clr-primary-100);
+  color: var(--clr-primary-500);
+  border-top: 3px solid var(--clr-secondary-700);
+}
+
+/* Highlights active Nav items */
+.truckBody #inventory > a,
+.staffBody #staff > a,
+.requestBody #request,
+.salesBody #sales {
+  background-color: var(--clr-primary-100);
+  color: var(--clr-primary-500);
+  border-top: 3px solid var(--clr-secondary-700);
 }
 
 #staff ul,
 #inventory ul {
   display: none;
   position: absolute;
-  background-color: #2bae66;
-  width: 150px;
+  background-color: transparent;
+  width: 15rem;
   height: auto;
-  top: 40px;
+  top: 2.5rem;
   color: rgb(252, 246, 245);
-  box-shadow: 2px 2px 5px black, -2px 2px 5px black;
 }
+
 .sub-menu a {
-  border-bottom: 2px solid rgb(252, 246, 245);
+  color: var(--clr-primary-100);
+  background-color: var(--clr-primary-500);
+  border-bottom: 2px solid var(--clr-primary-100);
+  padding: 5px 10px;
+  box-shadow: 2px 2px 5px var(--clr-dark-text),
+    -2px 2px 5px var(--clr-dark-text);
+  border-radius: 0 0 3px 3px;
 }
 .sub-menu li > a:hover,
 .sub-menu li > a:focus {
-  border-top: transparent;
+  border-bottom: 2px solid var(--clr-secondary-700);
 }
 #staff:hover .sub-menu,
 #inventory:hover .sub-menu {
   display: block;
+  border-top: 1rem solid transparent;
 }
 /* Mobile menu Styling END */
 
@@ -335,15 +363,16 @@ header ul li a:hover,
 /* Login Status START HERE*/
 #sign-out {
   grid-area: 1/12/-1/-1;
-  text-align: right;
-  font-size: 1em;
-  height: 40px;
-  padding: 12px 10px 5px 10px;
-  color: rgba(252, 246, 245, 0.8);
-  display: block;
-  width: 100%;
-  text-align: center;
   justify-self: end;
+}
+#sign-out button {
+  font-size: 1.1rem;
+  height: 2.5rem;
+  padding: 5px 10px;
+  color: var(--clr-primary-100);
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 /* Login Status END HERE*/
@@ -351,7 +380,6 @@ header ul li a:hover,
 /* All formating involving MAIN START here*/
 main {
   grid-area: 2/1/10/-1;
-  height: 80.5vh;
   width: 100%;
 }
 
@@ -360,8 +388,6 @@ main {
 /* All formating involving FOOTER START here*/
 footer {
   grid-area: 10/1/-1/-1;
-  background-color: #2bae66;
-  color: rgb(252, 246, 245);
   width: auto;
   font-size: 0.8em;
   height: auto;
@@ -414,7 +440,7 @@ footer {
 
 #copyright {
   grid-area: 12/1/-1/-1;
-  background-color: #304b30;
+  background-color: var(--clr-dark-text);
   width: 100%;
   text-align: center;
   bottom: 0;

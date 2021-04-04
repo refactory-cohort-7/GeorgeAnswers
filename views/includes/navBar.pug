@@ -1,0 +1,32 @@
+header#header.grid-general.darkbg.shadow
+            // logo
+            p#logo
+                span#comp-name Stay Clean
+                span#truck
+            // Navbar General
+            nav.grid-general
+                ul#menu-ul
+                    li.navItem
+                        a#request( href='../requests') Requests
+                    li.navItem
+                        a#sales( href='../sales') Sales
+                    li#inventory.navItem
+                        a( href='#') Inventory
+                        ul.sub-menu
+                            li
+                                a#truckReg( href='../newTruck') Register Truck 
+                            li
+                                a#trucks( href='../allTrucks') Truck List 
+                    li#staff.navItem
+                        a( href='#') Staff
+                        ul.sub-menu
+                            li
+                                a#staffReg( href='../newStaff') Register Employee 
+                            li
+                                a#staffInfo( href='../allStaff') Staff Information 
+                            li
+                                a#staffUser( href='../signUp') Add New User
+
+                form#sign-out(action='/signOut' method='POST')
+                    button(type='submit') Sign Out
+

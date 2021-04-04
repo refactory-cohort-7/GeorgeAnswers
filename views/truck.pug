@@ -3,33 +3,39 @@ block head
     link(
         rel='stylesheet' href='/css/newTruck.css'
     )
-block main
+block body
+    body.truckBody.grid-general.lightbg
+        include includes/navBar
+        block main
+            main
     
-    section#newTruckSection
-   
-        h2 Truck Registration Number #{truck.truckNumber} Details
-    
-        form#truckInfo(method="POST" action='/truck/' +truck._id)
-            label.typeOfTruck(for='typeOfTruck') Type of Truck:
-            select#typeOfTruck(name='typeOfTruck')
-                option(value='sewageTruck' selected = truck.typeOfTruck === "sewageTruck") Sewage Truck
-                option(value='garbageTruck' selected = truck.typeOfTruck === "garbageTruck") Garbage Truck
+                section#newTruckSection
+            
+                    h2 Truck Registration Number #{truck.truckNumber} Details
+                
+                    form#truckInfo(method="POST" action='/truck/' +truck._id)
+                        label.typeOfTruck(for='typeOfTruck') Type of Truck:
+                        select#typeOfTruck(name='typeOfTruck')
+                            option(value='sewageTruck' selected = truck.typeOfTruck === "sewageTruck") Sewage Truck
+                            option(value='garbageTruck' selected = truck.typeOfTruck === "garbageTruck") Garbage Truck
 
-            label.truckNumber(for='truckNumber') Truck Registration Number:
-            input#truckNumber(name='truckNumber' value= truck.truckNumber)
+                        label.truckNumber(for='truckNumber') Truck Registration Number:
+                        input#truckNumber(name='truckNumber' value= truck.truckNumber)
 
-            label.truckCode(for='truckCode') Truck Code:
-            input#truckCode(name='truckCode' value= truck.truckCode)
+                        label.truckCode(for='truckCode') Truck Code:
+                        input#truckCode(name='truckCode' value= truck.truckCode)
 
-            a#generate(href='#') Generate
+                        a#generate(href='#') Generate
 
-            label.driver(for='driver') Assign Driver:
-            select#driver(name='nameOfDriver') #{`${truck.typeOfTruck}`}
-                option(value='nameOfDriver1'  selected = truck.nameOfDriver === "nameOfDriver1") Name of Driver1 
-                option(value='nameOfDriver2'  selected = truck.nameOfDriver === "nameOfDriver2") Name of Driver2 
-                option(value='nameOfDriver3'  selected = truck.nameOfDriver === "nameOfDriver3") Name of Driver3
+                        label.driver(for='driver') Assign Driver:
+                        select#driver(name='nameOfDriver') #{`${truck.typeOfTruck}`}
+                            option(value='nameOfDriver1'  selected = truck.nameOfDriver === "nameOfDriver1") Name of Driver1 
+                            option(value='nameOfDriver2'  selected = truck.nameOfDriver === "nameOfDriver2") Name of Driver2 
+                            option(value='nameOfDriver3'  selected = truck.nameOfDriver === "nameOfDriver3") Name of Driver3
 
-            a#cancel-reg(href='/allTrucks') Cancel
-            button#register(type='submit') Update
+                        a#cancel-reg(href='/allTrucks') Cancel
+                        button#register(type='submit') Update
 
-block js
+            block js
+                script(src='javascript/general.js')
+            include includes/footer

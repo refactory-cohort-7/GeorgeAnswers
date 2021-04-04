@@ -3,7 +3,11 @@ const router = express.Router();
 const connectEnsureLogin = require('connect-ensure-login');
 
 router.get('/requests', (req, res) => {
-  res.render('requests', { title: 'Requests' });
+  if (req.session.user) {
+    res.render('requests', { title: 'Requests' });
+  } else {
+    res.redirect('/');
+  }
 });
 
 module.exports = router;

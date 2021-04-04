@@ -1,4 +1,11 @@
 extend generalLayOut.pug
 block head
-block main
-block js
+block body
+    body.salesBody.grid-general.lightbg
+        include includes/navBar
+        block main
+            main
+                a#goBack.button.shadow(href='#') Back
+        block js
+            script(src='javascript/general.js')
+        include includes/footer

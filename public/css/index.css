@@ -30,11 +30,8 @@ main {
   justify-content: center;
   align-content: center;
   padding: 5%;
-  border: 2px solid rgba(0, 128, 0, 0.884);
-  height: 100%;
+  border: 2px solid var(--clr-primary-500);
   margin-top: 5%;
-  background-color: rgb(252, 246, 245);
-  color: #2bae66;
 }
 main h3 {
   grid-area: 1/1/2/-1;
@@ -55,15 +52,19 @@ input {
   width: 100%;
   border: none;
   outline: none;
-  color: black;
+  color: var(--clr-dark-text);
   padding: 0 15px;
 }
 legend {
-  color: blue;
+  color: var(--clr-secondary-700);
   margin: 0 15px;
 }
-fieldset:focus-within legend {
-  background-image: linear-gradient(rgb(255, 255, 255) 50%, rgb(255, 255, 255));
+fieldset.transform:focus-within legend {
+  background-image: linear-gradient(
+    rgba(216, 216, 216, 0.871),
+    #d8d8d8,
+    rgba(255, 255, 255, 0.6)
+  );
 }
 button {
   align-self: center;

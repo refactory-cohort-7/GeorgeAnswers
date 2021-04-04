@@ -4,45 +4,52 @@ block head
         rel="stylesheet"
         href="/css/layout.css"
     )
-block main
-    section#staffNavBar
-      
-        table
-            thead
-                tr
-                    th S/N
-                    th Full Name
-                    th Sex
-                    th Date of Birth
-                    th Phone Number
-                    th Job Title
-                    th Salary
-                    th Allowance
-                    th Past Incident
-                    th Action 1
-                    th Action 2
-            tbody
-                block content
-                if staffs.length
-                each staff in staffs
+
+block body
+    body.staffBody.grid-general.lightbg
+        include includes/navBar
+    block main
+        main
+            section#staffNavBar
+            
+                table
+                    thead
                         tr
-                            td.serialNum
-                            td #{staff.fullName = `${staff.firstName} ${staff.lastName}`} 
-                            td #{staff.gender}
-                            td #{staff.dateOfBirth}
-                            td #{staff.phoneNumber=`0${staff.phoneNumber}`}
-                            td #{staff.jobTitle}
-                            td #{staff.salary}
-                            td #{staff.allowanceAmount}
-                            td #{staff.pastIncident}
-                            td 
-                                a.button(href='./staff/' +staff._id) Update
-                            td 
-                                a.button(href='/deleteStaff/' +staff._id) Delete
-    block content
+                            th S/N
+                            th Full Name
+                            th Sex
+                            th Date of Birth
+                            th Phone Number
+                            th Job Title
+                            th Salary
+                            th Allowance
+                            th Past Incident
+                            th Action 1
+                            th Action 2
+                    tbody
+                    
+                        if staffs.length
+                        each staff in staffs
+                                tr
+                                    td.serialNum
+                                    td #{staff.fullName = `${staff.firstName} ${staff.lastName}`} 
+                                    td #{staff.gender}
+                                    td #{staff.dateOfBirth}
+                                    td #{staff.phoneNumber=`0${staff.phoneNumber}`}
+                                    td #{staff.jobTitle}
+                                    td #{staff.salary}
+                                    td #{staff.allowanceAmount}
+                                    td #{staff.pastIncident}
+                                    td 
+                                        a.button(href='./staff/' +staff._id) Update
+                                    td 
+                                        a.button(href='/deleteStaff/' +staff._id) Delete
+        block js
+            script(src='javascript/general.js')
+            script(src='javascript/allStaff.js')
+        
+        include includes/footer
         
                     
         
-block js
-    script(src='javascript/allStaff.js')
     
