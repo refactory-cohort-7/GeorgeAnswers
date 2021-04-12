@@ -62,7 +62,7 @@ exports.getRequest = async (req, res, next) => {
         return res.status(400).send('Request not found.');
       }
       res.render('callRequestDetails', {
-        request: reques,
+        request: request,
         title: 'Request Details.',
       });
     } catch (err) {
@@ -124,15 +124,15 @@ exports.deleteRequest = async (req, res, next) => {
   }
 };
 
-// @ Description Gets a list of su.bscribers
-// @ Route GET /subscribed
+// @ Description Gets a list of subscribers
+// @ Route GET /subscriptions
 // @ Access Private
 exports.getAllSubscriptions = async (req, res, next) => {
   if (req.session.user) {
     try {
       // Find all the data in the  Requests collection
       const subscribers = await Subscriptions.find();
-      res.render('subscribed', {
+      res.render('subscriptions', {
         subscribers: subscribers,
         title: 'List of Subscribers.',
       });
@@ -162,7 +162,7 @@ exports.postNewSubscription = async (req, res, next) => {
   if (req.session.user) {
     try {
       const newSubscriber = await Subscriptions.create(req.body);
-      res.redirect('subscribed');
+      res.redirect('subscriptions');
     } catch (err) {
       console.log(err);
       res.send('Sorry! Something went wrong.');
@@ -172,38 +172,38 @@ exports.postNewSubscription = async (req, res, next) => {
   }
 };
 
-// @description  Get request details.
-// @route        GET /callRequestDetails/:Id
+// @description  Get subscription details.
+// @route        GET /subscribedDetails/:Id
 // @access       Private
-exports.getRequest = async (req, res, next) => {
+exports.getSubscriptionDetails = async (req, res, next) => {
   if (req.session.user) {
     try {
-      // Find all the data in the  Requests collection
-      const request = await Requests.findById(req.params.id);
+      // Find all the data in the  Subscriptions collection
+      const subscribers = await Subscriptions.findById(req.params.id);
 
-      // Catches requests with same id format that does not exit.
-      if (!request) {
-        return res.status(400).send('Request not found.');
+      // Catches subscriptions with same id format that does not exit.
+      if (!subscriber) {
+        return res.status(400).send('Subscription not found.');
       }
-      res.render('callRequestDetails', {
-        request: reques,
-        title: 'Request Details.',
+      res.render('subscriptionDetails', {
+        subscribers: subscribers,
+        title: 'Subscription Details.',
       });
     } catch (err) {
-      res.status(400).send('Failed to retrive request details');
+      res.status(400).send('Failed to retrive subscription details');
     }
   } else {
     res.redirect('/');
   }
 };
 
-// @description  Update Single request Details.
-// @route        POST /callRequestDetails/:Id
+// @description  Update Single Subscription Details.
+// @route        POST /subscriptionDetails/:Id
 // @access       Private
-exports.updateRequest = async (req, res, next) => {
+exports.updateSubscription = async (req, res, next) => {
   if (req.session.user) {
     try {
-      const request = await Requests.findByIdAndUpdate(
+      const subscriber = await Subscriptions.findByIdAndUpdate(
         req.params.id,
         req.body,
         {
@@ -212,36 +212,39 @@ exports.updateRequest = async (req, res, next) => {
           runValidators: true,
         }
       );
-      if (!request) {
-        return res.status(400).send('Request not found.');
+      if (!subscriber) {
+        return res.status(400).send('Subscription not found.');
       }
-      res.redirect('/callRequests');
+      res.redirect('/subscriptions');
     } catch (err) {
-      res.status(400).send('Request Information NOT update!');
+      res.status(400).send('Subscription Information NOT update!');
     }
   } else {
     res.redirect('/');
   }
 };
 
-// @description  Delete Single Request Details.
-// @route        DELETE /callRequestDetails/:Id
+// @description  Delete Single Subscription Details.
+// @route        DELETE /subscriptionDetails/:Id
 // @access       Private
-exports.deleteRequest = async (req, res, next) => {
+exports.deleteSubscription = async (req, res, next) => {
   if (req.session.user) {
     try {
-      const requestToDel = await Requests.findByIdAndRemove(req.params.id, {
-        useFindAndModify: false,
-        new: true,
-        runValidators: true,
-      });
-      if (!requestToDel) {
-        return res.status(400).send('Request not found.');
+      const subscriptionToBeDel = await Subscriptions.findByIdAndRemove(
+        req.params.id,
+        {
+          useFindAndModify: false,
+          new: true,
+          runValidators: true,
+        }
+      );
+      if (!subscriptionToBeDel) {
+        return res.status(400).send('Subscription not found.');
       }
 
-      res.redirect('/callRequests');
+      res.redirect('/subscriptions');
     } catch (err) {
-      res.status(400).send('Request Information NOT deleted!');
+      res.status(400).send('Subscription Information NOT deleted!');
     }
   } else {
     res.redirect('/');

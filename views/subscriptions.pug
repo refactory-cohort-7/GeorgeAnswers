@@ -1,0 +1,53 @@
+//- Shows a list of subscribers for Garbage collection.
+extend generalLayout.pug
+block head
+    link(rel='stylesheet' href='/css/allTrucks.css')
+block body
+    body.subscriptionBody.grid-general.lightbg
+        include includes/navBar
+        block main
+            main
+               section#staffNavBar
+            
+                    table
+                        thead
+                            tr
+                                th S/N
+                                th dateOfSubsription 
+                                th Name of Customer
+                                th Place of Residence 
+                                th Phone Number
+                                th Service Requested
+                                th 
+                                th 
+                                th 
+                                th Update
+                                th Delete
+                        tbody
+                        
+                            if subscribers.length
+                            each subscriber in subscribers
+                                    tr
+                                        td.serialNum
+                                        td #{subscriber.customerName = `${subscriber.firstName} ${subscriber.lastName}`} 
+                                        td #{subscriber.email}
+                                        td #{subscriber.phoneNumber=`0${subscriber.phoneNumber}`}
+                                        td #{subscriber.placeOfResidence}
+                                        td #{subscriber.serviceRequested}
+                                        td #{subscriber.subPeriod}
+                                        td #{subscriber.serviceTime}
+                                        td.action 
+                                            a(href='./subscriber/' +subscriber._id)
+                                                img#update(src='/images/edit.png' alt='Update')
+
+                                        td.action 
+                                            a(href='/deleteStaff/' +subscriber._id)
+                                                img#delete(src='/images/delete.png' alt='Delete')
+                        
+                        a#goBack.button.shadow(href='#') Back
+            
+
+            block js
+            script(src='javascript/general.js')
+        include includes/footer
+        
