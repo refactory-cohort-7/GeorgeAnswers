@@ -24,8 +24,8 @@ block body
                             th Salary
                             th Allowance
                             th Past Incident
-                            th Action 1
-                            th Action 2
+                            th Update
+                            th Delete
                     tbody
                     
                         if staffs.length
@@ -40,10 +40,13 @@ block body
                                     td #{staff.salary}
                                     td #{staff.allowanceAmount}
                                     td #{staff.pastIncident}
-                                    td 
-                                        a.button(href='./staff/' +staff._id) Update
-                                    td 
-                                        a.button(href='/deleteStaff/' +staff._id) Delete
+                                    td.action 
+                                        a(href='./staff/' +staff._id)
+                                            img#update(src='/images/edit.png' alt='Update')
+
+                                    td.action 
+                                        a(href='/deleteStaff/' +staff._id)
+                                            img#delete(src='/images/delete.png' alt='Delete')
         block js
             script(src='javascript/general.js')
             script(src='javascript/allStaff.js')

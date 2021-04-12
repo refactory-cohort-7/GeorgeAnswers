@@ -320,15 +320,17 @@ header ul li a:hover,
 /* Highlights active Nav items */
 .truckBody #inventory > a,
 .staffBody #staff > a,
-.requestBody #request,
-.salesBody #sales {
+.requestBody #request > a,
+.salesBody #subscription > a {
   background-color: var(--clr-primary-100);
   color: var(--clr-primary-500);
   border-top: 3px solid var(--clr-secondary-700);
 }
 
 #staff ul,
-#inventory ul {
+#inventory ul,
+#subscriptions ul,
+#request ul {
   display: none;
   position: absolute;
   background-color: transparent;
@@ -352,7 +354,9 @@ header ul li a:hover,
   border-bottom: 2px solid var(--clr-secondary-700);
 }
 #staff:hover .sub-menu,
-#inventory:hover .sub-menu {
+#inventory:hover .sub-menu,
+#subscriptions:hover .sub-menu,
+#request:hover .sub-menu {
   display: block;
   border-top: 1rem solid transparent;
 }
@@ -447,3 +451,18 @@ footer {
 }
 
 /* All formating involving FOOTER END here*/
+
+/* Formatting for the update and delete Icons */
+#update,
+#delete {
+  width: 70%;
+}
+
+.action {
+  width: 45px;
+  padding: 5px 0;
+}
+
+.action a {
+  margin: auto;
+}

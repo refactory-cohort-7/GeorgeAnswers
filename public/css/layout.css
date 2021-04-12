@@ -3,7 +3,7 @@ main {
   height: auto;
 }
 #staffNavBar {
-  padding: 5px 10%;
+  padding: 5px 5%;
   margin-top: 20px;
 }
 #staffNavBar ul {
@@ -15,33 +15,18 @@ main {
   border: 1px solid #2bae66;
 }
 
-#staffNavBar ul li {
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  box-shadow: 0 3px 5px #2bae66;
-}
-
 #staffNavBar a {
   display: block;
-  width: auto;
-  color: #2bae66;
-  background-color: rgb(252, 246, 245);
-  padding: 10px 5px;
+  width: 50px;
+  background-color: transparent;
   text-align: center;
-  font-size: 0.9em;
-  border-left: 2px solid #2bae66;
 }
 
-/* Puts a border to the right of administrators */
-#staffNavBar #last {
-  border-right: 2px solid #2bae66;
-}
-
-#staffNavBar a:focus,
-#staffNavBar a:hover {
-  background-color: #2bae66;
-  color: rgb(252, 246, 245);
+#staffNavBar a:hover,
+#staffNavBar a:focus {
+  color: #2bae66;
+  background-color: var(--clr-primary-500);
+  box-shadow: 0 2px 5px var(--clr-primary-500);
 }
 
 table {
@@ -63,4 +48,9 @@ td {
 th {
   background-color: #2bae66;
   color: rgb(252, 246, 245);
+}
+
+#delete,
+#update {
+  width: 60%;
 }

@@ -7,12 +7,24 @@ header#header.grid-general.darkbg.shadow
             nav.grid-general
                 ul#menu-ul
                     
-                    li.navItem
-                        a#sales( href='../sales') Sales
-                        
-                    li.navItem
-                        a#request( href='../requests') Requests
+                    li#subscriptions.navItem
+                        a( href='#') Subscriptions
                         ul.sub-menu
+                            li
+                                a#newSub( href='../newSubscription') Add New Request
+                            li
+                                a#subList( href='../subscribed') List of Subscribers 
+                        
+                    li#request.navItem
+                        a( href='#') Call Requests
+                        ul.sub-menu
+                            li
+                                a#newReqItem( href='../newRequest') Add New Request
+                            li
+                                a#callReqItem( href='../callRequests') List of Requests 
+                          
+
+
                             
 
                     li#inventory.navItem
@@ -21,14 +33,14 @@ header#header.grid-general.darkbg.shadow
                             li
                                 a#truckReg( href='../newTruck') Register Truck 
                             li
-                                a#trucks( href='../allTrucks') Truck List 
+                                a#trucks( href='../allTrucks') List of Trucks
                     li#staff.navItem
                         a( href='#') Staff
                         ul.sub-menu
                             li
                                 a#staffReg( href='../newStaff') Register Employee 
                             li
-                                a#staffInfo( href='../allStaff') Staff Information 
+                                a#staffInfo( href='../allStaff') List of Staff
                             li
                                 a#staffUser( href='../signUp') Add New User
 

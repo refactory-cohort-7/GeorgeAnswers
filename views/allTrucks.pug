@@ -25,8 +25,8 @@ block body
                                 th Truck Driver
                                 th Truck Code
                                 th Truck Performance
-                                th Action 1
-                                th Action 2
+                                th Update
+                                th Delete
                         tbody
                             block content
                             if trucks.length
@@ -38,10 +38,12 @@ block body
                                     td #{truck.nameOfDriver}
                                     td #{truck.truckCode}
                                     td #{truck.amountMadeByTruck}
-                                    td 
-                                        a.button(href='./truck/' +truck._id) Update
-                                    td 
-                                        a.button(href='./delTruck/' +truck._id) Delete
+                                    td.action 
+                                        a(href='./truck/' +truck._id)
+                                            img#update(src='/images/edit.png' alt='Update')
+                                    td.action 
+                                        a(href='./delTruck/' +truck._id)
+                                            img#delete(src='/images/delete.png' alt='Delete')
 
                 block content
                 

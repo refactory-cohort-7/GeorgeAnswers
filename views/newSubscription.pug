@@ -6,7 +6,7 @@ block body
         include includes/navBar
         block main
             main
-                form#custReg(action='/requests' method="POST")
+                form#custReg(action='/NewSubscription' method="POST")
                     section.shadow#custInfo
                         h3.darkbg Customer Information
                         fieldset
@@ -138,7 +138,7 @@ block body
                             input#serviceCost(type='text' name='serviceCost')
 
 
-                    button#register(type='submit') Register
+                    button#register(type='submit') Subscribe
                     a#goBack.button.shadow(href='#') Back
             
 

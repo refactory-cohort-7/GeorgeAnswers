@@ -14,7 +14,7 @@ exports.getSignIn = (req, res) => {
 // @access       Private
 exports.postSignIn = (req, res) => {
   req.session.user = req.user;
-  res.redirect('/requests');
+  res.redirect('/sales');
 };
 
 // @description  Get Sign out In form.

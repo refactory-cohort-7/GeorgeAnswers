@@ -27,12 +27,14 @@ main > a.button {
 
 #staffNavBar a {
   padding: 5px 10px;
-  color: white;
-  background-color: #2bae66;
+  background-color: transparent;
+  border-left: none;
+  width: 50px;
 }
 
 #staffNavBar a:hover,
 #staffNavBar a:focus {
   color: #2bae66;
-  background-color: white;
+  background-color: var(--clr-primary-500);
+  box-shadow: 0 2px 5px var(--clr-primary-500);
 }
