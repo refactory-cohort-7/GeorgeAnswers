@@ -6,136 +6,120 @@ block body
         include includes/navBar
         block main
             main
-                form#custReg(action='/NewSubscription' method="POST")
-                    section.shadow#custInfo
-                        h3.darkbg Customer Information
-                        fieldset
-                            fieldset.transform
-                                legend.transform Full Name
-                                input#fName(
-                                    type='text'
-                                    name='customerName'
-                                    placeholder='Full Name'
-                                )
-                            fieldset.transform
-                                legend.transform Email
-                                input#email(
-                                    type='email'
-                                    name='email'
-                                    placeholder='Email'
-                                )
-                            fieldset.transform
-                                legend.transform Phone Number
-                                input#phone(
-                                    type='tel'
-                                    name='phoneNumber'
-                                    placeholder='Phone Number'
-                                )
-                            fieldset.transform
-                                legend.transform National ID Number
-                                input#nationalIdNumber(
-                                    type='text'
-                                    name='nationalIdNumber'
-                                    placeholder='National ID Number'
-                                ) 
-                            fieldset.transform
-                                legend.transform Place of Residence
-                                textarea#residence(
-                                    type='text'
-                                    name='placeOfResidence'
-                                    placeholder='Place of Residence'
-                                )
-                    section.shadow#reqInfo.grid-general
-                        h3.reqInfoH.darkbg Request Information       
-                        fieldset.reqInfoF.grid-general
-                            
-                            label.service Service Requested:
-                            select#service(name="serviceRequested")
-                                option(value='') Choose Service
-                                option(
-                                value="bothServices"  
-                                ) Both Services
-
-                                option(
-                                value="garbageCollection"   
-                                ) Garbage Collection 
-
-                                option(
-                                value="sewageCollection"  
-                                ) Sewage Collection 
-                            label.subPeriod Subscription Period :
-                            select#subPeriod(name="subPeriod")
-                                option(value='') Choose Sub Period
-                                option(
-                                value="6-Months"  
-                                ) 6 Months
-                                option(
-                                value="5-Months"  
-                                ) 5 Months
-                                option(
-                                value="4-Months"  
-                                ) 4 Months
-                                option(
-                                value="3-Months"  
-                                ) 3 Months
-                                option(
-                                value="2-Months"  
-                                ) 2 Months
-                                option(
-                                value="1-Month"  
-                                ) 1 Month
-                                option(
-                                value="oneTime"  
-                                ) One Time
-
-                        
-                            label.serviceTime Service Time:
-                            input#serviceTime(type='time' name='serviceTime')
+                form#subReg.shadow.whitebg(action='/NewSubscription' method="POST")
+                    h3#custInfoH.lightbg.shadow Customer Information
+                    section#custInfo.whitebg.flex-general-column.shadow
                     
-                            
-                            label.sewageTrucks Number of Sewage Trucks:
-                            select#sewageTrucks(name="numSewageTrucksRequested")
-                                option(
-                                value=0  
-                                ) 0
-                                option(
-                                value=1  
-                                ) 1 
-                                option(
-                                value=2  
-                                ) 2 
-                                option(
-                                value=3  
-                                ) 3 
-                                option(
-                                value=4  
-                                ) 4 
-                                option(
-                                value=5  
-                                ) 5
-                            label.garbageTrucks Number of Garbage Trucks:
-                            select#garbageTrucks(name="numGarbageTrucksRequested")
-                                option(
-                                value=0  
-                                ) 0  
-                                option(
-                                value=1  
-                                ) 1 
-                                option(
-                                value=2  
-                                ) 2 
-                                option(
-                                value=3  
-                                ) 3 
-                                option(
-                                value=4  
-                                ) 4 
-                                option(
-                                value=5  
-                                ) 5
-                                    
-                            label.serviceCost Service Cost:
-                            input#serviceCost(type='text' name='serviceCost')
+                        fieldset.transform
+                            legend.transform Full Name
+                            input#fName(
+                                type='text'
+                                name='customerName'
+                                placeholder='Full Name'
+                            )
+                        fieldset.transform
+                            legend.transform Email
+                            input#email(
+                                type='email'
+                                name='email'
+                                placeholder='Email'
+                            )
+                        fieldset.transform
+                            legend.transform Phone Number
+                            input#phone(
+                                type='tel'
+                                name='phoneNumber'
+                                placeholder='Phone Number'
+                            )
+                        fieldset.transform
+                            legend.transform National ID Number
+                            input#nationalIdNumber(
+                                type='text'
+                                name='nationalIdNumber'
+                                placeholder='National ID Number'
+                            ) 
+                        fieldset.transform
+                            legend.transform Place of Residence
+                            textarea#residence(
+                                type='text'
+                                name='placeOfResidence'
+                                placeholder='Place of Residence'
+                            )
+                    h3#reqInfoH.lightbg.shadow Request Information       
+                    section#reqInfo.grid-general.whitebg.shadow
+                        label.service Service Requested:
+                        select#service(name="serviceRequested")
+                            option(value='') Choose Service
+                            option(
+                            value="bothServices"  
+                            ) Both Services
+
+                            option(
+                            value="garbageCollection"   
+                            ) Garbage Collection 
+
+                            option(
+                            value="sewageCollection"  
+                            ) Sewage Collection 
+                        label.subPeriod Subscription Period :
+                        select#subPeriod(name="subPeriod")
+                            option(value='') Choose Sub Period
+                            option(
+                            value="6-Months"  
+                            ) 6 Months
+                            option(
+                            value="5-Months"  
+                            ) 5 Months
+                            option(
+                            value="4-Months"  
+                            ) 4 Months
+                            option(
+                            value="3-Months"  
+                            ) 3 Months
+                            option(
+                            value="2-Months"  
+                            ) 2 Months
+                            option(
+                            value="1-Month"  
+                            ) 1 Month
+                            option(
+                            value="oneTime"  
+                            ) One Time
+
+                    
+                        label.serviceTime(for='timeOfService') Time of Service:
+                        input#serviceTime(type='time' name='timeOfService')
+
+                        label.dateOfService(for='dateOfService') TIme of Service:
+                        input#dateOfService(type='date' name='dateOfService')
+                        
+
+                        label.numTrucks Number of Garbage Trucks:
+                        select#numTrucks(name="numTrucks")
+                            option(
+                            value=0  
+                            ) 0  
+                            option(
+                            value=1  
+                            ) 1 Truck
+                            option(
+                            value=2  
+                            ) 2 Trucks
+                            option(
+                            value=3  
+                            ) 3 Trucks
+                            option(
+                            value=4  
+                            ) 4 Trucks
+                            option(
+                            value=5  
+                            ) 5 Trucks
+                                
+                        label.serviceCost Service Cost:
+                        input#serviceCost(type='text' name='serviceCost')
+
+                        input#date(type='text' name='dateOfRequest' value='myDate')
+                        input#time(type='text' name='timeOfRequest' value='myTime')
 
 
                     button#register(type='submit') Subscribe

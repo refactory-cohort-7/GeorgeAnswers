@@ -8,8 +8,8 @@ block body
         include includes/navBar
         block main
             main
-                section#newTruckSection
-                    h2 Truck Registration
+                section#newTruckSection.whitebg
+                    h2.shadow Truck Registration
                     form#truckInfo(action='/newTruck' method='POST')
                         label.typeOfTruck(for='typeOfTruck') Type of Truck:
                         select#typeOfTruck(name='typeOfTruck')

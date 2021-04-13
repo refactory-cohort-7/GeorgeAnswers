@@ -1,58 +1,52 @@
 main {
   width: auto;
-  margin-block: 2.5rem;
-  margin-inline: 5%;
+  margin: 2.5rem 5%;
   height: auto;
 }
-#custReg {
-  height: auto;
+#subReg {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  justify-content: space-between;
-  row-gap: 2.5rem;
-  column-gap: 5%;
+  grid-template-rows: auto auto auto;
+  column-gap: 2.5%;
 }
 
-#custReg > section > fieldset {
-  border: none;
-  padding: 5%;
-  background-color: transparent;
-}
-
-#custReg > section > h3 {
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding: 5px;
-}
-
-#custInfo {
+#custInfoH {
   grid-area: 1/1/2/2;
+  text-align: center;
+  height: 50px;
+  padding: 10px;
+  z-index: 1;
+}
+#custInfo {
+  grid-area: 2/1/3/2;
+  padding: 5%;
+  margin: 5%;
+}
+
+#reqInfoH {
+  grid-area: 1/2/2/-1;
+  text-align: center;
+  height: 50px;
+  padding: 10px;
+  z-index: 1;
 }
 #reqInfo {
-  grid-area: 1/2/2/-1;
-}
-/* Request infomation h3 */
-.reqInfoH {
-  grid-area: 1/1/2/-1;
-}
-
-/* Request information fieldset */
-.reqInfoF {
-  grid-area: 2/1/-1/-1;
-  align-content: space-between;
+  grid-area: 2/2/3/-1;
+  padding: 5%;
+  margin: 5%;
 }
 
 /* Grid positioning for items within request information */
 .service {
   grid-area: 1/1/3/4;
+  padding-top: 13px;
 }
 #service {
   grid-area: 1/4/3/-1;
 }
 .subPeriod {
   grid-area: 3/1/5/4;
+  padding-top: 13px;
 }
 #subPeriod {
   grid-area: 3/4/5/-1;
@@ -60,42 +54,48 @@ main {
 
 .serviceTime {
   grid-area: 5/1/7/4;
+  padding-top: 13px;
 }
 #serviceTime {
   grid-area: 5/4/7/-1;
 }
 
-/* Number of trucks requested. */
-
-.sewageTrucks {
+.dateOfService {
   grid-area: 7/1/9/4;
+  padding-top: 13px;
 }
-#sewageTrucks {
+
+#dateOfService {
   grid-area: 7/4/9/-1;
 }
 
-.garbageTrucks {
+/* Number of trucks requested. */
+
+.numTrucks {
   grid-area: 9/1/12/4;
+  padding-top: 13px;
 }
-#garbageTrucks {
+#numTrucks {
   grid-area: 9/4/12/-1;
 }
 
 .serviceCost {
   grid-area: 12/1/-1/4;
+  padding-top: 13px;
 }
 #serviceCost {
   grid-area: 12/4/-1/-1;
 }
 
 #goBack {
-  grid-area: 2/1/-1/2;
+  grid-area: 3/1/-1/2;
   margin: 10px auto;
   text-align: center;
   padding: 5px 10px;
 }
+
 #register {
-  grid-area: 2/2/-1/-1;
+  grid-area: 3/2/-1/-1;
   margin: 10px auto;
 }
 
@@ -103,19 +103,38 @@ main {
 select {
   height: 2.5rem;
   margin-bottom: 20px;
-  border: 2px solid var(--clr-primary-500);
-  background-color: var(--clr-light-green);
+  border: 1px solid var(--clr-dark-text);
   padding: 0.65rem 1rem;
+  outline: none;
+}
+
+select:hover,
+textarea:hover,
+select:focus-within,
+textarea:focus-within {
+  border: 1px solid var(--clr-secondary-700);
 }
 
 #reqInfo input {
   width: 100%;
   height: 2.5rem;
   margin-bottom: 20px;
-  border: 2px solid var(--clr-primary-500);
-  background-color: var(--clr-light-green);
   padding: 0.65rem 1rem;
+  outline: none;
+  font-family: var(--ff-roboto);
+  border: 1px solid var(--clr-dark-text);
+}
+
+#reqInfo input:hover,
+#reqInfo input:focus-within {
+  border: 1px solid var(--clr-secondary-700);
+  background-color: var(--clr-light-green);
 }
 textarea::placeholder {
   font-family: var(--ff-roboto);
+}
+
+#date,
+#time {
+  display: none;
 }

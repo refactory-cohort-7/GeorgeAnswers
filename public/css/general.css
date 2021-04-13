@@ -9,7 +9,10 @@
   color: var(--clr-primary-500);
   background-color: var(--clr-primary-100);
 }
-
+.whitebg {
+  background-color: var(--clr-white);
+  color: var(--clr-primary-500);
+}
 .darkbga {
   background-color: var(--clr-primary-500a);
   color: var(--clr-primary-100);
@@ -20,7 +23,7 @@
 }
 
 .shadow {
-  box-shadow: 0 1px 5px var(--clr-dark-text);
+  box-shadow: 0 1px 3px var(--clr-primary-500a);
 }
 
 /* This calss centres text elements */
@@ -100,7 +103,7 @@ textarea:focus::placeholder {
 fieldset {
   background-color: #2bae6615;
   position: relative;
-  border: 2px solid var(--clr-primary-500);
+  border: 2px solid var(--clr-light-green);
 }
 
 /* Over-rides some of the above properties. */
@@ -135,10 +138,11 @@ input,
 textarea,
 select {
   width: 100%;
-
-  padding: 0 20px;
+  padding: 10px 20px;
   background-color: transparent;
+  font-family: var(--ff-roboto);
 }
+
 input {
   height: 35px;
 }
@@ -165,6 +169,7 @@ fieldset.transform textarea {
 html {
   font-size: 16px;
 }
+
 * {
   margin: 0;
   padding: 0;

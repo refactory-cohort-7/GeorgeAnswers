@@ -10,8 +10,8 @@ block body
             main
                 // EMPLOYEE UPDATE – FORM
                 form( method="POST" action="/staff/"+staff._id)
-                    section#personalInfo.grid-general
-                        h2 Personal Information
+                    section#personalInfo.grid-general.whitebg
+                        h2.shadow Personal Information
                     
                             // First name
                         fieldset.first-name
@@ -82,8 +82,8 @@ block body
                             legend Place of Residence
                             textarea#residence.roboto-text(placeholder='Place of Residence' name='placeOfResidence' value=staff.placeOfResidence )
                         
-                    section#empInfo
-                        h2 Employement Information
+                    section#empInfo.whitebg
+                        h2.shadow Employement Information
                         // Job title
                     
                         label.jobTitle(for="jobTitle") Job Title:

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const subscriptionSchema = new mongoose.Schema({
-  dateOfRequest: {
+const subscriptionsSchema = new mongoose.Schema({
+  dateOfSubscription: {
     type: 'String',
     trim: 'true',
   },
-  timeOfRequest: {
+  timeOfSubscription: {
     type: 'String',
     trim: 'true',
   },
@@ -13,10 +13,26 @@ const subscriptionSchema = new mongoose.Schema({
     trim: 'true',
     require: [true, { message: 'Please enter the customer name.' }],
   },
-  address: {
+  email: {
     type: 'String',
     trim: 'true',
-    require: [true, { message: 'Please enter the location.' }],
+  },
+  nationalIdNumber: {
+    type: 'String',
+    trim: 'True',
+  },
+  placeOfResidence: {
+    type: 'String',
+    trim: 'true',
+    require: [true, { message: 'Please enter the place of residence.' }],
+  },
+  serviceRequested: {
+    type: 'String',
+    trim: 'true',
+  },
+  subPeriod: {
+    type: 'String',
+    trim: 'true',
   },
   phoneNumber: {
     type: 'String',

@@ -1,4 +1,5 @@
 const Requests = require('../models/CallRequests');
+const Subscriptions = require('../models/Subscriptions');
 
 // @ Description Gets a list of call requests recieved.
 // @ Route GET /callRequests
@@ -160,12 +161,22 @@ exports.getNewSubscriber = (req, res, next) => {
 // @access       Private
 exports.postNewSubscription = async (req, res, next) => {
   if (req.session.user) {
-    try {
-      const newSubscriber = await Subscriptions.create(req.body);
-      res.redirect('subscriptions');
-    } catch (err) {
-      console.log(err);
-      res.send('Sorry! Something went wrong.');
+    if (req.body.subPeriod === 'oneTime') {
+      try {
+        const newRequest = await Requests.create(req.body);
+        res.redirect('callRequests');
+      } catch (err) {
+        console.log(err);
+        res.send('Sorry! Something went wrong.');
+      }
+    } else {
+      try {
+        const newSubscriber = await Subscriptions.create(req.body);
+        res.redirect('subscriptions');
+      } catch (err) {
+        console.log(err);
+        res.send('Sorry! Something went wrong.');
+      }
     }
   } else {
     res.redirect('/');

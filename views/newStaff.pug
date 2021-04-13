@@ -1,18 +1,18 @@
 extend generalLayout.pug
 block head
     
-    link(rel='stylesheet' href='/css/registration.css')
+    link(rel='stylesheet' href='/css/newStaff.css')
 block body
     body.staffBody.grid-general.lightbg
         include includes/navBar
         block main
             main
                 // ACCOUNT REGISTRATION – FORM
-                form#regNewStaff( action="/newStaff" method="POST" )
-                    section#personalInfo.grid-general
-                        h2 Personal Information
+                form#regNewStaff.whitebg.shadow( action="/newStaff" method="POST" )
+                    h2#perInfoH.shadow.lightbg Personal Information
+                    section#personalInfo.shadow.lightbg
                     
-                            // First name
+                        // First name
                         fieldset.first-name.transform
                             legend.transform First Name
                             input#first-name(
@@ -20,7 +20,7 @@ block body
                                 name="firstName"
                                 placeholder="First Name"
                                 )
-                            // Last Name
+                        // Last Name
                         fieldset.last-name.transform
                             legend.transform Last Name
                             input#last-name(
@@ -29,7 +29,7 @@ block body
                                 placeholder="Last Name"
                                 )
 
-                            // Date of birth
+                        // Date of birth
                         fieldset.dob
                             legend Date of Birth
                             input#dob.roboto-text(
@@ -78,10 +78,10 @@ block body
                             legend.transform Place of Residence
                             textarea#residence.roboto-text(placeholder='Place of Residence' name='placeOfResidence')
                         
-                    section#empInfo
-                        h2 Employement Information
+                    h2#empInfoH.shadow.lightbg Employement Information
+                    section#empInfo.shadow.lightbg
+                        
                         // Job title
-                    
                         label.jobTitle(for="jobTitle") Job Title:
                         select#jobTitle(name='jobTitle')
                             option(value='') Choose Job Title

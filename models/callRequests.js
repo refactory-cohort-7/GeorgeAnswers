@@ -8,12 +8,12 @@ const RequestsSchema = new mongoose.Schema({
     type: 'String',
     trim: 'true',
   },
-  custName: {
+  customerName: {
     type: 'string',
     trim: 'true',
     require: [true, { message: 'Please enter the customer name.' }],
   },
-  address: {
+  placeOfResidence: {
     type: 'String',
     trim: 'true',
     require: [true, { message: 'Please enter the location.' }],

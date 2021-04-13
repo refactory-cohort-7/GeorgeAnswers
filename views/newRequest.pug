@@ -8,14 +8,14 @@ block body
             main.flex-column-general.shadow
                 h3#newReqTitle.shadow Request Information
 
-                form#newReq(action='/newRequest' method="POST")
+                form#newReq.whitebg(action='/newRequest' method="POST")
                     fieldset#name.transform
                         legend.transform Full Name
-                        input#custName(type='text' name='custName' placeholder='Full Name')
+                        input#custName(type='text' name='customerName' placeholder='Full Name')
                     
                     fieldset#location.transform
                         legend.transform Location
-                        textarea#address(name='address' placeholder='Location')
+                        textarea#address(name='placeOfResidence' placeholder='Location')
                     
                     fieldset#phoneNum.transform
                         legend.transform Phone Number
@@ -23,7 +23,7 @@ block body
                     
                     label.numTrucks(for='numTrucks') Number of Trucks:
                     select#numTrucks(type='text' name='numTrucks')
-                        option(value='1' default) 1 truck
+                        option(value='1') 1 truck
                         option(value='2') 2 trucks
                         option(value='3') 3 trucks
                         option(value='4') 4 trucks

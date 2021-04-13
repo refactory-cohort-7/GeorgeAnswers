@@ -9,9 +9,9 @@ block body
         block main
             main
     
-                section#newTruckSection
+                section#newTruckSection.whitebg
             
-                    h2 Truck Registration Number #{truck.truckNumber} Details
+                    h2.shadow Truck Registration Number #{truck.truckNumber} Details
                 
                     form#truckInfo(method="POST" action='/truck/' +truck._id)
                         label.typeOfTruck(for='typeOfTruck') Type of Truck:

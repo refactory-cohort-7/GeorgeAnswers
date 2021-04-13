@@ -17,7 +17,7 @@ block body
                 a.button(href='newRequest') Add New Request
                 a#goBack.button.shadow(href='#') Back
                 section#staffNavBar
-                    table
+                    table.whitebg
                         thead
                             tr  
                                 th S/N
@@ -39,8 +39,8 @@ block body
                                     td.serialNum
                                     td #{request.dateOfRequest} 
                                     td #{request.timeOfRequest}
-                                    td #{request.custName}
-                                    td #{request.address}
+                                    td #{request.customerName}
+                                    td #{request.placeOfResidence}
                                     td #{request.phoneNumber}
                                     td #{request.numTrucks}   
                                     td #{request.dateOfService}

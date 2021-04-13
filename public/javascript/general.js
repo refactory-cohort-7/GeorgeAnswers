@@ -50,3 +50,22 @@ if (serialNum.length !== 0) {
 
   serialNumber();
 }
+
+// Creates timestamps for requests and subscriptions
+const registerRequest = document.getElementById('register');
+if (registerRequest) {
+  const timeOfOrder = () => {
+    const orderPeriod = new Date();
+    const date = orderPeriod.getDate();
+    const month = orderPeriod.getMonth();
+    const year = orderPeriod.getFullYear();
+
+    const hours = orderPeriod.getHours();
+    const minutes = orderPeriod.getMinutes();
+
+    document.getElementById('date').value = `${date}-${month}-${year}`;
+    document.getElementById('time').value = `${hours}:${minutes}`;
+  };
+
+  registerRequest.addEventListener('click', timeOfOrder);
+}
