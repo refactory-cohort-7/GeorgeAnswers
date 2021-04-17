@@ -13,17 +13,9 @@
   background-color: var(--clr-white);
   color: var(--clr-primary-500);
 }
-.darkbga {
-  background-color: var(--clr-primary-500a);
-  color: var(--clr-primary-100);
-}
-.lightbga {
-  color: var(--clr-primary-500);
-  background-color: var(--clr-primary-100a);
-}
 
 .shadow {
-  box-shadow: 0 1px 3px var(--clr-primary-500a);
+  box-shadow: inset 0 -2px 5px var(--clr-primary-500a);
 }
 
 /* This calss centres text elements */
@@ -62,7 +54,7 @@ button,
   background-color: var(--clr-primary-500);
   width: 100px;
   height: 33px;
-  color: #fcf6f5;
+  color: var(--clr-primary-100);
   font-size: 1em;
   border: 2px solid var(--clr-primary-500);
   box-shadow: 0 2px 3px var(--clr-primary-500);
@@ -88,6 +80,7 @@ a {
 ::placeholder {
   color: var(--clr-dark-text);
   opacity: 1;
+  font-size: 1rem;
 }
 
 /* Shows legend on focus.  */
@@ -101,15 +94,15 @@ textarea:focus::placeholder {
 
 /* Formats all fieldsets */
 fieldset {
-  background-color: #2bae6615;
   position: relative;
-  border: 2px solid var(--clr-light-green);
 }
 
 /* Over-rides some of the above properties. */
 fieldset .transform {
   padding: 0;
   margin-bottom: 20px;
+  border: 2px solid var(--clr-prof-sky);
+  background-color: var(--clr-prof-sky);
 }
 
 /* Removes bottom margin on last children of a fieldset */
@@ -117,20 +110,26 @@ fieldset:last-child {
   margin-bottom: 0;
 }
 
-fieldset.transform:focus-within {
+fieldset.transform:focus-within,
+fieldset.transform:hover {
   border: 2px solid var(--clr-secondary-700);
+  background-color: var(--clr-light-green);
 }
 legend.transform {
   margin: 0 10px;
   position: absolute;
   top: 2px;
   visibility: hidden;
+  font-size: 1.1rem;
 }
 
 fieldset.transform:focus-within legend {
   transform: translateY(-13px);
   visibility: visible;
-  background-image: linear-gradient(#fcf6f5 60%, #2bae6615);
+  background-image: linear-gradient(
+    var(--clr-white) 50%,
+    var(--clr-light-green)
+  );
   color: var(--clr-secondary-700);
 }
 
@@ -141,6 +140,10 @@ select {
   padding: 10px 20px;
   background-color: transparent;
   font-family: var(--ff-roboto);
+  border: 2px solid transparent;
+  padding: 5px;
+  outline: none;
+  font-size: 1rem;
 }
 
 input {
@@ -149,6 +152,14 @@ input {
 
 textarea {
   height: 100px;
+}
+
+select {
+  border: 2px solid var(--clr-primary-100);
+  background-color: var(--clr-primary-100);
+  box-shadow: inset 0 1px 3px var(--clr-primary-500a);
+  outline: none;
+  height: 40px;
 }
 label {
   color: var(--clr-dark-text);
@@ -180,6 +191,7 @@ html {
 body {
   font-family: var(--ff-roboto);
   font-size: 1rem;
+  background-color: var(--clr-white);
 }
 
 /* All formating involving HEADER START here*/
@@ -326,7 +338,7 @@ header ul li a:hover,
 .truckBody #inventory > a,
 .staffBody #staff > a,
 .requestBody #request > a,
-.salesBody #subscription > a {
+.subscriptionBody #subscriptions > a {
   background-color: var(--clr-primary-100);
   color: var(--clr-primary-500);
   border-top: 3px solid var(--clr-secondary-700);

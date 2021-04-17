@@ -28,6 +28,13 @@ const RequestsSchema = new mongoose.Schema({
     trim: 'true',
     require: true,
   },
+  assignTruck: {
+    type: 'String',
+  },
+  driverName: {
+    type: 'String',
+    trim: 'true',
+  },
   timeOfService: {
     type: 'String',
     trim: 'true',
@@ -37,6 +44,10 @@ const RequestsSchema = new mongoose.Schema({
     type: 'String',
     trim: 'true',
     require: [true, { message: 'Date of service required.' }],
+  },
+  serviceCost: {
+    type: 'Number',
+    trim: 'true',
   },
 });
 

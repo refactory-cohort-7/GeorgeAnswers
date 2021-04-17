@@ -1,26 +1,32 @@
 //- Shows a list of subscribers for Garbage collection.
 extend generalLayout.pug
 block head
+    link(
+        rel="stylesheet"
+        href="/css/layout.css"
+    )
     link(rel='stylesheet' href='/css/allTrucks.css')
 block body
-    body.subscriptionBody.grid-general.lightbg
+    body.subscriptionBody.grid-general
         include includes/navBar
         block main
             main
-               section#staffNavBar
+                a.button(href='newSubscription') Add Subscription
+                a#goBack.button.shadow(href='#') Back
+                section#staffNavBar
             
                     table.whitebg
                         thead
                             tr
                                 th S/N
-                                th dateOfSubsription 
+                                th Date
+                                th Time
                                 th Name of Customer
                                 th Place of Residence 
                                 th Phone Number
                                 th Service Requested
-                                th 
-                                th 
-                                th 
+                                th No. Trucks
+                                th Trucks Assigned
                                 th Update
                                 th Delete
                         tbody
@@ -29,22 +35,23 @@ block body
                             each subscriber in subscribers
                                     tr
                                         td.serialNum
-                                        td #{subscriber.customerName = `${subscriber.firstName} ${subscriber.lastName}`} 
-                                        td #{subscriber.email}
-                                        td #{subscriber.phoneNumber=`0${subscriber.phoneNumber}`}
+                                        td #{subscriber.dateOfRequest}
+                                        td #{subscriber.timeOfRequest}
+                                        td #{subscriber.customerName} 
                                         td #{subscriber.placeOfResidence}
+                                        td #{subscriber.phoneNumber=`0${subscriber.phoneNumber}`}
                                         td #{subscriber.serviceRequested}
-                                        td #{subscriber.subPeriod}
-                                        td #{subscriber.serviceTime}
+                                        td #{subscriber.numTrucks}
+                                        td #{subscriber.assignTruck}
                                         td.action 
-                                            a(href='./subscriber/' +subscriber._id)
+                                            a(href='./subscriptionDetails/' +subscriber._id)
                                                 img#update(src='/images/edit.png' alt='Update')
 
                                         td.action 
-                                            a(href='/deleteStaff/' +subscriber._id)
+                                            a(href='/subscriptionToBeDel/' +subscriber._id)
                                                 img#delete(src='/images/delete.png' alt='Delete')
                         
-                        a#goBack.button.shadow(href='#') Back
+                      
             
 
             block js

@@ -41,7 +41,7 @@ main {
   grid-area: 4/2/5/-1;
   height: 35px;
   border: 2px solid var(--clr-primary-500);
-  background-color: #2bae6615;
+  background-color: var(--clr-primary-500a);
 }
 .assignTruck {
   grid-area: 5/1/6/2;
@@ -51,7 +51,7 @@ main {
   grid-area: 5/2/6/-1;
   height: 35px;
   border: 2px solid var(--clr-primary-500);
-  background-color: #2bae6615;
+  background-color: var(--clr-primary-500a);
 }
 
 .timeOfService {
@@ -61,7 +61,7 @@ main {
   grid-area: 6/2/7/-1;
   height: 35px;
   border: 2px solid var(--clr-primary-500);
-  background-color: #2bae6615;
+  background-color: var(--clr-primary-500a);
 }
 .dateOfService {
   grid-area: 7/1/8/2;
@@ -70,7 +70,7 @@ main {
   grid-area: 7/2/8/-1;
   height: 35px;
   border: 2px solid var(--clr-primary-500);
-  background-color: #2bae6615;
+  background-color: var(--clr-primary-500a);
 }
 
 #goBack {

@@ -4,7 +4,7 @@ block head
         rel='stylesheet' href='/css/newTruck.css'
     )
 block body
-    body.truckBody.grid-general.lightbg
+    body.truckBody.grid-general
         include includes/navBar
         block main
             main
@@ -13,8 +13,8 @@ block body
                     form#truckInfo(action='/newTruck' method='POST')
                         label.typeOfTruck(for='typeOfTruck') Type of Truck:
                         select#typeOfTruck(name='typeOfTruck')
-                            option(value='sewageTruck') Sewage Truck
-                            option(value='garbageTruck') Garbage Truck
+                            option(value='Sewage Truck') Sewage Truck
+                            option(value='Garbage Truck') Garbage Truck
 
                         label.truckNumber(for='truckNumber') Truck Registration Number:
                         input#truckNumber(name='truckNumber' placeholder='Number Plate')
@@ -26,9 +26,10 @@ block body
 
                         label.driver(for='driver') Assign Driver:
                         select#driver(name='nameOfDriver')
-                            option(value='nameOfDriver1') Name of Driver1 
-                            option(value='nameOfDriver2') Name of Driver2 
-                            option(value='nameOfDriver3') Name of Driver3
+                            if staff.length
+                            each driver in staff
+                                option(value =`${driver.lastName} ${driver.firstName}`) #{`${driver.lastName} ${driver.firstName}`}
+        
 
                         a#cancel-reg(href='./requests') Cancel
                         button#register(type='submit') Register

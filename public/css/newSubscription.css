@@ -79,11 +79,11 @@ main {
   grid-area: 9/4/12/-1;
 }
 
-.serviceCost {
+.assignTruck {
   grid-area: 12/1/-1/4;
   padding-top: 13px;
 }
-#serviceCost {
+#assignTruck {
   grid-area: 12/4/-1/-1;
 }
 
@@ -103,8 +103,6 @@ main {
 select {
   height: 2.5rem;
   margin-bottom: 20px;
-  border: 1px solid var(--clr-dark-text);
-  padding: 0.65rem 1rem;
   outline: none;
 }
 
@@ -112,7 +110,8 @@ select:hover,
 textarea:hover,
 select:focus-within,
 textarea:focus-within {
-  border: 1px solid var(--clr-secondary-700);
+  border: 2px solid var(--clr-secondary-700);
+  background-color: var(--clr-light-green);
 }
 
 #reqInfo input {
@@ -122,12 +121,12 @@ textarea:focus-within {
   padding: 0.65rem 1rem;
   outline: none;
   font-family: var(--ff-roboto);
-  border: 1px solid var(--clr-dark-text);
+  border: 2px solid var(--clr-light-green);
 }
 
 #reqInfo input:hover,
 #reqInfo input:focus-within {
-  border: 1px solid var(--clr-secondary-700);
+  border: 2px solid var(--clr-secondary-700);
   background-color: var(--clr-light-green);
 }
 textarea::placeholder {

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const subscriptionsSchema = new mongoose.Schema({
-  dateOfSubscription: {
+  dateOfRequest: {
     type: 'String',
     trim: 'true',
   },
-  timeOfSubscription: {
+  timeOfRequest: {
     type: 'String',
     trim: 'true',
   },
@@ -44,6 +44,13 @@ const subscriptionsSchema = new mongoose.Schema({
     trim: 'true',
     require: true,
   },
+  assignTruck: {
+    type: 'String',
+  },
+  driverName: {
+    type: 'String',
+    trim: 'true',
+  },
   timeOfService: {
     type: 'String',
     trim: 'true',
@@ -53,6 +60,10 @@ const subscriptionsSchema = new mongoose.Schema({
     type: 'String',
     trim: 'true',
     require: [true, { message: 'Date of service required.' }],
+  },
+  serviceCost: {
+    type: 'Number',
+    trim: 'true',
   },
 });
 

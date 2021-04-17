@@ -2,13 +2,13 @@ extend generalLayout.pug
 block head
     link(rel='stylesheet' href='/css/newRequest.css')
 block body
-    body.requestBody.grid-general.lightbg
+    body.requestBody.grid-general
         include includes/navBar
         block main
-            main.flex-column-general.shadow
-                h3#newReqTitle.shadow Request Information
+            main.flex-column-general.whitebg
+                h3#newReqTitle.shadow.whitebg Request Information
 
-                form#newReq.whitebg(action='/newRequest' method="POST")
+                form#newReq.lightbg.shadow(action='/newRequest' method="POST")
                     fieldset#name.transform
                         legend.transform Full Name
                         input#custName(type='text' name='customerName' placeholder='Full Name')
@@ -29,10 +29,17 @@ block body
                         option(value='4') 4 trucks
                         option(value='5') 5 trucks
 
-                    label.dateOfService(for='dateOfService') TIme of Service:
+                    label.assignTruck Assign Truck:
+                    select#assignTruck(name='assignTruck')
+                        option Choose Truck
+                        if trucks.length
+                        each truck in trucks
+                            option(value=`${truck.truckNumber} Driver: ${truck.nameOfDriver}`) #{`${truck.truckNumber} - ${truck.nameOfDriver}`}
+
+                    label.dateOfService(for='dateOfService') Date of Service:
                     input#dateOfService(type='date' name='dateOfService')
 
-                    label.timeOfService(for='timeOfService') TIme of Service:
+                    label.timeOfService(for='timeOfService') Time of Service:
                     input#timeOfService(type='time' name='timeOfService')
 
                     input#date(type='text' name='dateOfRequest' value='myDate')
@@ -44,5 +51,5 @@ block body
 
             block js
                 script(src='javascript/general.js')
-                script(src='javascript/newRequest.js')
+                //- script(src='javascript/newRequest.js')
         include includes/footer

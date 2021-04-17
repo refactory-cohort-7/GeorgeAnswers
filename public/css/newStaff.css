@@ -35,7 +35,6 @@ legend {
 #salary,
 #allowanceAmount,
 select {
-  background-color: #2bae6615;
   border: 2px solid var(--clr-light-green);
   margin-bottom: 20px;
   padding: 5px 15px;

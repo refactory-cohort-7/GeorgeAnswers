@@ -2,7 +2,7 @@ extend generalLayout.pug
 block head
     link(rel='stylesheet' href='/css/newSubscription.css')
 block body
-    body.subscriptionBody.grid-general.lightbg
+    body.subscriptionBody.grid-general
         include includes/navBar
         block main
             main
@@ -51,15 +51,15 @@ block body
                         select#service(name="serviceRequested")
                             option(value='') Choose Service
                             option(
-                            value="bothServices"  
+                            value="Both Services"  
                             ) Both Services
 
                             option(
-                            value="garbageCollection"   
+                            value="Garbage Collection"   
                             ) Garbage Collection 
 
                             option(
-                            value="sewageCollection"  
+                            value="Sewage Collection"  
                             ) Sewage Collection 
                         label.subPeriod Subscription Period :
                         select#subPeriod(name="subPeriod")
@@ -94,7 +94,7 @@ block body
                         input#dateOfService(type='date' name='dateOfService')
                         
 
-                        label.numTrucks Number of Garbage Trucks:
+                        label.numTrucks Number of Trucks:
                         select#numTrucks(name="numTrucks")
                             option(
                             value=0  
@@ -115,8 +115,12 @@ block body
                             value=5  
                             ) 5 Trucks
                                 
-                        label.serviceCost Service Cost:
-                        input#serviceCost(type='text' name='serviceCost')
+                        label.assignTruck Assign Truck:
+                        select#assignTruck(name='assignTruck')
+                            option Choose Truck
+                            if trucks.length
+                            each truck in trucks
+                                option(value=`${truck.truckNumber} Driver: ${truck.nameOfDriver}`) #{`${truck.truckNumber} - ${truck.nameOfDriver}`}
 
                         input#date(type='text' name='dateOfRequest' value='myDate')
                         input#time(type='text' name='timeOfRequest' value='myTime')

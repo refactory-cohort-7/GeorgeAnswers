@@ -1,4 +1,5 @@
 const AllTrucks = require('../models/AllTrucks');
+const AllStaff = require('../models/AllStaff');
 
 // @description  Get all truck information
 // @route        GET /alltrucks
@@ -8,6 +9,7 @@ exports.getAllTrucks = async (req, res, next) => {
     try {
       // Find all the data in the  AllTrucks collection
       const trucks = await AllTrucks.find();
+      console.log(trucks);
       res.render('allTrucks', {
         trucks: trucks,
         title: "All Trucks' Details",
@@ -23,9 +25,18 @@ exports.getAllTrucks = async (req, res, next) => {
 // @description  Get form for truck registration.
 // @route        GET /newTruck
 // @access       Private
-exports.getNewTruck = (req, res, next) => {
+exports.getNewTruck = async (req, res, next) => {
   if (req.session.user) {
-    res.render('newTruck', { title: 'New Truck Registration' });
+    try {
+      const driversNames = await AllStaff.find({ jobTitle: 'truck-driver' });
+      console.log(driversNames);
+      res.render('newTruck', {
+        staff: driversNames,
+        title: 'New Truck Registration',
+      });
+    } catch (err) {
+      res.status(400).send('Failed to retrive details');
+    }
   } else {
     res.redirect('/');
   }

@@ -1,3 +1,4 @@
+const AllTrucks = require('../models/AllTrucks');
 const Requests = require('../models/CallRequests');
 const Subscriptions = require('../models/Subscriptions');
 
@@ -24,9 +25,10 @@ exports.getAllRequests = async (req, res, next) => {
 // @description  Get form for adding new requests.
 // @route        GET /newRequest
 // @access       Private
-exports.getNewRequest = (req, res, next) => {
+exports.getNewRequest = async (req, res, next) => {
   if (req.session.user) {
-    res.render('newRequest', { title: 'Add new request.' });
+    const trucks = await AllTrucks.find({ typeOfTruck: 'Sewage Truck' });
+    res.render('newRequest', { trucks: trucks, title: 'Add new request.' });
   } else {
     res.redirect('/');
   }
@@ -148,9 +150,19 @@ exports.getAllSubscriptions = async (req, res, next) => {
 // @description  Get form for adding new subscriber.
 // @route        GET /newSubscription
 // @access       Private
-exports.getNewSubscriber = (req, res, next) => {
+exports.getNewSubscriber = async (req, res, next) => {
   if (req.session.user) {
-    res.render('newSubscription', { title: 'Add new Subscriber.' });
+    try {
+      const garbageTrucks = await AllTrucks.find({
+        typeOfTruck: 'Garbage Truck',
+      });
+      res.render('newSubscription', {
+        trucks: garbageTrucks,
+        title: 'New Subscription',
+      });
+    } catch (err) {
+      res.status(400).send('Failed to retrive list of subscribers.');
+    }
   } else {
     res.redirect('/');
   }
@@ -166,7 +178,6 @@ exports.postNewSubscription = async (req, res, next) => {
         const newRequest = await Requests.create(req.body);
         res.redirect('callRequests');
       } catch (err) {
-        console.log(err);
         res.send('Sorry! Something went wrong.');
       }
     } else {

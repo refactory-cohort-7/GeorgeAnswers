@@ -3,13 +3,13 @@ block head
     
     link(rel='stylesheet' href='/css/newStaff.css')
 block body
-    body.staffBody.grid-general.lightbg
+    body.staffBody.grid-general
         include includes/navBar
         block main
             main
                 // ACCOUNT REGISTRATION – FORM
-                form#regNewStaff.whitebg.shadow( action="/newStaff" method="POST" )
-                    h2#perInfoH.shadow.lightbg Personal Information
+                form#regNewStaff.shadow.whitebg( action="/newStaff" method="POST" )
+                    h2#perInfoH.shadow.whitebg Personal Information
                     section#personalInfo.shadow.lightbg
                     
                         // First name
@@ -78,7 +78,7 @@ block body
                             legend.transform Place of Residence
                             textarea#residence.roboto-text(placeholder='Place of Residence' name='placeOfResidence')
                         
-                    h2#empInfoH.shadow.lightbg Employement Information
+                    h2#empInfoH.shadow.whitebg Employement Information
                     section#empInfo.shadow.lightbg
                         
                         // Job title

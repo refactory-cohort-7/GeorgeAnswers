@@ -1,0 +1,53 @@
+extend generalLayOut.pug
+block head
+    link(rel='stylesheet' href='/css/callRequestDetails.css')
+block body
+    body.requestBody.grid-general
+        include includes/navBar
+        block main
+            main.flex-column-general.whitebg
+                h3#newReqTitle.shadow.whitebg Request Information
+
+                form#newReq.lightbg.shadow(action='/newRequest' method="POST")
+                    input#date(type='text' name='dateOfRequest' value=request.dateOfRequest)
+                    input#time(type='text' name='timeOfRequest' value=request.dateOfRequest)
+                    
+                    fieldset#name.transform
+                        legend.transform Full Name
+                        input#custName(type='text' name='customerName' value=request.customerName)
+                    
+                    fieldset#location.transform
+                        legend.transform Location
+                        textarea#address(name='placeOfResidence' value=request.placeOfResidence)
+                    
+                    fieldset#phoneNum.transform
+                        legend.transform Phone Number
+                        input#phoneNumber(type='tel' name='phoneNumber' value=request.phoneNumber)
+                    
+                    label.numTrucks(for='numTrucks') Number of Trucks:
+                    select#numTrucks(type='text' name='numTrucks')
+                        option(value='1') 1 truck
+                        option(value='2') 2 trucks
+                        option(value='3') 3 trucks
+                        option(value='4') 4 trucks
+                        option(value='5') 5 trucks
+
+                    label.assignTruck Assign Truck:
+                    select#assignTruck(name='assignTruck')
+                        option 
+
+                    label.dateOfService(for='dateOfService') Date of Service:
+                    input#dateOfService(type='date' name='dateOfService')
+
+                    label.timeOfService(for='timeOfService') Time of Service:
+                    input#timeOfService(type='time' name='timeOfService')
+
+
+                    button#register(type='submit') Update
+                    a#cancel-reg(href="/callRequests") Cancel
+            
+
+            block js
+                script(src='javascript/general.js')
+                //- script(src='javascript/newRequest.js')
+        include includes/footer
