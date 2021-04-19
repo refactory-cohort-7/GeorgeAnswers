@@ -28,22 +28,18 @@ html(lang = 'en')
             p#logo.lobster-text
                 span#comp-name Stay Clean
                 span#truck
-        main.grid-general.lightbg.shadow
+        main.grid-general.shadow.whitebg
             h3 Waste disposal for all time freshness.
-            form.flex-general-column(action="/" method="POST")
+            form.whitebg(action="/" method="POST")
 
-                fieldset.user-name.spaceMargin.transform
-                    legend.transform User Name
-                    input#user-name(
+                Label.userName(for='userName') User Name:
+                input#userName(
                         type='text'
                         name='username'
-                        placeholder = 'User Name'
                         )
-                fieldset.password.spaceMargin.transform
-                    legend.transform Password
-                    input#password(
+                Label.password(for='password') Password:
+                input#password(
                         type='password'
                         name='password'
-                        placeholder='Password'
                     )
-                button#login-btn.spaceMargin.shadow-grey(type="submit") Sign In
+                button#login-btn.spaceMargin.shadow(type="submit") Sign In

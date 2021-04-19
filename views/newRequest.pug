@@ -5,21 +5,18 @@ block body
     body.requestBody.grid-general
         include includes/navBar
         block main
-            main.flex-column-general.whitebg
-                h3#newReqTitle.shadow.whitebg Request Information
+            main.flex-column-general.lightbg.shadow
+                h3#newReqTitle.shadow.lightbg Request Information
 
-                form#newReq.lightbg.shadow(action='/newRequest' method="POST")
-                    fieldset#name.transform
-                        legend.transform Full Name
-                        input#custName(type='text' name='customerName' placeholder='Full Name')
+                form#newReq(action='/newRequest' method="POST")
+                    label.custName(for='custName') Full Name
+                    input#custName(type='text' name='customerName')
                     
-                    fieldset#location.transform
-                        legend.transform Location
-                        textarea#address(name='placeOfResidence' placeholder='Location')
+                    label.address(for='address') Location
+                    textarea#address(name='placeOfResidence' )
                     
-                    fieldset#phoneNum.transform
-                        legend.transform Phone Number
-                        input#phoneNumber(type='tel' name='phoneNumber' placeholder='Phone Number')
+                    label.phoneNumber(for='phoneNumber') Phone Number
+                    input#phoneNumber(type='tel' name='phoneNumber' )
                     
                     label.numTrucks(for='numTrucks') Number of Trucks:
                     select#numTrucks(type='text' name='numTrucks')

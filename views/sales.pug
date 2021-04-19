@@ -1,13 +1,147 @@
 extend generalLayOut.pug
 block head
-    link(rel='stylesheet' href='/css/staff.css')
+    link(rel='stylesheet' href='/css/sales.css')
 block body
     body.salesBody.grid-general
         include includes/navBar
         block main
             main
+                section.sideBar.darkbg
+                    ul#sideMenu.flex-general-column
+                        ll
+                            a(href='./newSubscription') New Subscription
+                        ll
+                            a(href='./newRequest') New Request
+                        ll
+                            a(href='./newStaff') New Employee
+                        ll
+                            a(href='./newTruck') New Truck
+                        
+                section.mainContent
+                    div.week
+                        h2.weekH This week's Sales
+                        div.table
+                            h4.cashMade Money Made
+                            table
+                                thead
+                                    tr
+                                        th Per Service
+                                        th Total Sales
+                                tbody
+                                    tr
+                                        tr
+                                            td Sewage Collection: Shs
+
+                                            td(rowspan='2') totals
+                                        tr
+                                            td Garbage Collection: Shs
+                        div.reqTable
+                            h3.ReqRec Requests Recieved
+                            h4.serviceH Sewage Collection
+                            table
+                                thead
+                                    tr
+                                        th Day
+                                        th Mon
+                                        th Tue
+                                        th Wed
+                                        th Thu
+                                        th Fri
+                                        th Sat
+                                        th Total
+                                tbody
+                                    tr
+                                        td Requests
+                                        td 1
+                                        td 2
+                                        td 3
+                                        td 4
+                                        td 5
+                                        td 6
+                                        td 7
+                                       
+
+                            h4.serviceH Garbage Collection
+                            table
+                                thead
+                                    tr
+                                        th Day
+                                        th Mon
+                                        th Tue
+                                        th Wed
+                                        th Thu
+                                        th Fri
+                                        th Sat
+                                       
+                                        th Total
+                                tbody
+                                    tr
+                                        td Requests
+                                        td 1
+                                        td 2
+                                        td 3
+                                        td 4
+                                        td 5
+                                        td 6
+                                        td 7
+                                      
+                    div.month
+                        h2.monthH This Month's Sales
+                        div.table
+                            h4.cashMade Money Made
+                            table
+                                thead
+                                    tr
+                                        th Per Service
+                                        th Total Sales
+                                tbody
+                                    tr
+                                        td Sewage Collection: Shs
+                                        td(rowspan='2') totals
+                                    tr
+                                        td Garbage Collection: Shs
+                        div.reqTable
+                            h3.ReqRec Requests Recieved
+                                h4.serviceH Sewage Collection
+                                table
+                                    thead
+                                        tr
+                                            th Week
+                                            th 1
+                                            th 2
+                                            th 3
+                                            th 4
+                                            th Total
+                                    tbody
+                                        tr
+                                            td Requests
+                                            td 1
+                                            td 2
+                                            td 3
+                                            td 4
+                                            td 5
+
+                            h4.serviceH Garbage Collection
+                            table
+                                thead
+                                    tr
+                                        th Week
+                                        th 1
+                                        th 2
+                                        th 3
+                                        th 4
+                                        th Total
+                                tbody
+                                    tr
+                                        td Requests
+                                        td 1
+                                        td 2
+                                        td 3
+                                        td 4
+                                        td 5
+
                 
-                a#goBack.button.shadow(href='#') Back
+               
         block js
             script(src='javascript/general.js')
         include includes/footer

@@ -6,34 +6,52 @@ main {
   width: 40%;
   margin: 20px auto;
 }
+#signUpH {
+  height: 50px;
+  padding: 12px;
+  text-align: center;
+}
 
 form#signUp {
-  border: 2px solid var(--clr-primary-500);
   padding: 7%;
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(5, auto);
+  row-gap: 20px;
 }
 
-.user-name {
-  grid-area: 1/1/2/-1;
+.userName {
+  grid-area: 1/1/2/2;
+}
+
+#userName {
+  grid-area: 1/2/2/-1;
 }
 
 .password {
-  grid-area: 2/1/3/-1;
+  grid-area: 2/1/3/2;
 }
 
-.confirm-password {
-  grid-area: 3/1/4/-1;
+#password {
+  grid-area: 2/2/3/-1;
 }
+
+.confirmPassword {
+  grid-area: 3/1/4/2;
+}
+
+#confirmPassword {
+  grid-area: 3/2/4/-1;
+}
+
 #login-btn {
-  grid-area: 4/1/-1/3;
+  grid-area: 5/1/-1/3;
   margin: auto;
   justify-self: center;
 }
 
 #goBack {
-  grid-area: 4/3/-1/-1;
+  grid-area: 5/3/-1/-1;
   align-self: center;
   justify-self: center;
   text-align: center;
@@ -43,26 +61,6 @@ form#signUp {
 /* Margin spacing between inputs */
 .spaceMargin {
   margin-bottom: 20px;
-}
-
-input {
-  height: 2.5rem;
-  width: 100%;
-  border: none;
-  outline: none;
-  color: var(--clr-dark-text);
-  padding: 0 15px;
-}
-legend {
-  color: var(--clr-secondary-700);
-  margin: 0 15px;
-}
-fieldset.transform:focus-within legend {
-  background-image: linear-gradient(
-    rgba(216, 216, 216, 0.871),
-    #d8d8d8,
-    rgba(255, 255, 255, 0.6)
-  );
 }
 
 /* MAIN FORMATING END */

@@ -10,7 +10,10 @@ block body
         include includes/navBar
     block main
         main
+            a.button(href='newTruck') Add New Truck
+            a#goBack.button.shadow(href='#') Back
             section#staffNavBar
+
             
                 table.whitebg
                     thead
@@ -26,7 +29,7 @@ block body
                             th Past Incident
                             th Update
                             th Delete
-                    tbody
+                    tbody.serialAnchor
                     
                         if staffs.length
                         each staff in staffs

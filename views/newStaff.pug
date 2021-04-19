@@ -9,76 +9,57 @@ block body
             main
                 // ACCOUNT REGISTRATION – FORM
                 form#regNewStaff.shadow.whitebg( action="/newStaff" method="POST" )
-                    h2#perInfoH.shadow.whitebg Personal Information
+                    h2#perInfoH.shadow.lightbg Personal Information
                     section#personalInfo.shadow.lightbg
                     
                         // First name
-                        fieldset.first-name.transform
-                            legend.transform First Name
-                            input#first-name(
+                        label.firstName(for='firstName') First Name
+                        input#firstName(
                                 type="text"
                                 name="firstName"
-                                placeholder="First Name"
+                                
                                 )
+
                         // Last Name
-                        fieldset.last-name.transform
-                            legend.transform Last Name
-                            input#last-name(
+                        label.lastName(for='lastName') Last Name
+                        input#lastName(
                                 type="text"
                                 name="lastName"
-                                placeholder="Last Name"
+                               
                                 )
 
                         // Date of birth
-                        fieldset.dob
-                            legend Date of Birth
-                            input#dob.roboto-text(
+                        label.dob(for='dob') Date of Birth
+                        input#dob.roboto-text(
                                 type='date'
                                 name='dateOfBirth'
                             )
                             
                         // Gender
-                        fieldset#gender
-                            legend Gender
-                            input(
-                                type='radio' 
-                                id='gender-male'
-                                name='gender'
-                                value='male'
-                            )
-                            label.gender-male(for='gender-male') Male
-                            input(
-                                type='radio' 
-                                id='gender-female'
-                                name='gender'
-                                value='female'
-                            )
-                            label.gender-female(for='gender-female') Female
-
+                        label.gender(for='gender') Gender:
+                        select#gender(name='gender')
+                            option(value='Male') Male
+                            option(value='Female') Female
+                        
                         // National ID Number
-                        fieldset.nin.transform
-                            legend.transform Natioanl Id Number
-                            input#nin(
+                        label.nin(for='nin') Natioanl Id Number
+                        input#nin(
                                 type='text'
                                 name='nationalIdNumber'
-                                placeholder='National ID Number'
                             )
 
                         // phone number
-                        fieldset.contact.transform
-                            legend.transform Phone Number
-                            input#contact(
+                        label.contact(for="contact") Phone Number
+                        input#contact(
                                 type='phone'
                                 name='phoneNumber'
-                                placeholder='Phone Number'
                             )
 
                         // Place of residence
-                        fieldset.residence.transform
-                            legend.transform Place of Residence
-                            textarea#residence.roboto-text(placeholder='Place of Residence' name='placeOfResidence')
+                        label.residence(for='residence') Place of Residence
+                        textarea#residence.roboto-text
                         
-                    h2#empInfoH.shadow.whitebg Employement Information
+                    h2#empInfoH.shadow.lightbg Employement Information
                     section#empInfo.shadow.lightbg
                         
                         // Job title
@@ -91,12 +72,11 @@ block body
                             option(value='truck-driver') Truck Driver
                             option(value='truck-conductor') Truck Conductor
                         // Driving License
-                        fieldset.driv-lis.transform
-                            legend.transform Driver's License Number
-                            input#driv-lis(
+                        label.drivLis(for='drivLis') Driver's License Number
+                        input#drivLis(
                                 type='text'
                                 name='driversLisenceNumber'
-                                placeholder='Driver\'s License Number'
+                               
                             )
                         // Salary Amount
                         label.salary Salary:
@@ -123,7 +103,7 @@ block body
                             option(value='fuel-theft') Fuel theft
                             option(value='others') Others
                     button#register(type='submit') Register
-                    a#cancel-reg(href="/welcome") Cancel
+                    a#goBack.button.shadow(href='#') Back
             block js
                 script(src='javascript/general.js')
                 script(src='/javascript/registration.js')

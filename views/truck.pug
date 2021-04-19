@@ -9,9 +9,9 @@ block body
         block main
             main
     
-                section#newTruckSection.whitebg
+                section#newTruckSection.whitebg.shadow
             
-                    h2.shadow Truck Registration Number #{truck.truckNumber} Details
+                    h2.shadow.lightbg Truck Registration Number #{truck.truckNumber} Details
                 
                     form#truckInfo(method="POST" action='/truck/' +truck._id)
                         label.typeOfTruck(for='typeOfTruck') Type of Truck:
@@ -27,13 +27,15 @@ block body
 
                         a#generate(href='#') Generate
 
-                        label.driver(for='driver') Assign Driver:
+                        label.driver(for='driver') Re-Assign Driver:
                         select#driver(name='nameOfDriver') #{`${truck.typeOfTruck}`}
-                            option(value='nameOfDriver1'  selected = truck.nameOfDriver === "nameOfDriver1") Name of Driver1 
-                            option(value='nameOfDriver2'  selected = truck.nameOfDriver === "nameOfDriver2") Name of Driver2 
-                            option(value='nameOfDriver3'  selected = truck.nameOfDriver === "nameOfDriver3") Name of Driver3
+                            option Choose Driver 
+                            if cars.length
+                            each car in cars
+                                option(value=`${car.nameOfDriver}`  selected = `${car.nameOfDriver}` ===`${car.nameOfDriver}`) #{`${car.nameOfDriver}`}
+            
 
-                        a#cancel-reg(href='/allTrucks') Cancel
+                        a#goBack.button.shadow(href='#') Cancel
                         button#register(type='submit') Update
 
             block js

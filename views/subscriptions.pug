@@ -13,7 +13,7 @@ block body
             main
                 a.button(href='newSubscription') Add Subscription
                 a#goBack.button.shadow(href='#') Back
-                section#staffNavBar
+                section#staffNavBar.lightbg
             
                     table.whitebg
                         thead
@@ -29,7 +29,7 @@ block body
                                 th Trucks Assigned
                                 th Update
                                 th Delete
-                        tbody
+                        tbody.serialAnchor
                         
                             if subscribers.length
                             each subscriber in subscribers

@@ -7,39 +7,6 @@ form#regNewStaff {
   grid-template-rows: auto auto auto;
   row-gap: 20px;
 }
-input,
-textarea {
-  outline: none;
-  border: transparent;
-  width: 100%;
-  padding: 5px 15px;
-}
-input[type='radio'] {
-  height: 10px;
-  align-self: center;
-}
-
-fieldset {
-  margin-bottom: 20px;
-}
-
-textarea {
-  height: 80px;
-}
-
-legend {
-  margin: 0 15px;
-}
-
-#typeOfAllowance,
-#salary,
-#allowanceAmount,
-select {
-  border: 2px solid var(--clr-light-green);
-  margin-bottom: 20px;
-  padding: 5px 15px;
-  height: 40px;
-}
 
 /* All Personal Information formating */
 #perInfoH {
@@ -52,55 +19,59 @@ select {
   padding: 5%;
   margin: 2% 2.5% 2% 5%;
   display: grid;
-  grid-template-columns: repeat(12, auto);
-  grid-template-rows: repeat(8, auto);
+  grid-template-columns: repeat(6, auto);
+  grid-template-rows: repeat(7, auto);
+  row-gap: 10px;
 }
 
-.first-name {
-  grid-area: 1/1/2/7;
-  margin-right: 5%;
+.firstName {
+  grid-area: 1/1/2/3;
+}
+#firstName {
+  grid-area: 1/3/2/-1;
 }
 
-.last-name {
-  grid-area: 1/7/2/-1;
+.lastName {
+  grid-area: 2/1/3/3;
+}
+#lastName {
+  grid-area: 2/3/3/-1;
 }
 .dob {
-  grid-area: 2/1/3/-1;
+  grid-area: 3/1/4/3;
 }
 #dob {
-  height: 28px;
+  grid-area: 3/3/4/-1;
+}
+
+.gender {
+  grid-area: 4/1/5/3;
 }
 
 #gender {
-  grid-area: 3/1/4/-1;
-  display: grid;
-  grid-template-columns: repeat(6, auto);
-  grid-template-rows: auto;
-  padding: 5px;
-}
-#gender-male {
-  grid-area: 1/1/2/2;
-}
-.gender-male {
-  grid-area: 1/2/2/4;
-}
-#gender-female {
-  grid-area: 1/4/2/5;
-}
-.gender-female {
-  grid-area: 1/5/2/7;
+  grid-area: 4/3/5/-1;
 }
 
 .nin {
-  grid-area: 4/1/5/-1;
+  grid-area: 5/1/6/3;
+}
+#nin {
+  grid-area: 5/3/6/-1;
 }
 
 .contact {
-  grid-area: 5/1/6/-1;
+  grid-area: 6/1/7/3;
+}
+#contact {
+  grid-area: 6/3/7/-1;
 }
 
 .residence {
-  grid-area: 6/1/9/-1;
+  grid-area: 7/1/8/3;
+}
+
+#residence {
+  grid-area: 7/3/8/-1;
 }
 
 /* All employement information formating */
@@ -116,6 +87,7 @@ select {
   grid-template-rows: repeat(6, auto);
   padding: 5%;
   margin: 2% 5% 2% 2.5%;
+  row-gap: 10px;
 }
 
 /* This affects 2 headers in the form. */
@@ -129,8 +101,11 @@ select {
 #jobTitle {
   grid-area: 1/5/2/-1;
 }
-.driv-lis {
-  grid-area: 2/1/3/-1;
+.drivLis {
+  grid-area: 2/1/3/5;
+}
+#drivLis {
+  grid-area: 2/5/3/-1;
 }
 .salary {
   grid-area: 3/1/4/5;
@@ -157,16 +132,8 @@ select {
   grid-area: 6/5/7/-1;
 }
 
-.jobTitle,
-.salary,
-.typeOfAllowance,
-.allowanceAmount,
-.pastIncidence {
-  margin-top: 11px;
-}
-
 /* Cancel registration button */
-#cancel-reg {
+#goBack {
   grid-area: 3/1/-1/2;
   justify-self: center;
   text-align: center;

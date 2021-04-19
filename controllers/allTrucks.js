@@ -9,7 +9,6 @@ exports.getAllTrucks = async (req, res, next) => {
     try {
       // Find all the data in the  AllTrucks collection
       const trucks = await AllTrucks.find();
-      console.log(trucks);
       res.render('allTrucks', {
         trucks: trucks,
         title: "All Trucks' Details",
@@ -29,7 +28,6 @@ exports.getNewTruck = async (req, res, next) => {
   if (req.session.user) {
     try {
       const driversNames = await AllStaff.find({ jobTitle: 'truck-driver' });
-      console.log(driversNames);
       res.render('newTruck', {
         staff: driversNames,
         title: 'New Truck Registration',
@@ -67,6 +65,7 @@ exports.getTruck = async (req, res, next) => {
     try {
       // Find all the data in the  AllTrucks collection
       const truck = await AllTrucks.findById(req.params.id);
+      const cars = await AllTrucks.find();
 
       // Catches requests with same id format that does not exit.
       if (!truck) {
@@ -74,6 +73,7 @@ exports.getTruck = async (req, res, next) => {
       }
       res.render('truck', {
         truck: truck,
+        cars: cars,
         title: 'Truck Details',
       });
     } catch (err) {

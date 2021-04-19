@@ -21,6 +21,40 @@ main {
   grid-area: 2/1/3/2;
   padding: 5%;
   margin: 5%;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(5, auto);
+  row-gap: 20px;
+}
+.fName {
+  grid-area: 1/1/2/2;
+}
+#fName {
+  grid-area: 1/2/2/-1;
+}
+.email {
+  grid-area: 2/1/3/2;
+}
+#email {
+  grid-area: 2/2/3/-1;
+}
+.phone {
+  grid-area: 3/1/4/2;
+}
+#phone {
+  grid-area: 3/2/4/-1;
+}
+.nationalIdNumber {
+  grid-area: 4/1/5/2;
+}
+#nationalIdNumber {
+  grid-area: 4/2/5/-1;
+}
+.residence {
+  grid-area: 5/1/6/2;
+}
+#residence {
+  grid-area: 5/2/6/-1;
 }
 
 #reqInfoH {
@@ -34,19 +68,18 @@ main {
   grid-area: 2/2/3/-1;
   padding: 5%;
   margin: 5%;
+  row-gap: 10px;
 }
 
 /* Grid positioning for items within request information */
 .service {
   grid-area: 1/1/3/4;
-  padding-top: 13px;
 }
 #service {
   grid-area: 1/4/3/-1;
 }
 .subPeriod {
   grid-area: 3/1/5/4;
-  padding-top: 13px;
 }
 #subPeriod {
   grid-area: 3/4/5/-1;
@@ -54,7 +87,6 @@ main {
 
 .serviceTime {
   grid-area: 5/1/7/4;
-  padding-top: 13px;
 }
 #serviceTime {
   grid-area: 5/4/7/-1;
@@ -62,7 +94,6 @@ main {
 
 .dateOfService {
   grid-area: 7/1/9/4;
-  padding-top: 13px;
 }
 
 #dateOfService {
@@ -73,7 +104,6 @@ main {
 
 .numTrucks {
   grid-area: 9/1/12/4;
-  padding-top: 13px;
 }
 #numTrucks {
   grid-area: 9/4/12/-1;
@@ -81,7 +111,6 @@ main {
 
 .assignTruck {
   grid-area: 12/1/-1/4;
-  padding-top: 13px;
 }
 #assignTruck {
   grid-area: 12/4/-1/-1;
@@ -97,40 +126,6 @@ main {
 #register {
   grid-area: 3/2/-1/-1;
   margin: 10px auto;
-}
-
-/* Select inputs */
-select {
-  height: 2.5rem;
-  margin-bottom: 20px;
-  outline: none;
-}
-
-select:hover,
-textarea:hover,
-select:focus-within,
-textarea:focus-within {
-  border: 2px solid var(--clr-secondary-700);
-  background-color: var(--clr-light-green);
-}
-
-#reqInfo input {
-  width: 100%;
-  height: 2.5rem;
-  margin-bottom: 20px;
-  padding: 0.65rem 1rem;
-  outline: none;
-  font-family: var(--ff-roboto);
-  border: 2px solid var(--clr-light-green);
-}
-
-#reqInfo input:hover,
-#reqInfo input:focus-within {
-  border: 2px solid var(--clr-secondary-700);
-  background-color: var(--clr-light-green);
-}
-textarea::placeholder {
-  font-family: var(--ff-roboto);
 }
 
 #date,

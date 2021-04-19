@@ -8,7 +8,7 @@ block body
         include includes/navBar
         block main
             main
-                section#newTruckSection.whitebg
+                section#newTruckSection.whitebg.shadow
                     h2.shadow Truck Registration
                     form#truckInfo(action='/newTruck' method='POST')
                         label.typeOfTruck(for='typeOfTruck') Type of Truck:
@@ -26,12 +26,13 @@ block body
 
                         label.driver(for='driver') Assign Driver:
                         select#driver(name='nameOfDriver')
+                            option Choose Driver
                             if staff.length
                             each driver in staff
                                 option(value =`${driver.lastName} ${driver.firstName}`) #{`${driver.lastName} ${driver.firstName}`}
         
 
-                        a#cancel-reg(href='./requests') Cancel
+                        a#goBack.button.shadow(href='#') Cancel
                         button#register(type='submit') Register
 
             block js

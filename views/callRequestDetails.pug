@@ -12,17 +12,14 @@ block body
                     input#date(type='text' name='dateOfRequest' value=request.dateOfRequest)
                     input#time(type='text' name='timeOfRequest' value=request.dateOfRequest)
                     
-                    fieldset#name.transform
-                        legend.transform Full Name
-                        input#custName(type='text' name='customerName' value=request.customerName)
+                    label.custName Full Name
+                    input#custName(type='text' name='customerName' value=request.customerName)
                     
-                    fieldset#location.transform
-                        legend.transform Location
-                        textarea#address(name='placeOfResidence' value=request.placeOfResidence)
+                    label.address Location
+                    textarea#address(name='placeOfResidence' value=request.placeOfResidence)
                     
-                    fieldset#phoneNum.transform
-                        legend.transform Phone Number
-                        input#phoneNumber(type='tel' name='phoneNumber' value=request.phoneNumber)
+                    label.phoneNumber Phone Number
+                    input#phoneNumber(type='tel' name='phoneNumber' value=request.phoneNumber)
                     
                     label.numTrucks(for='numTrucks') Number of Trucks:
                     select#numTrucks(type='text' name='numTrucks')
@@ -44,7 +41,7 @@ block body
 
 
                     button#register(type='submit') Update
-                    a#cancel-reg(href="/callRequests") Cancel
+                    a#goBack.button.shadow(href='#') Cancel
             
 
             block js

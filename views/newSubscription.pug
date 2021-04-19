@@ -7,46 +7,37 @@ block body
         block main
             main
                 form#subReg.shadow.whitebg(action='/NewSubscription' method="POST")
-                    h3#custInfoH.lightbg.shadow Customer Information
-                    section#custInfo.whitebg.flex-general-column.shadow
+                    h3#custInfoH.shadow.lightbg Customer Information
+                    section#custInfo.lightbg.shadow
                     
-                        fieldset.transform
-                            legend.transform Full Name
-                            input#fName(
+                        label.fName(for='fName') Full Name
+                        input#fName(
                                 type='text'
                                 name='customerName'
-                                placeholder='Full Name'
                             )
-                        fieldset.transform
-                            legend.transform Email
-                            input#email(
+                        label.email(for='email') Email
+                        input#email(
                                 type='email'
                                 name='email'
-                                placeholder='Email'
                             )
-                        fieldset.transform
-                            legend.transform Phone Number
-                            input#phone(
+                        label.phone(for='phoneNumber') Phone Number
+                        input#phone(
                                 type='tel'
                                 name='phoneNumber'
-                                placeholder='Phone Number'
                             )
-                        fieldset.transform
-                            legend.transform National ID Number
-                            input#nationalIdNumber(
+                        label.nationalIdNumber(for ='nationalIdNumber') National ID Number
+                        input#nationalIdNumber(
                                 type='text'
                                 name='nationalIdNumber'
-                                placeholder='National ID Number'
                             ) 
-                        fieldset.transform
-                            legend.transform Place of Residence
-                            textarea#residence(
+                        label.residence(for='residence') Place of Residence
+                        textarea#residence(
                                 type='text'
                                 name='placeOfResidence'
-                                placeholder='Place of Residence'
                             )
-                    h3#reqInfoH.lightbg.shadow Request Information       
-                    section#reqInfo.grid-general.whitebg.shadow
+
+                    h3#reqInfoH.shadow.lightbg Request Information       
+                    section#reqInfo.grid-general.lightbg.shadow
                         label.service Service Requested:
                         select#service(name="serviceRequested")
                             option(value='') Choose Service

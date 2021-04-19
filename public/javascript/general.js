@@ -1,16 +1,10 @@
 // This goes back to the previous page.
 const backBtn = document.getElementById('goBack');
-if (backBtn !== null) {
+if (backBtn) {
   backBtn.addEventListener('click', e => {
     window.history.back();
   });
 }
-
-// Stick Navigation header
-// When the user scrolls the page, execute stickyHeader().
-window.onscroll = function () {
-  stickyHeader();
-};
 
 // Get the header
 const header = document.getElementById('header');
@@ -29,11 +23,18 @@ const stickyHeader = () => {
   }
 };
 
+// Stick Navigation header
+// When the user scrolls the page, execute stickyHeader().
+window.onscroll = function () {
+  stickyHeader();
+};
+
 // Select a tbody tag with returns a Nodelist.
-let serialNum = document.querySelectorAll('tbody');
-console.log(serialNum);
+let serialNum = document.getElementsByClassName('serialAnchor');
+
 // Check if Element with tag tbody is present.
-if (serialNum.length !== 0) {
+
+if (serialNum.length > 0) {
   const serialNumber = () => {
     // Selects the table data cell of td with class 'serialNum'.
     const tData = document.getElementsByClassName('serialNum');

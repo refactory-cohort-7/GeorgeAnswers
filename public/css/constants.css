@@ -3,10 +3,8 @@
   --clr-primary-100: #fcf6f5;
   --clr-primary-500: #2bae66;
   --clr-prof-sky: hsl(197, 80%, 90%);
-  --clr-primary-500a: rgba(43, 174, 102, 0.65);
   --clr-secondary-700: blue;
-  --clr-hover-800: purple;
-  --clr-dark-text: #303030;
+  --clr-dark-text: black;
   --clr-light-green: rgba(216, 231, 216, 0.699);
   --ff-roboto: 'Roboto', san-serif;
   --ff-lobster: 'Lobster', cursive;

@@ -1,0 +1,122 @@
+main {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: auto;
+  row-gap: 20px;
+  column-gap: 20px;
+}
+/* Positioning of side bar */
+.sideBar {
+  grid-area: 1/1/-1/2;
+  height: 100%;
+  padding: 10%;
+}
+
+#sideMenu {
+  height: 200px;
+  padding: 10px;
+  margin-top: 10px;
+}
+#sideMenu li {
+  box-shadow: 0 1px 5px beige;
+  width: auto;
+}
+
+#sideMenu a {
+  display: block;
+  color: var(--clr-primary-500);
+  font-family: var(--ff-roboto);
+  padding: 10px 5px;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 3px var(--clr-primary-500);
+  width: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: var(--clr-primary-100);
+  border: 2px solid var(--clr-primary-100);
+}
+
+/* Formatting of main content */
+.mainContent {
+  grid-area: 1/2/-1/-1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 5%;
+  justify-content: space-between;
+  padding: 0 5% 2.5% 5%;
+}
+
+/* General flex-column positioning. */
+.week,
+.month,
+.table,
+.reqTable,
+#sideMenu {
+  display: flex;
+  flex-direction: column;
+}
+table {
+  box-shadow: 0 1px 3px var(--clr-primary-500),
+    0 -1px 3px var(--clr-primary-500);
+  border-collapse: collapse;
+  background-color: var(--clr-primary-500);
+}
+
+thead {
+  background-color: var(--clr-primary-500);
+  color: var(--clr-primary-100);
+  border-collapse: collapse;
+}
+tbody {
+  background-color: var(--clr-white);
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid var(--clr-primary-500);
+}
+
+th,
+td {
+  padding: 0.5rem;
+}
+
+.week {
+  grid-area: 1/1/-1/2;
+}
+
+.month {
+  grid-area: 1/2/-1/-1;
+}
+
+.mainContent :is(h3, h2, .cashMade) {
+  height: 40px;
+  background-color: var(--clr-primary-100);
+  box-shadow: inset 0 -2px 5px var(--clr-primary-500);
+  text-align: center;
+  padding: 5px 0;
+}
+
+.monthH,
+.weekH {
+  margin: 30px 0 20px 0;
+}
+
+.serviceH {
+  margin: 10px 0;
+}
+.cashMade {
+  margin-bottom: 20px;
+  height: 30px;
+  font-size: 1.2rem;
+}
+/* Creating a distinction for the different tables */
+.table,
+.reqTable {
+  padding: 0 5% 5% 5%;
+  background-color: var(--clr-primary-100);
+  box-shadow: inset 0 1px 5px var(--clr-primary-500);
+  margin: 20px 0;
+}

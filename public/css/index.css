@@ -40,6 +40,10 @@ main h3 {
 }
 main form {
   grid-area: 2/1/-1/-1;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(3, auto);
+  row-gap: 40px;
 }
 
 /* Margin spacing between inputs */
@@ -54,21 +58,29 @@ input {
   outline: none;
   color: var(--clr-dark-text);
   padding: 0 15px;
+  background-color: var(--clr-primary-100);
 }
-legend {
-  color: var(--clr-secondary-700);
-  margin: 0 15px;
+
+.userName {
+  grid-area: 1/1/2/2;
+  padding: 10px;
 }
-fieldset.transform:focus-within legend {
-  background-image: linear-gradient(
-    rgba(216, 216, 216, 0.871),
-    #d8d8d8,
-    rgba(255, 255, 255, 0.6)
-  );
+#userName {
+  grid-area: 1/2/2/-1;
 }
+
+.password {
+  grid-area: 2/1/3/2;
+  padding: 10px;
+}
+#password {
+  grid-area: 2/2/3/-1;
+}
+
 button {
+  grid-area: 3/1/4/-1;
   align-self: center;
-  margin-top: 5%;
+  margin: 5% auto;
 }
 
 /* MAIN FORMATING END */

@@ -6,30 +6,27 @@ block body
     body.staffBody.grid-general
         include includes/navBar
         block main
-            main
+            main.flex-general-column
+                h3#signUpH.shadow.lightbg Create Account for New Employee
+                form#signUp.shadow.lightbg(action="/signUp" method="POST")
 
-                form#signUp.shadow.whitebg(action="/signUp" method="POST")
-
-                    fieldset.user-name.spaceMargin.transform
-                        legend.transform User Name
-                        input#user-name(
+                    label.userName(for='userName') User Name:
+                    input#userName(
                             type='text'
-                            name='username'
-                            placeholder = 'User Name'
+                            name='userName'
+                    
                             )
-                    fieldset.password.spaceMargin.transform
-                        legend.transform Password
-                        input#password(
+                    label.password(for='password') Password:
+                    input#password(
                             type='password'
                             name='password'
-                            placeholder='Password'
+                          
                         )
-                    fieldset.confirm-password.spaceMargin.transform
-                        legend.transform Confirm Password
-                        input#confirm-password(
+                    label.confirmPassword(for='confirmPassword') Confirm Password:
+                    input#confirmPassword(
                             type='password'
                             name='confirm-password'
-                            placeholder='Confirm Password'
+                          
                         )
                     button#login-btn.spaceMargin.shadow(type="submit") Sign Up
                     a#goBack.button.shadow(href='#') Back

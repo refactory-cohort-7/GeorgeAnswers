@@ -1,6 +1,5 @@
 const User = require('../models/User');
 const passport = require('passport');
-const { ensureLoggedOut } = require('connect-ensure-login');
 
 // @description  Get Sign In form.
 // @route        GET /
