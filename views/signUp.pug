@@ -13,8 +13,8 @@ block body
                     label.userName(for='userName') User Name:
                     input#userName(
                             type='text'
-                            name='userName'
-                    
+                            name='username'
+                           
                             )
                     label.password(for='password') Password:
                     input#password(
@@ -28,6 +28,16 @@ block body
                             name='confirm-password'
                           
                         )
+                    label.role(for='role') Role:
+                    select#role(name='role')
+                        option(value='') Choose Role
+                        if admins.length
+                        each admin in admins
+                            option(value=`${admin.jobTitle}`) Administrator
+                        if deskOfficers.length
+                        each deskOfficer in deskOfficers
+                            option(value=`${deskOfficer.jobTitle}`) Desk Officer
+
                     button#login-btn.spaceMargin.shadow(type="submit") Sign Up
                     a#goBack.button.shadow(href='#') Back
         block js

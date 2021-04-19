@@ -1,4 +1,5 @@
 const AllStaff = require('../models/AllStaff');
+const User = require('../models/User');
 
 // @description  Get all staff Information
 // @route        GET /allStaff
@@ -8,9 +9,16 @@ exports.getAllStaff = async (req, res, next) => {
     try {
       // find all staff in the AllStaff collection
       const staffDetails = await AllStaff.find();
-      res.render('allStaff', {
-        staffs: staffDetails,
-        title: 'Staff',
+      const userName = req.body.username;
+      const users = await User.find(req.params.username);
+      users.forEach(loggedIn => {
+        if (loggedIn.username === userName) {
+          res.render('allStaff', {
+            staffs: staffDetails,
+            title: 'Staff',
+            loggedIn: loggedIn,
+          });
+        }
       });
     } catch (err) {
       res.send('Failed to retrive staff details');
@@ -23,9 +31,18 @@ exports.getAllStaff = async (req, res, next) => {
 // @description  Get form to register staff.
 // @route        GET /addNewStaff
 // @access       Private
-exports.getNewStaff = (req, res, next) => {
+exports.getNewStaff = async (req, res, next) => {
   if (req.session.user) {
-    res.render('newStaff', { title: 'Staff Registration' });
+    const userName = req.body.username;
+    const users = await User.find(req.params.username);
+    users.forEach(loggedIn => {
+      if (loggedIn.username === userName) {
+        res.render('newStaff', {
+          title: 'Staff Registration',
+          loggedIn: loggedIn,
+        });
+      }
+    });
   } else {
     res.redirect('/');
   }
@@ -37,8 +54,14 @@ exports.getNewStaff = (req, res, next) => {
 exports.postNewStaff = async (req, res, next) => {
   if (req.session.user) {
     try {
-      const newStaff = await AllStaff.create(req.body);
-      res.redirect('/allStaff');
+      await AllStaff.create(req.body);
+      const userName = req.body.username;
+      const users = await User.find(req.params.username);
+      users.forEach(loggedIn => {
+        if (loggedIn.username === userName) {
+          res.render('allStaff', { loggedIn: loggedIn });
+        }
+      });
     } catch (err) {
       console.log(err);
       res.status(400).send('Sorry! Something went wrong.');
@@ -61,6 +84,14 @@ exports.getStaff = async (req, res, next) => {
       if (!staff) {
         return res.status(400).send('Staff not found.');
       }
+      // CONTINUE
+      const userName = req.body.username;
+      const users = await User.find(req.params.username);
+      users.forEach(loggedIn => {
+        if (loggedIn.username === userName) {
+          res.render('sales', { loggedIn: loggedIn });
+        }
+      });
       res.render('staff', {
         staff: staff,
         title: 'Staff Details',
@@ -86,8 +117,13 @@ exports.updateStaff = async (req, res, next) => {
       if (!staff) {
         return res.status(400).send('Staff not found.');
       }
-
-      res.redirect('/allStaff');
+      const userName = req.body.username;
+      const users = await User.find(req.params.username);
+      users.forEach(loggedIn => {
+        if (loggedIn.username === userName) {
+          res.render('allStaff', { loggedIn: loggedIn });
+        }
+      });
     } catch {
       res.status(400).send('Staff Information NOT update!');
     }

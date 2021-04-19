@@ -71,6 +71,7 @@ button,
   box-shadow: inset 0 2px 8px var(--clr-secondary-700),
     inset 0 -2px 8px var(--clr-secondary-700), 0 2px 8px var(--clr-primary-500);
   cursor: pointer;
+  text-shadow: none;
 }
 
 a {
@@ -232,7 +233,7 @@ nav {
 }
 
 #menu-ul {
-  grid-area: 1/1/-1/12;
+  grid-area: 1/1/-1/10;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
@@ -311,16 +312,25 @@ header ul li a:hover {
 /* Mobile menu Styling END */
 
 /* All formating involving HEADER END here*/
-
+/* Message to Identify the User. */
+/* AND */
 /* Login Status START HERE*/
-#sign-out {
-  grid-area: 1/12/-1/-1;
+#welcome {
+  grid-area: 1/10/-1/-1;
   justify-self: end;
+  display: grid;
+  grid-template-columns: auto auto;
 }
-#sign-out button {
-  font-size: 1.1rem;
+#sign-out button,
+#welcome p {
   height: 2.5rem;
-  padding: 5px 10px;
+  font-size: 0.9rem;
+  padding: 12px 10px 5px 10px;
+  text-shadow: 0 1px 5px var(--clr-dark-text);
+}
+
+#welcome p {
+  padding-top: 15px;
 }
 
 /* Login Status END HERE*/

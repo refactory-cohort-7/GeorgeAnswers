@@ -16,42 +16,50 @@ form#signUp {
   padding: 7%;
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(4, auto);
   row-gap: 20px;
 }
 
-.userName {
+.role {
   grid-area: 1/1/2/2;
 }
 
-#userName {
+#role {
   grid-area: 1/2/2/-1;
 }
 
-.password {
+.userName {
   grid-area: 2/1/3/2;
 }
 
-#password {
+#userName {
   grid-area: 2/2/3/-1;
 }
 
-.confirmPassword {
+.password {
   grid-area: 3/1/4/2;
 }
 
-#confirmPassword {
+#password {
   grid-area: 3/2/4/-1;
 }
 
+.confirmPassword {
+  grid-area: 4/1/5/2;
+}
+#confirmPassword {
+  grid-area: 4/2/5/-1;
+}
+
 #login-btn {
-  grid-area: 5/1/-1/3;
+  grid-area: 5/3/-1/-1;
+
   margin: auto;
   justify-self: center;
 }
 
 #goBack {
-  grid-area: 5/3/-1/-1;
+  grid-area: 5/1/-1/3;
   align-self: center;
   justify-self: center;
   text-align: center;

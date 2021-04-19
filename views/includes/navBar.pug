@@ -6,47 +6,75 @@ header#header.grid-general.darkbg.shadow
             // Navbar General
             nav.grid-general
                 ul#menu-ul
-                    
-                    li#sales.navItem
-                        a( href='../sales') Home
+                    if loggedIn.role==='system-admin'
+                        li#sales.navItem
+                            a( href='../sales') Home
 
-                    li#subscriptions.navItem
-                        a( href='#') Subscriptions
-                        ul.sub-menu
-                            li
-                                a#newSub( href='../newSubscription') Add New Subscription
-                            li
-                                a#subList( href='../subscriptions') List of Subscribers 
-                        
-                    li#request.navItem
-                        a( href='#') Call Requests
-                        ul.sub-menu
-                            li
-                                a#newReqItem( href='../newRequest') Add New Request
-                            li
-                                a#callReqItem( href='../callRequests') List of Requests 
-                          
+                        li#subscriptions.navItem
+                            a( href='#') Subscriptions
+                            ul.sub-menu
+                                li
+                                    a#newSub( href='../newSubscription') Add New Subscription
+                                li
+                                    a#subList( href='../subscriptions') List of Subscribers 
+                            
+                        li#request.navItem
+                            a( href='#') Call Requests
+                            ul.sub-menu
+                                li
+                                    a#newReqItem( href='../newRequest') Add New Request
+                                li
+                                    a#callReqItem( href='../callRequests') List of Requests   
 
+                        li#inventory.navItem
+                            a( href='#') Inventory
+                            ul.sub-menu
+                                li
+                                    a#truckReg( href='../newTruck') Register New Truck 
+                                li
+                                    a#trucks( href='../allTrucks') List of Trucks
+                        li#staff.navItem
+                            a( href='#') Staff
+                            ul.sub-menu
+                                li
+                                    a#staffReg( href='../newStaff') Register New Employee 
+                                li
+                                    a#staffInfo( href='../allStaff') List of Staff
+                                li.staffUser
+                                    a#staffUser( href='../signUp') Add New User
+                    else 
+                        li#sales.navItem
+                            a( href='../sales') Home
 
+                        li#subscriptions.navItem
+                            a( href='#') Subscriptions
+                            ul.sub-menu
+                                li
+                                    a#newSub( href='../newSubscription') Add New Subscription
+                                li
+                                    a#subList( href='../subscriptions') List of Subscribers 
+                            
+                        li#request.navItem
+                            a( href='#') Call Requests
+                            ul.sub-menu
+                                li
+                                    a#newReqItem( href='../newRequest') Add New Request
+                                li
+                                    a#callReqItem( href='../callRequests') List of Requests 
                             
 
-                    li#inventory.navItem
-                        a( href='#') Inventory
-                        ul.sub-menu
-                            li
-                                a#truckReg( href='../newTruck') Register New Truck 
-                            li
-                                a#trucks( href='../allTrucks') List of Trucks
-                    li#staff.navItem
-                        a( href='#') Staff
-                        ul.sub-menu
-                            li
-                                a#staffReg( href='../newStaff') Register New Employee 
-                            li
-                                a#staffInfo( href='../allStaff') List of Staff
-                            li
-                                a#staffUser( href='../signUp') Add New User
 
-                form#sign-out(action='/signOut' method='POST')
-                    button(type='submit') Sign Out
+                                
+
+                        li#inventory.navItem
+                            a( href='#') Inventory
+                            ul.sub-menu
+                                li
+                                    a#truckReg( href='../newTruck') Register New Truck 
+                                li
+                                    a#trucks( href='../allTrucks') List of Trucks
+                section#welcome
+                    p Hello, #{`${loggedIn.username}`}!
+                    form#sign-out(action='/signOut' method='POST')
+                        button(type='submit') Sign Out
 

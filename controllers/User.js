@@ -1,3 +1,4 @@
+const AllStaff = require('../models/AllStaff');
 const User = require('../models/User');
 const passport = require('passport');
 
@@ -11,9 +12,15 @@ exports.getSignIn = (req, res) => {
 // @description  Authent and Redirect to requests.
 // @route        POST /
 // @access       Private
-exports.postSignIn = (req, res) => {
+exports.postSignIn = async (req, res) => {
   req.session.user = req.user;
-  res.redirect('/sales');
+  const userName = req.body.username;
+  const users = await User.find(req.params.username);
+  users.forEach(loggedIn => {
+    if (loggedIn.username === userName) {
+      res.render('sales', { loggedIn: loggedIn });
+    }
+  });
 };
 
 // @description  Get Sign out In form.
@@ -49,9 +56,23 @@ exports.getSignOut = (req, res) => {
 // @description  Get Sign Up In form.
 // @route        GET /signUp
 // @access       Private
-exports.getSignUp = (req, res) => {
+exports.getSignUp = async (req, res) => {
   if (req.session.user) {
-    res.render('signUp', { title: 'Sign Up' });
+    // Finds all staff with jobtitle of front-desk-officer.
+    const deskOfficer = await AllStaff.find({
+      jobTitle: 'front-desk-officer',
+    });
+    // Finds all staff with jobtitle of system-admin.
+    const admin = await AllStaff.find({
+      jobTitle: 'system-admin',
+    });
+
+    // Renders signUp page with arrays: deskOfficers and admins available for use in the pug file.
+    res.render('signUp', {
+      title: 'Sign Up',
+      deskOfficers: deskOfficer,
+      admins: admin,
+    });
   } else {
     res.redirect('/');
   }
@@ -63,12 +84,12 @@ exports.getSignUp = (req, res) => {
 exports.postSignUp = async (req, res) => {
   if (req.session.user) {
     try {
-      const newUser = new User(req.body);
+      const newUser = await new User(req.body);
       await User.register(newUser, req.body.password, err => {
         if (err) {
           throw err;
         }
-        res.redirect('/');
+        res.render('sales');
       });
     } catch (err) {
       res.status(400).send('Sorry! Something went wrong.');
